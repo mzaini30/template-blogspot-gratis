@@ -462,6 +462,15 @@
         max-width: 600px;
         margin: auto;
       }
+      .konten p a {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+      }
+      @media (min-width: 575px) {
+        .thumbnail-postingan {
+          aspect-ratio: 16 / 9;
+        }
+      }
       ]]>
     </b:skin>
   </head>
@@ -616,29 +625,7 @@
       </b:widget>
     </b:section>
 
-    <!-- blog beranda -->
-    <!-- <nav class="postingan">
-      <a href="post.html"
-        ><img src="gambar.jpg" class="thumbnail-postingan" alt="" />
-        <section class="ringkasan-konten">
-          <h2>Ini adalah Judulnya...</h2>
-          <p>Ini adalah deskripsinya...</p>
-        </section></a
-      >
-    </nav>
-
-    <a class="next" href="/">Berikutnya</a> -->
-    <!-- /blog beranda -->
-
-    <!-- blog konten -->
-    <!-- <img src="gambar.jpg" alt="" class="cover-postingan" />
-    <h1 class="judul-artikel">judul</h1>
-    <article class="konten">
-      isinya
-    </article> -->
-    <!-- /blog konten -->
-
-    <footer class="credit">Download <a href="/">Template MinMax</a></footer>
+    <footer class="credit">Download <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html">Template MinMax</a></footer>
     <script src="https://unpkg.com/petite-vue@0.4.0/dist/petite-vue.iife.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
     <script>
