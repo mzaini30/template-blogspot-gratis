@@ -4,32 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title><data:blog.pageTitle/></title>
-    <meta
-      name="description"
-      expr:content="data:blog.metaDescription"
-    />
+
+    <b:if cond="data:blog.metaDescription">
+      <meta
+        name="description"
+        expr:content="data:blog.metaDescription"
+      />
+      <meta
+        property="twitter:description"
+        expr:content="data:blog.metaDescription"
+      />
+      <meta
+        property="og:description"
+        expr:content="data:blog.metaDescription"
+      />
+    <b:else />
+      <meta
+        name="description"
+        content="Blog lifestyle yang membahas segala hal. Tapi ya kebanyakan pemrograman sih."
+      />
+      <meta
+        property="twitter:description"
+        content="Blog lifestyle yang membahas segala hal. Tapi ya kebanyakan pemrograman sih."
+      />
+      <meta
+        property="og:description"
+        content="Blog lifestyle yang membahas segala hal. Tapi ya kebanyakan pemrograman sih."
+      />
+    </b:if>
+
+    <b:if cond="data:blog.postImageUrl">
+      <meta
+        property="og:image"
+        expr:content="data:blog.postImageUrl"
+      />
+      <meta
+        property="twitter:image"
+        expr:content="data:blog.postImageUrl"
+      />
+    <b:else />
+      <meta
+        property="og:image"
+        content="https://blogger.googleusercontent.com/img/a/AVvXsEhY-ucbWrAhgTZogTs-j49shOfgJGJn3j2IQVmeRvDY-wFVp69cY_UX8bP0xqhGieuGwne-sW7VvmQ2i2M0SEQq03vFL3Vpi7T6ADGwyQnqIkbzH3LjOA3LCbPrmZYyluhpq138k-GVE2mV6Zgeb4291pTrnqybW4T83GKow0efxR08pR1v_Cpl8_6e=w640-h360"
+      />
+      <meta
+        property="twitter:image"
+        content="https://blogger.googleusercontent.com/img/a/AVvXsEhY-ucbWrAhgTZogTs-j49shOfgJGJn3j2IQVmeRvDY-wFVp69cY_UX8bP0xqhGieuGwne-sW7VvmQ2i2M0SEQq03vFL3Vpi7T6ADGwyQnqIkbzH3LjOA3LCbPrmZYyluhpq138k-GVE2mV6Zgeb4291pTrnqybW4T83GKow0efxR08pR1v_Cpl8_6e=w640-h360"
+      />
+    </b:if>
+    
     <link rel="canonical" expr:href="data:blog.canonicalUrl" />
     <meta property="og:title" expr:content="data:blog.pageTitle" />
-    <meta
-      property="og:description"
-      expr:content="data:blog.metaDescription"
-    />
-    <meta
-      property="og:image"
-      expr:content="data:blog.postImageUrl"
-    />
     <meta property="og:url" expr:content="data:blog.canonicalUrl" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="article" />
     <meta property="twitter:title" expr:content="data:blog.pageTitle" />
-    <meta
-      property="twitter:description"
-      expr:content="data:blog.metaDescription"
-    />
-    <meta
-      property="twitter:image"
-      expr:content="data:blog.postImageUrl"
-    />
     <meta property="twitter:card" content="summary_large_image" />
     <b:skin>
       <![CDATA[
@@ -359,7 +388,7 @@
         font-weight: 700;
       }
       .menunya a.anak {
-        padding-left: 0.75rem;
+        margin-left: 0.75rem;
       }
 
       /*beranda*/
@@ -470,6 +499,12 @@
         .thumbnail-postingan {
           aspect-ratio: 16 / 9;
         }
+      }
+      * {
+        word-wrap: break-word;
+      }
+      .konten a {
+        text-decoration: underline;
       }
       ]]>
     </b:skin>
