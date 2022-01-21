@@ -1,0 +1,1 @@
+icon: https://icones.netlify.app/collection/vaadin?s=

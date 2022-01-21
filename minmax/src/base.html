@@ -4,8 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="vue.js"></script>
   </head>
   <body>
+    <section class="header">
+      <section class="menu app" v-cloak>
+        <nav class="tombol-menu" @click="tampil_menu = true">
+          {% include './icon/menu.html' %}
+        </nav>
+        <section v-if="tampil_menu == true">
+          <section @click="tampil_menu = false" class="latar-hitam"></section>
+          <nav class="menunya">
+            <ol>
+              <li><a href="/">Satu</a></li>
+              <li><a href="/">_Dua</a></li>
+              <li><a href="/">_Tiga</a></li>
+              <li><a href="/">Empat</a></li>
+              <li><a href="/">Lima</a></li>
+            </ol>
+          </nav>
+        </section>
+      </section>
+      <section class="judul">
+        <h1>
+          <a href="/">Cuap Cuap</a>
+        </h1>
+      </section>
+      <section class="cari">{% include './icon/cari.html' %}</section>
+    </section>
     {% block isi %}{% endblock %}
+
+    <script>
+      PetiteVue.createApp({
+        tampil_menu: true,
+      }).mount(".menu.app")
+    </script>
   </body>
 </html>
+
+<style lang="windi">
+  [v-cloak]{
+    @apply hidden
+  }
+  .header {
+    @apply bg-green-300 flex justify-between sticky top-0 left-0
+  }
+  .menu, .cari {
+    @apply p-2 text-lg
+  }
+  .tombol-menu, .cari, .latar-hitam {
+    @apply cursor-pointer select-none
+  }
+  .judul a {
+    @apply p-2 block text-sm text-center
+  }
+  .latar-hitam {
+    @apply bg-black/30 w-full h-screen fixed top-0 left-0 backdrop-filter backdrop-blur
+  }
+  .menunya {
+    @apply bg-white w-70 max-w-[70%] h-screen fixed top-0 left-0
+  }
+  .menunya ol {
+    @apply p-5 text-base
+  }
+  .menunya li {
+    @apply pb-3
+  }
+</style>
