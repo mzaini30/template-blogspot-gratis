@@ -1,3 +1,39 @@
 {% extends './base.html' %}
 
-{% block isi %}{% endblock %}
+{% block isi %}
+  <nav v-for="x in Array(10)" class="postingan app">
+    <a href="post.html">
+      <img src="gambar.jpg" class="thumbnail-postingan" alt="" />
+      <section class="ringkasan-konten">
+        <h2>Ini adalah Judulnya...</h2>
+        <p>Ini adalah deskripsinya...</p>
+      </section>
+    </a>
+  </nav>
+
+  <a class="next" href="/">Berikutnya</a>
+
+  <script>
+    PetiteVue.createApp({}).mount(".postingan.app")
+  </script>
+
+  <style lang="windi">
+    .next {
+      @apply w-min block px-2 py-1 rounded rounded-lg m-5 border border-orange-500 text-orange-500 mx-auto
+    }
+    .thumbnail-postingan {
+    	@apply w-full;
+    	object-fit: cover;
+    	aspect-ratio: 1 / 1;
+    }
+    .postingan {
+    	@apply text-sm
+    }
+    .ringkasan-konten {
+    	@apply p-2
+    }
+    .postingan h2 {
+    	@apply font-bold
+    }
+  </style>
+{% endblock %}

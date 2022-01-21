@@ -1,3 +1,67 @@
 {% extends './base.html' %}
 
-{% block isi %}{% endblock %}
+{% block isi %}
+  <img src="gambar.jpg" alt="" class="cover-postingan" />
+
+  <h1 class="judul-artikel">judul</h1>
+  <article class="konten">
+    @markdown
+			## h2
+			### h3
+			#### h4
+			##### h5
+			###### h6
+
+			> blockquote lorem
+
+			- satu
+			- dua
+			- tiga
+
+			paragraf
+
+			paragraf
+
+			1. satu
+			2. dua
+			3. tiga
+
+			![gambar](gambar.jpg)
+
+			---
+
+			paragraf
+
+			paragraf `satu` dua
+		@endmarkdown
+
+    <pre><code>satu
+dua
+tiga</code></pre>
+
+    @markdown
+			paragraf
+		@endmarkdown
+  </article>
+
+  <style lang="windi">
+    .cover-postingan {
+    	@apply w-full;
+    	object-fit: cover;
+    	aspect-ratio: 10 / 4;
+    }
+    .judul-artikel {
+    	@apply text-center p-5 text-2xl;
+    	font-family: cursive;
+    }
+    .konten {
+    	@apply p-5
+    }
+    .konten :where(h2, h3, h4, h5, h6) {
+    	@apply font-bold
+    }
+    .konten ol li {
+    	@apply list-decimal ml-5
+    }
+  </style>
+{% endblock %}

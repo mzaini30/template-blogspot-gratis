@@ -1,0 +1,11 @@
+<Group description="Main Color (Manual)">
+	<Variable name="defaultcolor2" description="Main Color 2" type="color" default="#0d9ad0" value="#0d9ad0"/>
+	<Variable name="defaultcolor3" description="Main Color 3" type="color" default="#FF486A" value="#FF486A"/>
+</Group>
+
+<!-- harus px -->
+<!-- min jangan sampai 0 -->
+<!-- 1 rem = 16px -->
+<Group description="Widths">
+	<Variable name="content.width" description="Content width" type="length" min="800px" max="2000px" default="1250px" value="1250px"/>
+</Group>

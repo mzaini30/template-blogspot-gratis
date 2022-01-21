@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><data:blog.pageTitle/></title>
+
+	<!-- harus ada b:skin -->
+	<b:skin>
+		<![CDATA[
+			* {
+				word-wrap: break-word;
+			}
+		]]>
+	</b:skin>
+
+	<!-- <b:tag></b:tag> -->
+
+</head>
+<body>
+
+	<!-- https://www.igniel.com/2017/12/tag-kondisional-blogger-terbaru.html -->
+
+	<b:if cond='data:view.isHomepage'>
+		<h1>Ini beranda</h1>
+		<b:section id="bagian-beranda">
+			<b:widget id='HTML2' title='' type='HTML'></b:widget>
+		</b:section>
+	</b:if>
+
+	<b:if cond='!data:view.isHomepage'>
+		<h1>Ini postingan</h1>
+
+		<!-- kenapa yang ini nggak muncul? -->
+		<!-- solusinya: mainin css -->
+		<b:section id="bagian-postingan">
+			<b:widget id='HTML3' title='' type='HTML'></b:widget>
+		</b:section>
+	</b:if>
+
+	<!-- harus ada b:section dengan id -->
+	<b:section id='bagian-gadget'>
+		<b:widget id='Attribution1' title='' type='Attribution'></b:widget>
+		<b:widget id='Blog1' title='' type='Blog'></b:widget>
+		<b:widget id='BlogArchive1' title='' type='BlogArchive'></b:widget>
+		<b:widget id='BloggerButton1' title='' type='BloggerButton'></b:widget>
+		<b:widget id='BlogList1' title='' type='BlogList'></b:widget>
+		<b:widget id='BlogSearch1' title='' type='BlogSearch'></b:widget>
+		<b:widget id='ContactForm1' title='' type='ContactForm'></b:widget>
+		<b:widget id='Feed1' title='' type='Feed'></b:widget>
+		<b:widget id='Followers1' title='' type='Followers'></b:widget>
+		<b:widget id='Header1' title='' type='Header'></b:widget>
+		<b:widget id='HTML1' title='' type='HTML'></b:widget>
+		<b:widget id='Image1' title='' type='Image'></b:widget>
+		<b:widget id='Label1' title='' type='Label'></b:widget>
+		<b:widget id='LinkList1' title='' type='LinkList'></b:widget>
+		<b:widget id='PageList1' title='' type='PageList'></b:widget>
+		<b:widget id='PopularPosts1' title='' type='PopularPosts'></b:widget>
+		<b:widget id='Profile1' title='' type='Profile'></b:widget>
+		<b:widget id='ReportAbuse1' title='' type='ReportAbuse'></b:widget>
+		<b:widget id='Stats1' title='' type='Stats'></b:widget>
+		<b:widget id='Subscribe1' title='' type='Subscribe'></b:widget>
+		<b:widget id='Text1' title='' type='Text'></b:widget>
+		<b:widget id='TextList1' title='' type='TextList'></b:widget>
+		<b:widget id='Translate1' title='' type='Translate'></b:widget>
+		<b:widget id='Wikipedia1' title='' type='Wikipedia'></b:widget>
+	</b:section>
+</body>
+</html>

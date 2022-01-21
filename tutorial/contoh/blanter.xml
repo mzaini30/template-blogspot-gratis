@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+&lt;head&gt;
+<!-- DESIGN BY WWW.IDBLANTER.COM -->
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<b:include data='blog' name='all-head-content'/>
+<b:if cond='data:blog.pageType == &quot;index&quot;'>
+<title><data:blog.pageTitle/></title>
+<b:else/>
+<b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+<title><data:blog.pageName/> - <data:blog.title/></title>
+</b:if></b:if>
+<b:if cond='data:blog.pageType == &quot;error_page&quot;'>
+<title>Page Not Found - <data:blog.title/></title>
+</b:if>
+<b:if cond='data:blog.pageType in {&quot;index&quot;} and data:blog.homepageUrl == data:blog.url'>
+<meta expr:content='data:blog.title' name='keywords'/>
+</b:if>    
+<b:if cond='data:blog.pageType in {&quot;item&quot;,&quot;static_page&quot;}'>
+<meta expr:content='data:blog.pageName' name='keywords'/>
+</b:if>
+<b:if cond='data:blog.pageType in {&quot;archive&quot;} or data:blog.searchLabel or data:blog.searchQuery'>
+<meta content='noindex,nofollow' name='robots'/>
+</b:if>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+<meta expr:content='data:blog.pageName' property='og:title'/>
+<meta content='article' property='og:type'/>
+<b:else/>
+<meta expr:content='data:blog.pageTitle' property='og:title'/>
+<meta content='website' property='og:type'/>
+</b:if>
+<meta expr:content='data:blog.title' property='og:site_name'/>
+<link href='https://www.blogger.com/profile/xxxxx' rel='publisher'/>
+<link href='https://www.blogger.com/profile/xxxxx' rel='author'/>
+<link href='https://www.blogger.com/profile/xxxxx' rel='me'/>
+<meta content='xxxxx' name='google-site-verification'/>
+<meta content='Indonesia' name='geo.placename'/>
+<meta content='YOUR NAME' name='Author'/>
+<meta content='id' name='geo.country'/>
+<meta expr:content='data:blog.title' name='twitter:site'/>
+<meta content='@xxxxx' name='twitter:creator'/>
+<meta content='xxxxx' property='fb:admins'/>
+<meta content='xxxxx' property='fb:app_id'/>
+<!-- CHANGE PHONE BAR COLOR -->
+<meta content='#1cbfc3' name='theme-color'/>
+<meta content='#1cbfc3' name='msapplication-navbutton-color'/>
+<meta content='yes' name='apple-mobile-web-app-capable'/>
+<meta content='#1cbfc3' name='apple-mobile-web-app-status-bar-style'/>
+<b:skin><![CDATA[
+/*
+Theme Name       : Blanter Orbit Premium
+Theme Version    : v1.5 (December 2020)
+Designer         : Rhinokage Rio | Rio Ilham Hadi
+URL Designer     : https://www.idblanter.com | https://www.blantertheme.com
+Theme License    : Premium Version (Blanter Premium License v4.0)
+*/
+
+/* Variable
+<Variable name="keycolor" description="Main Color" type="color" default="#1cbfc3"  value="#1cbfc3"/>
+<Variable name="body.background" description="Body Background" type="background" color="#fff" default="#fff none repeat scroll top left" value="#fff none repeat scroll top left"/>
+
+<Group description="Main Color (Manual)" selector="color">
+	<Variable name="defaultcolor2" description="Main Color 2" type="color" default="#0d9ad0" value="#0d9ad0"/>
+	<Variable name="defaultcolor3" description="Main Color 3" type="color" default="#FF486A" value="#FF486A"/>
+</Group>
+
+<Group description="Header Text Color" selector="color">
+	<Variable name="header.sosmed.color" description="Social Media Color" type="color" default="#1cbfc3" value="#1cbfc3"/>
+	<Variable name="header.judul.color" description="Heading Color" type="color" default="#333333" value="#333333"/>
+	<Variable name="header.search.background" description="Search Background Color" type="color" default="#0d9ad0" value="#0d9ad0"/>
+	<Variable name="header.search.color" description="Search Button Color" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
+
+<Group description="Main Menu Color" selector="color">
+	<Variable name="menubackground1" description="Background 1" type="color" default="#1cbfc3" value="#1cbfc3"/>
+	<Variable name="menubackground2" description="Background 2" type="color" default="#0d9ad0" value="#0d9ad0"/>
+	<Variable name="menucolor" description="Text Color" type="color" default="#ffffff" value="#ffffff"/>
+	<Variable name="menufontsize" description="Font Size" type="length" min="10px" max="30px" default="14px" value="14px"/>
+</Group>
+
+<Group description="Footer Design" selector="color">
+	<Variable name="foobg" description="Footer Background" type="color" default="#ffffff" value="#ffffff"/>
+	<Variable name="foocolor" description="Text Color" type="color" default="#444444" value="#444444"/>
+</Group>
+
+<Group description="Widths">
+	<Variable name="content.width" description="Content width" type="length" min="800px" max="2000px" default="1250px" value="1250px"/>
+</Group>
+
+<Group description="DONT EDIT THIS SECTION">
+<Variable name="body.font" description="Body Font" type="font" default="normal normal 14px 'Poppins', sans-serif" value="normal normal 14px &#39;Poppins&#39;, sans-serif"/>
+<Variable name="body.text.color" description="Text Color" type="color" default="#222" value="#222222"/>
+<Variable name="body.text.font" description="Body Text Font" type="font" default="normal normal 14px 'Poppins', Helvetica, Arial, sans-serif" value="normal normal 14px &#39;Poppins&#39;, Helvetica, Arial, sans-serif"/>
+<Variable name="body.link.color" description="Link Color" type="color" default="#2196f3" value="#2196f3"/>
+<Variable name="body.link.visited.color" description="123" type="color" default="#2196f3" value="#2196f3"/>
+<Variable name="body.link.hover.color" description="5234" type="color" default="#2196f3" value="#2196f3"/>
+<Variable name="blog.title.font" description="10" type="font" default="$(PoppinsBold45)" value="$(PoppinsBold45)"/>
+<Variable name="blog.title.color" description="11" type="color" default="#fff" value="#ffffff"/>
+<Variable name="header.icons.color" description="12" type="color" default="#fff" value="#ffffff"/>
+<Variable name="tabs.font" description="Tabs Font" type="font" default="normal normal 14px Helvetica, Arial, sans-serif" value="normal normal 14px Helvetica, Arial, sans-serif"/>
+<Variable name="tabs.color" description="1222" type="color" default="#ccc" value="#cccccc"/>
+<Variable name="tabs.selected.color" description="1122" type="color" default="#fff" value="#ffffff"/>
+<Variable name="tabs.overflow.background.color" description="12313" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="tabs.overflow.color" description="1324" type="color" default="#393939" value="#393939"/>
+<Variable name="tabs.overflow.selected.color" description="11235" type="color" default="#393939" value="#393939"/>
+<Variable name="posts.background.color" description="236" type="color" default="#fff" value="#ffffff"/>
+<Variable name="posts.title.color" description="1239" type="color" default="#212121" value="#212121"/>
+<Variable name="posts.title.font" description="21230" type="font" default="$(PoppinsBold22)" value="$(PoppinsBold22)"/>
+<Variable name="posts.text.font" description="2321" type="font" default="normal normal 14px 'Poppins', sans-serif" value="normal normal 14px &#39;Poppins&#39;, sans-serif"/>
+<Variable name="posts.text.color" description="2322" type="color" default="#222222" value="#222222"/>
+<Variable name="posts.icons.color" description="2233" type="color" default="#707070" value="#707070"/>
+<Variable name="labels.background.color" description="8" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
+Variable end */
+
+/* Framework */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1;display:block}*{margin:0;padding:0}html{display:block}blockquote,q{quotes:none}blockquote::after,blockquote::before,q::after,q::before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}.section,.widget{margin:0;padding:0}#backlinks-container,.blog-feeds,.blog-mobile-link,.feed-links,.navbar,a.home-link{display:none}.edit-post,.item-control,.quickedit,.sosmedimut h3{display:none}.post-body .separator>a,.post-body .separator>span{margin-left:0!important}b,strong{font-weight:700}cite,em,i{font-style:italic}a:link{color:$(keycolor);text-decoration:none;outline:0}a:visited{color:$(keycolor);text-decoration:none}a:hover{color:#555;text-decoration:none}a img{border:none;border-width:0;outline:0}abbr,acronym{border-bottom:1px dotted;cursor:help}sub,sup{vertical-align:baseline;position:relative;top:-.4em;font-size:86%}sub{top:.4em}small{font-size:86%}kbd{font-size:80%;border:1px solid #777;padding:2px 5px;border-bottom-width:2px;border-radius:3px}mark{background-color:#ffce00;color:#000}blockquote,dl,figure,form,hr,ol,p,pre,table,ul{margin:0 0 1.5em}hr{height:1px;border:none;background-color:#666}h1{font-size:1.8rem}h2{font-size:1.6rem}h3{font-size:1.4rem}h4{font-size:1.2rem}h5{font-size:1rem}h6{font-size:.9rem}h1,h2,h3,h4,h5,h6{margin:0 0 .6em;font-weight:700}dl,ol,ul{margin:.5em 0 .5em 3em}li{margin:.5em 0}dt{font-weight:700}dd{margin:0 0 .5em 2em}select{font:inherit;font-size:100%;line-height:normal;vertical-align:baseline}textarea{display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}code,pre{font-family:"Courier New",Courier,Monospace;color:inherit}pre{white-space:pre;word-wrap:normal;overflow:auto}table[border="1"] td,table[border="1"] th{vertical-align:top;text-align:left;font-size:13px;padding:3px 5px;border:1px solid #f6f6f6}table[border="1"] th{background:#f4f5f9}img,table{max-width:100%;height:auto}iframe{max-width:100%}td.tr-caption{color:#444}.clear{clear:both}.clear::after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}a:link{transition:all .2s;-moz-transition:all .2s;-webkit-transition:all .2s}.CSS_LIGHTBOX{z-index:70!important}
+
+/* Content UI */
+body{background:#f7fdfd;font-family:'Poppins',Arial,sans-serif;box-sizing:border-box;line-height:1.7}#showsearch,.descriptionmaterial,.blanter-back,input#menu-btn,#menu-widget h2,.displaynone,#jquery-schema-name,#slidemenu h2,.schema-code{display:none}#outer-material{margin:20px 0 0;position:relative;overflow:hidden}#content-material{width:$(content.width);max-width:100%;margin:0 auto;position:relative;padding:15px}.material,#material,.container{width:$(content.width);max-width:100%;margin:0 auto;position:relative}#main-material{margin:10px auto}#header-material{position:relative;z-index:60;padding:40px 10px 20px;display:grid;grid-template-columns:1fr 1fr 1fr}#header{color:#555;line-height:3.2;margin:0;text-align:center}#header h1,#header a{font-size:27px;font-weight:700;color:$(header.judul.color)}a.toggleMenu{color:#555;float:left;padding:10px 12px;margin:10px;border-radius:100%}a.toggleMenu:hover,#showmenu:hover,a.dialogUi:hover{background:#f4f5f9}#showmenu,a.dialogUi{color:#555;float:right;padding:10px 12px;margin:10px 10px 0 0;border-radius:100%}blockquote{border-left:4px solid #673ab7!important;background:#f4f5f9;overflow:hidden;position:relative;margin:.5rem 0 1rem;border-radius:5px;color:#444;padding:20px}a.dialogUi{margin-right:0}.header img{max-width:220px;margin:0}.header-blanter{background:$(body.background);box-shadow:0 2px 8px 0 rgb(60 64 67 / 11%)}#popular-home,#sidebar-blanter{opacity:0}#outer-material.scroll{padding-top:60px}.header p.title{margin:0}.harga-produk #harga{color:#1cbfc3;font-weight:700;font-size:25px}.harga-produk strike{opacity:.5}
+
+/* Navigation Menu */
+#menu-blanter{background:linear-gradient(150deg,$(menubackground1) 30%,$(menubackground2) 100%);position:relative;z-index:10;left:0;right:0;padding:0 15px;text-align:center}#menu-blanter nav{display:inline-block}#menu-blanter ul{padding:0;list-style:none}#menu-blanter ul li{float:left;line-height:1.3;margin:0;position:relative}#menu-blanter li a{display:block;padding:12px 15px;margin:0 2px;font-size:$(menufontsize);font-weight:600;color:$(menucolor);cursor:pointer}#menu-blanter li a:hover{background:transparent}#menu-blanter .submenu:after,#slidemenu .submenu:after{content:"\f107";font-family:"Font Awesome 5 Free";font-style:normal;font-weight:600;text-decoration:inherit;padding-left:10px;color:$(menucolor)}#menu-blanter li ul{background:#fff;display:none;position:absolute;width:180px;padding:2px 0;margin:0;max-width:200px;box-shadow:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);border-radius:8px}#menu-blanter li ul li{float:none;line-height:1;padding:0;margin:0}#menu-blanter li ul a{color:#444;border:none;border-radius:5px;text-align:left}#menu-blanter li ul a:hover{background:#f4f5f9}#menu-blanter li ul:before{content:'';display:block;position:absolute!important;left:10%;top:-14px;bottom:100%;width:0;height:0;border-bottom:8px solid #fff;border-top:8px solid transparent;border-left:8px solid transparent;border-right:8px solid transparent}#menu-blanter li a:before,h1.post-title:before{content:"";display:block;width:0;height:.15rem;background-color:#fff;position:absolute;top:100%;left:50%;-webkit-transform:translateX(-50%,0);transform:translate(-50%,0);-webkit-transition:all .25s ease;transition:all .25s ease}#menu-blanter li a:hover:before{width:55%}#menu-blanter li ul a:before{display:none}.social-media ul{margin:0;list-style:none}.social-media li{display:inline-block;padding:10px;margin:15px 0 0;font-size:12px}.social-media li i{font-size:1.4rem}.social-media li a{color:$(header.sosmed.color)}a.show-search{position:absolute;right:0;background:$(header.search.background);color:$(header.search.color);font-size:1rem;padding:5px 12px;margin:10px;border-radius:100%;box-shadow:0 3px 6px rgba(0,0,0,0.3)}a.show-search svg{width:22px;height:22px;fill:#fff;margin:5px 0 0}#menu-blanter.scroll{position:fixed!important;top:-90px!important}#menu-blanter.scroll.no-scroll{position:fixed!important;top:0!important;box-shadow:0 2px 8px 0 rgb(60 64 67 / 11%)}#menu-blanter li a.show-nav{font-size:20px;margin:-10px 0 0}
+
+/* Breadcrumbs */
+.breadcrumbs{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.6;font-size:20px;text-align:center;margin:-10px 0 10px}.breadcrumbs a{font-size:13px;color:#333;font-weight:600;background:#f4f5f9;display:inline-block;padding:5px 12px;border-radius:20px}.breadcrumbs b{color:#777;font-weight:500}.breadcrumbs a:hover{background:#e8eaf5}.breadcrumbs a i{float:left;font-size:20px;margin-right:5px;line-height:1}.breadcrumbs span.judulb{display:none}.labelb:nth-of-type(n+6),.breadcrumbs b:nth-of-type(n+6){display:none}#material-breadcrumbs{margin:15px 0 0}.related-thumb-outer,.item-thumbnail,.blanterimgthumb{position:relative;background:#f4f5f9;border-radius:7px}.item-thumbnail:before,.blanterimgthumb:before,.related-thumb-outer:before{content:'';height:8px;width:100px;background:$(keycolor);position:absolute;border-radius:10px;left:calc(50% - 5px);top:calc(45% - 5px);transform:translate(-50%,0);animation:loader 1.2s infinite ease-in-out}@keyframes loader{0%{width:1%}50%{width:20%}100%{width:1%}}img{position:relative;z-index:0}
+
+/* Banner and Search */
+.banner970 a{float:right;margin:25px;padding:8px 18px;background:#fff;border:1px solid #ccc;border-radius:7px;font-weight:500;text-transform:uppercase}.banner970 .title970{font-weight:500;font-size:24px;color:#555;float:left;padding:28px}.banner970{background:#e3e3e3;padding:0;max-width:970px;width:100%;height:90px;overflow:hidden}.float_material{transition:all .3s ease-out;-webkit-transform:translateZ(0);transform:translateZ(0)}.largebanner,.footerbanner{margin:0 auto;padding:0 0 15px;width:100%;max-width:970px;float:none;overflow:hidden;position:relative;clear:both}.footerbanner .widget,.largebanner .widget{padding:10px;transition:all .5s ease-in-out;max-height:90px}.largebanner img,.largebanner iframe,.footerbanner img,.footerbanner iframe{display:block;max-width:100%;border:none;overflow:hidden}.largebanner img,.footerbanner img{max-height:90px}#search-wrap{clear:both;width:50%;margin:0 auto;padding:0;display:block;overflow:hidden}#search-blanter{box-shadow:0 5px 5px 0 rgba(0,0,0,0.1);border-radius:10px;border:1px solid #eee;margin:20px;overflow:hidden}#searchform{color:#555;width:100%;margin:0 auto;overflow:hidden;position:relative}#search-form{background-color:#fff;width:100%;height:57px;line-height:57px;padding:0 20px 0 60px;border:none;font-weight:600;font-size:1rem;color:#555;font-family:'Poppins',Arial}#search-form:focus{border:none;outline:0}#searchform:focus{border:none;outline:0;color:$(defaultcolor2)}#box{margin:0 auto;display:none;padding:60px 0 0;width:100%;height:100%;position:fixed;top:0;left:0;z-index:999999;transform:translateZ(0);background-color:rgba(255,255,255,.85);text-align:center;transition:all ease-in-out .3s}#box.open,#hide.open{display:block}.sayanglina{color:#fff;padding:0 11px;cursor:pointer;float:right;overflow:hidden;display:block;font-size:40px;border-radius:100%;background:$(defaultcolor2);border:none;top:40px;right:5%;position:absolute;outline:none}.sayanglina i{font-size:30px}.search-icon span{font-weight:400;width:45px;height:60px;line-height:60px;position:absolute;top:0;right:20px;cursor:pointer;font-size:22px;color:#fff}.search-btn,.search-btn:hover{clear:both;background:#fff;border:none;outline:none;color:#777;width:25px;height:45px;line-height:4px;padding:0;text-align:center;font-size:20px;cursor:pointer;position:absolute;top:5px;left:17px;font-weight:500}.search-btn:active{color:#000}.search-wrapper{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%);width:100%}
+
+/* Button and Input */
+.buttonx,.post-body button,form input[type="button"]{background:$(keycolor);color:#fff!important;padding:12px 25px;text-transform:uppercase;border-radius:4px;border:none;outline:none;box-shadow:0 1px 2px 0 rgba(60,64,67,0.302),0 1px 3px 1px rgba(60,64,67,0.149);cursor:pointer;transition:all .3s ease-in-out!important;font-weight:500;font-family:'Poppins',Poppins}.buttonx:hover,.post-body button:hover{box-shadow:0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15)}.buttonx.subs{text-transform:none;letter-spacing:.5px;font-weight:500;padding:10px 18px}.post-body .buttonx,.post-body button{padding:8px 18px;margin:15px 5px 20px 0;display:inline-block}.input-field .buttonx{margin-top:15px}.input-field .buttonx i{margin-right:5px}.input-field{position:relative;margin:15px 0}.input-field input,.input-field textarea{font-family:'Poppins',Arial;font-size:15px;padding:15px 0 15px 15px;display:block;width:94%;border:1px solid #f4f5f9;border-radius:7px}.input-field input:focus,.input-field textarea:focus{outline:none}.input-field label{color:#999;font-size:14px;font-weight:400;position:absolute;pointer-events:none;left:15px;top:15px;transition:.2s ease all}.input-field input:focus~label,.input-field input:valid~label,.input-field textarea:focus~label,.input-field textarea:valid~label{top:0;font-size:14px;color:$(keycolor);background:#fff;padding:1px 7px;margin:10px 0 0 -5px}.input-field input:focus,.input-field textarea:focus{border:2px solid $(keycolor)}.indigox{background:#3f51b5}.orangex{background:#ff9800}.pinkx{background:#e91e63}.bluex{background:#2196F3}.purplex{background:#9c27b0}.redx{background:#ea4335}.greenx{background:#4CAF50}.highlight{position:absolute;height:50%;width:100px;top:25%;left:0;pointer-events:none;opacity:.5}.input-field input:focus~.highlight,.input-field textarea:focus~.highlight{animation:inputHighlighter .3s ease}.input-field input:focus~label,.input-field input:valid~label,.input-field textarea:focus~label,.input-field textarea:valid~label{top:-20px;font-size:13px;color:$(keycolor)}.input-field textarea{width:96.5%}.blanter-posttop{overflow:hidden}
+
+/* Cloud Label, Footer Widgets, Sosmed, BackToTop */
+.label-size-1,.label-size-2,.label-size-3,.label-size-4,.label-size-5{font-size:100%;filter:alpha(100);opacity:10}.cloud-label-widget-content{text-align:left}.label-size{display:block;float:left;font-family:'Poppins',sans-serif;margin:0 3px 3px 0;font-size:12px;font-weight:500;transition:all .3s ease-in-out}.label-size a,.label-size span{background:$(keycolor);display:inline-block;padding:8px 15px;color:#fff;border-radius:5px;font-size:.8rem;font-weight:600}.label-count{white-space:nowrap;padding-right:3px;margin-left:-3px}.label-size{line-height:1.2}#footer-material{background:$(foobg);color:$(foocolor);position:relative;overflow:hidden;margin:0;padding:20px 0 0}#footer-material .container{display:grid;grid-template-columns:1fr 1fr 1fr;grid-gap:25px;padding:40px 0}.popular-posts .item-snippet{display:none}.PopularPosts .widget-content ul li{list-style:none;padding:0}.popular-posts ul{list-style:none;padding:0}.PopularPosts img{border-radius:100%}.footer-ui h2,.footer-ui h3{font-size:18px;color:$(foocolor);font-weight:600;margin:5px 0 20px;padding:0}.footer-ui .widget-content{font-size:15px}#BackToTop{overflow:hidden;position:fixed;transform:scale(0);z-index:90;right:30px;bottom:31px;box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);width:55px;height:55px;color:#fff;text-align:center;background-color:$(keycolor);font-size:22px;line-height:52px;cursor:pointer;border-radius:100%;transition:all .2s ease-in-out}#BackToTop:hover{opacity:.8}#BackToTop.active{transform:scale(1)}.sidebar1 .widget{overflow:hidden;margin:0 0 20px}.post-thumbnail img,#featured-post img,.header img,.PopularPosts img,img.related-post-item-thumbnail,img.author_avatar{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none}
+
+/* Footer */
+#footer-bottom{text-align:center;font-size:13px;padding:70px 0 20px;overflow:hidden;color:$(foocolor);font-weight:600}#footer-bottom a{color:$(foocolor);font-weight:700}#subscribe-blanter .widget{background:linear-gradient(150deg,$(keycolor) 30%,$(defaultcolor2) 100%);padding:20px 0 10px;color:#fff}#subscribe-blanter .container{display:grid;grid-template-columns:48% 48%;grid-gap:20px;align-items:center}.follow-by-email-inner form{display:grid;grid-template-columns:70% 30%}.subscribe-blanter .input-field input{border:none;border-radius:30px;font-family:'Poppins',Arial;font-size:14px;padding:15px 20px;box-sizing:border-box}.subscribe-blanter .input-field input.follow-by-email-submit{cursor:pointer;font-weight:700;color:#fff;background:$(keycolor);box-shadow:0 2px 8px 0 rgb(128 128 128 / 35%)}.subscribe-blanter h3.title{margin:0 0 5px}#subscribe-blanter label{opacity:0}ul.show-mobile{display:none}.post-outer:nth-child(4) .label-info a,.post-outer:nth-child(6) .label-info a,.post-outer:nth-child(8) .label-info a{background:$(defaultcolor3)}.label-info a,#blog-pager span,a.js-load,.post-body td a[target='_blank'],#comments h3,#comments .avatar-image-container img,a.comment-reply{background:$(keycolor)}li.recent-ui:before{color:$(keycolor)}.post-author svg,.time-publish svg{fill:$(keycolor)}.post-outer:nth-child(3) .label-info a,.post-outer:nth-child(5) .label-info a,.post-outer:nth-child(9) .label-info a,.authorboxfull h4,.produk-kanan #next_order{background:$(defaultcolor2)}span.icon.user.blog-author:before{color:$(defaultcolor2)}.footer-ui ul{margin:0;list-style:none;font-weight:600}.footer-ui li a:before{content:'\f061';font-family:'Font Awesome 5 Free';margin:0 15px 0 0;font-weight:900}.select-data li.selected,.darkmode .select-data li.selected{background:$(keycolor);border-color:$(keycolor)}
+
+/* Dark Mode */
+ul#dark-myar{margin:0;list-style:none;position:absolute;right:4rem}a.mydark{background:$(keycolor);color:#fff;font-size:1rem;padding:9px 15px;display:inline-block;margin:3px;border-radius:100%;box-shadow:0 3px 6px rgba(0,0,0,0.3)}.darkmode body{background:#151414}.darkmode .header-blanter,.darkmode #featured-post h2.item-title,.darkmode .subscribe-blanter .input-field input#subscribe,.darkmode #footer-material{background:#1b1b1b}.darkmode #menu-blanter,.darkmode a.mydark,.darkmode .sayanglina,.darkmode a.show-search,.darkmode .related-thumb-outer,.darkmode .item-thumbnail,.darkmode .blanterimgthumb,.darkmode #search-form,.darkmode .search-btn,.darkmode .search-btn:hover,.darkmode .post-outer,.darkmode #blanter-popular,.darkmode #subscribe-blanter .widget{background:#292929}.darkmode #header h1,.darkmode #header a,.darkmode .social-media li a,.darkmode #featured-post h2.item-title a,.darkmode #menu-blanter li ul a,.darkmode #search-form,.darkmode .box-body-deg h2 a,.darkmode .author-info span,.darkmode .author-info a,.darkmode .dunia-blanter-info.tanggal,.darkmode .harga-produk strike,.darkmode .this-popular h3.title,.darkmode .this-popular h3.item-title a,.darkmode .subscribe-blanter .input-field input#subscribe,.darkmode #footer-material,.darkmode .footer-ui h2,.darkmode .footer-ui h3,.darkmode #footer-bottom,.darkmode #footer-bottom a,.darkmode td.tr-caption,.darkmode blockquote{color:#eee}.darkmode #menu-blanter li ul,.darkmode .post-body code,.darkmode pre,.darkmode blockquote{background:#333}.darkmode #menu-blanter li ul a:hover{background:#444}.darkmode #featured-post h2.item-title{box-shadow:none;border:2px solid #333}.darkmode #menu-blanter li ul:before{border-bottom:8px solid #333}.darkmode .label-info a,.darkmode pre{border-color:#292929}.darkmode #box{background-color:rgb(0 0 0 / 85%)}
+
+/* MEDIA RESPONSIVE */
+@media screen and (min-width:1024px) and (max-width:1100px){a.mydark{width:20px;height:16px;overflow:hidden}}
+@media screen and (max-width:900px){#searchblanterx .blanter-icons{left:3%}}
+@media screen and (max-width:768px){.sayanglina{top:10px;right:10px}#search-wrap{width:80%}.header p.title{max-width:250px}.sosmedimut,#menu-widget,#menu-blanter li a:hover:before{display:none}#header{padding:5px 20px 10px;text-align:left}a.show-search,ul#dark-myar{top:0}#header-material,#subscribe-blanter .container,ul.show-mobile{display:block;padding:0}#slidemenu{width:80%}#header h1,#header a{font-size:18px}#content-material{padding:0;max-width:90%}#outer-material{margin:0;width:100%}a.toggleMenu,#showmenu{padding:8px 10px;margin:7px}#menu-blanter{top:0;padding:0;height:auto;overflow:hidden}#menublanter ul#dark-myar{float:none}#menu-blanter ul{text-align:left}#menu-blanter ul li{width:95%}#menu-blanter li a{border:none;width:83%}#menu-blanter li ul{display:none;position:relative;box-shadow:none;width:92%;max-width:100%}#slidemenu nav{max-height:700px;height:100%;overflow-y:scroll}#footer-material .container{grid-template-columns:1fr;padding:15px 10px 0}.banner970 .title970{font-size:16px}.banner970 a{margin:20px}#subscribe-blanter .widget{padding:20px;text-align:center}#menu-blanter li ul:before{left:48%}#menu-blanter li ul a,#menu-blanter li ul li{width:auto}}
+@media screen and (max-width:680px){.subscribe-blanter p{font-size:13px}#footer-material{padding:20px 12px}#search-wrap{width:90%}#blanter-loader svg{left:45%}#searchblanterx .blanter-icons{left:6%}#searchblanterx input#search-text{width:82%}}
+@media screen and (max-width:480px){.banner970 a{margin:20px 20px 20px 0}.banner970 .title970{padding-right:0}}
+]]></b:skin>
+<b:if cond='data:view.isLayoutMode'>
+<b:template-skin>
+<![CDATA[
+body#layout{background-color:#111!important;padding:80px 50px 0!important;box-sizing:border-box}body#layout div.section{background-color:#222!important;border:1px solid #444!important;color:#fff}body#layout li{display:none}body#layout div.section{border-radius:10px;overflow:hidden}body#layout .section h4{margin-left:0!important}body#layout .draggable-widget .widget-wrap2{border-radius:20px}body#layout .widget-content{border:1px solid #ccc;border-radius:15px;color:#1cbfc3;font-weight:600}body#layout a.editlink{color:#1cbfc3!important;border:2px solid #1cbfc3;padding:0 15px;border-radius:20px}body#layout #main-material{overflow:hidden;float:left;width:70%;margin:0}body#layout #sidebar-blanter{overflow:hidden;float:right;width:30%}body#layout div.footer-ui{width:100%}body#layout div.add_widget a{color:#fff;font-weight:700;letter-spacing:1px;font-size:14px}body#layout div.add_widget{background:#1cbfc3;border-radius:10px}#layout:before{content:'Blanter Orbit Premium (Idblanter.com)';text-transform:uppercase;font-size:18px;color:#fff;background:#1cbfc3;margin:0 0 20px;display:inline-block;font-weight:700;font-family:monospace;padding:20px;border-radius:20px}body#layout #menu-blanter nav{display:block}body#layout #main-material{overflow:hidden}body#layout div#footer-material .container{display:flex}body#layout #content-material{padding:0}body#layout .locked-widget .widget-content,body#layout .draggable-widget .widget-wrap3{background-color:#333!important;box-shadow:none;border-color:#222!important;color:#fff}body#layout div.layout-widget-description{color:#999!important}body#layout .widget-content{border-color:#222}body#layout div.layout-title{color:#fff}body#layout .header-blanter,body#layout #header-material{display:flex;padding:10px 0}body#layout #header-material,body#layout div.sosmedimut,body#layout header{width:100%}body#layout #menu-blanter{width:50%;padding:0}body#layout div.all-settings.section{position:absolute;top:15px;background:#1e90ff;border:5px solid #70a1ff;padding:5px 15px 15px;width:350px;max-width:100%}body#layout div.all-settings h4{display:none}
+]]></b:template-skin>
+</b:if>
+<b:if cond='data:view.isMultipleItems'>
+<style>
+/* CSS Homepage and Index */
+.blog-posts{display:grid;grid-template-columns:1fr 1fr 1fr;grid-gap:25px}.post-outer,#blanter-popular{padding:0;background:#fff;box-shadow:0 2px 8px 0 rgb(60 64 67 / 11%);overflow:hidden;border-radius:10px;transition:all .2s ease-in-out}.box-body-deg{padding:15px 25px 25px;box-sizing:border-box}.post-thumbnail{width:100%;position:relative}.blanterimgthumb{overflow:hidden}.post-thumbnail img{width:100%;height:280px;object-fit:cover;transition:all .3s ease-in-out}.blanterimgthumb:hover img{transform:scale(1.1)}.PopularPosts li a{font-size:14px}.box-body-deg h2.post-title{font-size:17px;font-weight:700;text-align:left;color:#111;height:55px;overflow:hidden;margin:15px 0 20px}.box-body-deg h2 a{color:#444}.snippet-material,#sidebar-blanter,.label_text,span.fi,.hfeed div.clear:nth-of-type(1){display:none}img.authoravatar{border-radius:100%;float:left;margin:0 10px 0 0}.tanggalx{padding:0;margin:0;overflow:hidden}.tanggal abbr{color:#999;border-bottom:0;text-decoration:none;font-size:14px;font-weight:600}.label-info a:nth-child(n+2){display:none}.author-info{display:inline-block}.author-info span,.author-info a{font-size:14px;font-weight:600;color:#555}.label-info a{font-size:12px;padding:5px 10px;font-weight:700;border:3px solid #fff;color:#fff;border-radius:20px;position:absolute;bottom:-15px;left:15px}.blanterimgthumb a{display:flex}.harga-produk #harga{font-size:17px;float:left;margin:0 10px 0 0}.harga-produk br,.popular-post-info .harga-produk strike{display:none}.harga-produk strike{font-size:13px}.box-deg{position:relative}.status-produk{position:absolute;top:5px;left:5px;background:#1cbfc3;color:#fff;font-weight:600;font-size:14px;padding:5px 15px;border-radius:10px}
+/* Featured Post and Popular */
+#featured-post img{border-radius:10px;width:100%;height:400px;object-fit:cover}#featured-post{display:grid;grid-template-columns:1fr 1fr;grid-gap:25px;position:relative;margin:40px 0 0}#featured-post h2.item-title a{color:#444;font-size:1.2rem}#featured-post h2.item-title{background:#fff;box-shadow:0 2px 8px 0 rgb(128 128 128 / 35%);text-align:center;padding:30px;max-width:70%;margin:0 auto;position:relative;top:-60px;border-radius:10px}.this-popular{padding:25px}.this-popular h3.title{font-size:20px;padding:0 10px 15px;color:#333}.this-popular ul{margin:0;list-style:none}.this-popular li{overflow:hidden}.this-popular .item-thumbnail{float:left;border-radius:100%;height:90px;margin:0 15px 0 0}.PopularPosts .this-popular img{width:90px;height:90px;object-fit:cover}.this-popular h3.item-title{line-height:1.1}.this-popular h3.item-title a{color:#333}.this-featured .item-thumbnail a{display:flex}
+/* Blog Pager and Responsive */
+#blog-pager{text-align:center;margin:25px 0}#blog-pager span,a.js-load{display:inline-block;color:#fff;margin:15px 0;padding:8px 25px;border-radius:25px;font-weight:600;box-shadow:0 2px 8px 0 rgb(60 64 67 / 11%)}.js-load i{color:#fff;line-height:20px;padding:5px 5px 5px 0;margin-right:7px}@media screen and (max-width:980px){.blog-posts{grid-template-columns:1fr 1fr}#featured-post h2.item-title{padding:15px}#featured-post h2.item-title{line-height:1.2}#featured-post h2.item-title a{font-size:.9rem}#featured-post{display:block}#featured-post img{height:280px}.post-thumbnail img{height:auto}.label-info a{font-size:11px}.box-body-deg{padding-bottom:5px}.tanggalx{padding:0 0 20px;font-size:.9rem}}@media screen and (max-width:680px){.blog-posts{grid-template-columns:1fr}.post-thumbnail img{height:240px}}
+</style>
+</b:if>
+<b:if cond='data:blog.pageType != &quot;index&quot;'>
+<style> 
+/* CSS Post dan Halaman */
+.kolom-gambar{float:left;width:40%;margin:0 25px 0 0}.produk-kanan{float:right;width:55%}.kolom-gambar img{width:100%}.kolom-gambar a:nth-child(n+2) img{width:30%;height:120px;object-fit:cover}.deskripsi-produk{overflow:hidden;width:100%;padding:20px 0;border-top:1px solid #eee}.status-produk{margin:10px 0 20px;font-size:13px;background:#f4f5f9;display:inline-block;color:#444;padding:3px 15px;border-radius:5px}.produk-kanan #next_order{color:#fff;font-weight:600;padding:10px 25px;display:inline-block;border-radius:5px}.share-post li b{font-weight:700;margin:0 10px 0 0;line-height:3}.select-data{overflow:hidden;margin:20px 0}.select-data label{opacity:.8;display:flex;flex-wrap:wrap;align-content:center}.select-data ul{margin:0}.select-data li.selected{color:#fff}.select-data li{float:left;list-style:none;margin:.7em .8em .7em 0;padding:.3em 1.1em;line-height:1.5;cursor:pointer;background:#fff;border:1px solid #eee;border-radius:2px;font-weight:600;font-size:.85rem}#next_order i{margin:0 10px 0 0}.produk-kanan .select-data.input-field label{opacity:0}#content-material{padding:0}.post{background:#fff;border-radius:10px;box-shadow:0 2px 8px 0 rgb(60 64 67 / 11%);margin:0 auto 25px;padding:3% 5%;overflow:hidden}#material-breadcrumbs{margin:15px 0 0 15px}#main-material{width:65%;float:left;padding:0 10px 15px;border-radius:10px;color:#444;margin:10px;position:relative;overflow:hidden}.post-body{font-family:&#39;Poppins&#39;,Poppins,Arial;line-height:1.7;font-size:15px}img.author-avatar{border-radius:100%;float:left;border:3px solid #fff;margin:0 7px 0 0}.post-body .separator img,.post-body a img{margin:15px 0;border-radius:10px;box-shadow:0 2px 8px 0 rgb(60 64 67 / 11%)}.m div{padding:4px 0}pre{display:block;background:#f4f5f9;padding:12px;border-radius:10px;border-top:5px solid #f4f5f9}.post-body ol{margin-left:2.5em}.media{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}.media embed,.media iframe,.media object{position:absolute;top:0;left:0;width:100%;height:100%}h1.post-title{font-size:1.4rem;padding:0 0 15px;margin:0 0 30px;text-align:center;position:relative}h1.post-title:before{background-color:#f4f5f9;width:50%;height:.3rem;border-radius:50px}.post-author{font-size:14px;font-weight:600;color:#555;float:left}.post-author svg,.time-publish svg{width:25px;height:25px;float:left;margin:0 10px 0 0}.time-publish{float:left;margin:0 0 20px 20px}.time-publish abbr{font-size:14px;border:0;text-decoration:none}.PopularPosts .post-content{display:flex}.PopularPosts h3.post-title{width:80%;max-width:70%;line-height:1.5}.PopularPosts .post-title a{font-size:.9rem}.PopularPosts .item-thumbnail{border-radius:10px;height:70px;margin:0 0 0 15px}.PopularPosts img{border-radius:10px}.PopularPosts .post{margin:0 auto 10px}
+/* Sidebar and Recent */
+#sidebar-css{width:30%;float:right;padding:0;margin:10px 0;position:relative;overflow:hidden}#sidebar-css h2,#sidebar-css h3{font-weight:600;color:#333;font-size:17px;margin:0 0 18px;padding:0}#sidebar-css .PopularPosts,#sidebar-css .tab .widget{padding:0}.PopularPosts li a{font-size:13.5px;font-weight:500;color:#444}.PopularPosts .widget-content ul li{padding:4px 0}#sidebar1 .widget-content{padding:4px}#sidebar-css .PopularPosts .item-title{position:static;vertical-align:middle;display:table-cell;height:65px}.post-body code{background:#f4f5f9;font-size:13px;padding:3px 7px;border-radius:20px}ul#recent-ui{margin:0;padding:0;border-top:1px solid #f4f5f9;list-style:none;counter-reset:num}li.recent-ui{counter-increment:num;border-bottom:1px solid #f4f5f9;margin:0;padding:7px 0;overflow:hidden;align-items:center}li.recent-ui:before{content:counter(num)!important;float:left;font-weight:700;font-size:30px;width:40px}#recent-ui a{font-size:14px;color:#444;display:block;border-radius:30px;font-weight:600}
+/* Share */
+.share-post{text-align:center;overflow:hidden;border-top:1px solid #f4f5f9;margin:15px 0;padding:14px 0}.share-post ul{padding:0;margin:10px auto;display:flex;max-width:230px}.share-post li{margin:0;padding:0;list-style:none;position:relative}.share-post li a{padding:12px 5px;margin-right:4px;border-radius:50px;text-align:center;overflow:hidden;color:#fff;display:block;font-size:13px;transition:all .6s ease-out}.share-post b{font-weight:500}.share-post li a:hover{box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)}.share-post li .twitter{background-color:#1da1f2}.share-post li .facebook{background-color:#4867aa}.share-post li .xmail{background-color:#650582}.share-post li .pinterest{background-color:#c82828}.share-post li .wa{background:#0dc143}.share-post li .tumblr{background-color:rgba(48,78,108,.98)}.share-post li .facebook:hover,.share-post li .gplus:hover,.share-post li .pinterest:hover,.share-post li .tumblr:hover,.share-post li .twitter:hover{color:#fff}.share-post li:last-child{margin-right:0}.share-post li .fa:before{top:0;left:0;display:inline-block;padding:5.5px 12px;font-family:fontawesome;text-align:center;color:#fff;line-height:20px;font-size:17px;transition:all .6s ease-out}.share-post i{display:initial;font-size:18px;margin:0 8px;float:left}.post-body table td,.post-body table caption{padding:10px;background:#f9f9f9;text-align:left;vertical-align:top}.post-body table th{background:#e6e6e6;padding:10px;text-align:left;vertical-align:top}.post-body td,.post-body th{vertical-align:top;text-align:left;font-size:13px;padding:3px 5px}.post-body table tr:nth-child(even) &gt; td{background-color:#f1f1f1}.post-body th{background:#fff;font-weight:400;text-transform:uppercase;font-size:14px}.post-body td a{font-size:85%;float:right;display:inline-block}.post-body td a[target=&quot;_blank&quot;]{color:#fff;padding:2px 7px;border-radius:3px}.post-body table.tr-caption-container,.post-body table.tr-caption-container img,.post-body img{max-width:100%;width:auto;height:auto}.post-body td.tr-caption{font-size:80%;padding:8px!important}table{max-width:100%;width:100%;margin:1.5em auto}img.author_avatar{border-radius:100%}.authorboxfull{padding:20px;text-align:center;font-size:14px;line-height:1.8}.authorboxfull h4{display:inline-block;margin:0 0 30px;color:#fff;font-size:1rem;padding:5px 25px;border-radius:20px}
+/* Comments */
+#comments{background:#fff;box-shadow:0 2px 8px 0 rgb(60 64 67 / 11%);line-height:1.4em;margin:0;position:relative;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:2.5fr 1fr;grid-gap:20px}.menu-komentar{overflow:hidden;padding:0 20px;text-align:center;line-height:40px}#comments h3 i{line-height:1.7;padding:5px 15px 5px 0;float:left}#comments h3{font-size:1rem;text-transform:capitalize;font-weight:700;color:#fff;padding:0 25px;margin:20px 0 0;display:inline-block;border-radius:50px}#showkomentarmenu{font-size:20px;padding:10px 20px;border-radius:100%;color:#fff;float:right;margin:-5px -25px 0 0}#comments .avatar-image-container img{position:relative;width:42px;height:42px;max-width:42px;max-height:42px}#comments .avatar-image-container:before{content:&#39;&#39;;position:absolute;width:20px;height:20px;background:url(&quot;data:image/svg+xml,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='none'/></svg>&quot;) center center no-repeat;left:12px;top:10px}img[src=&#39;//resources.blogblog.com/img/blank.gif&#39;]{position:unset!important}#comments .avatar-image-container{position:relative;margin:25px;width:42px;height:42px;padding:0;border-radius:100%;overflow:hidden;float:left}.comment-content{font-size:14px;padding:15px 0 0;position:relative;color:#444}.comment-actions a{color:#000;text-decoration:none;font-weight:400;font-size:12px;padding:0;margin:0;display:table}img.comment_emo{margin:0;padding:0;vertical-align:middle;width:30px;height:30px}.comment-thread .user a,.comment-thread cite.user{font-weight:700!important;color:#222;padding:0;font-size:13.5px;text-decoration:none;font-style:normal}.comment-thread .datetime a{font-size:12px;color:#555;display:none}.comments .comments-content .comment-thread ol{margin:0}.comment-replies .comment-content{padding:17px 0 0}li.comment{list-style:none;margin:0 25px}iframe#comment-editor,#top-ce iframe,.comment-replybox-single iframe{min-height:160px;width:100%;margin:15px 0}#comments .pencet{display:inline-block;color:#333;margin:20px 0 0;padding:5px 25px;background-color:#fff;font-size:13px;line-height:2.2;border-radius:20px;font-weight:600;cursor:pointer}.google_emo .item{float:left;width:40px;text-align:center;height:40px;margin:10px 5px 0 0}.google_emo{background:#fff;padding:15px;display:block;max-width:450px;margin:15px auto 10px;border-radius:5px;overflow:hidden;padding:5px 15px 20px}.google_emo,.pesan-komentar{display:none;clear:both;height:auto}.google_emo span{display:block;font-weight:700;font-size:11px;letter-spacing:1px}#top-continue.hidden{display:block}.idbpesan{cursor:auto;position:relative;background:#f4f5f9;text-align:center;padding:20px;border-radius:10px;color:#333;margin:0 30px;margin-top:20px;font-size:15px;font-family:&#39;Poppins&#39;,Helvetica,Arial,sans-serif;line-height:1.5em;margin-bottom:20px;transition:all .3s ease-out}.comments .continue a{display:none}span.icon.user.blog-author:before{content:&#39;Author&#39;;font-size:11px;padding:3px 10px;background:#f4f5f9;font-weight:600;margin:0 5px;border-radius:10px}.comments .comment-replybox-single{width:90%}.item-control.blog-admin{position:absolute;top:70px;left:-67px}.item-control.blog-admin a{background:#e21616;color:#fff;display:block!important}iframe#comment-editor{width:94%;margin:5px 30px}.thread-chrome.thread-expanded,#comments #top-continue.hidden{display:block}.thread-chrome.thread-collapsed,#comments .hidden,span.thread-toggle,.authorboxwrap,.PopularPosts .item-byline{display:none}.comment-block{padding:10px 0 20px;margin:10px 0 0 100px;border-bottom:2px solid #f4f5f9}a.comment-reply{color:#fff;font-weight:600;font-size:13px;padding:2px 15px;border-radius:20px}.blanter-comments{border-right:1px solid #f4f5f9}
+/* Dark Mode */
+.darkmode .post-outer{background:#151414}.darkmode .post,.darkmode #comments,.darkmode .google_emo,.darkmode #comments .pencet,.darkmode .input-field textarea{background:#1b1b1b}.darkmode h1.post-title:before,.darkmode .breadcrumbs a,.darkmode .idbpesan,.darkmode .post-body table th{background:#292929}.darkmode .post-body table tr:nth-child(even) &gt; td,.darkmode .status-produk{background:#333}.darkmode .breadcrumbs a:hover,.darkmode .post-body table td,.darkmode .post-body table caption,.darkmode .select-data li{background:#444}.darkmode h1.post-title,.darkmode .post-author,.darkmode .time-publish,.darkmode #sidebar-css h2,.darkmode #sidebar-css h3,.darkmode .post-body,.darkmode #recent-ui a,.darkmode .related-post h4,.darkmode .related-post-item-tooltip,.darkmode .breadcrumbs a,.darkmode .comment-thread .user a,.darkmode .comment-thread cite.user,.darkmode .comment-content,.darkmode .idbpesan,.darkmode .authorboxfull,.darkmode #comments .pencet,.darkmode .status-produk,.darkmode .input-field textarea{color:#eee}.darkmode .post,.darkmode #comments{box-shadow:none;border:2px solid #333}.darkmode li.recent-ui,.darkmode ul#recent-ui,.darkmode .related-post h4,.darkmode .share-post,.darkmode .blanter-comments,.darkmode .comment-block,.darkmode .select-data li,.darkmode .deskripsi-produk,.darkmode .input-field textarea{border-color:#333}
+/* Media Responsive */
+@media screen and (min-width:1024px) and (max-width:1100px){#content-material{max-width:95%}}@media screen and (max-width:768px){.kolom-gambar,.produk-kanan{width:100%;float:none}.post-body a{margin-left:0!important}.darkmode #related-post,.darkmode .post{background:#111;border-color:#111;padding:10px 0 15px}#HTML6{width:auto;max-width:100%}.share-post i{margin:0;float:none}.share-post b{display:none}#header-background h3{margin:70px 0 20px}.blanter-post-container,#main-material,#sidebar-css{width:auto;float:none}.post-author.vcard{float:none;margin:0 0 20px;width:100%}#content-material{max-width:95%}#main-material{padding:10px 0 15px!important;background:transparent!important;border:none!important}}@media screen and (max-width:680px){a.addcomment,.time-publish,#comments .pencet.fbl{display:none}.comment-content{max-width:67%}.post-body{font-size:16px}}
+</style>
+</b:if>
+<b:if cond='data:view.isPage'><style>/* CSS Hanya Static Pages */#comments{grid-template-columns:1fr}</style></b:if>
+<b:if cond='data:view.isSingleItem'>
+<style>
+/* CSS Hanya Postingan */
+#main-material{width:100%;margin:10px auto;float:none}.blanter-post-container{width:65%;float:left}
+ul.related-post-style-3{display:grid;padding:0;grid-template-columns:1fr 1fr;grid-gap:15px;margin:0 0 20px;list-style:none}li.related-post-item{overflow:hidden}li.related-post-item a{transition:all .2s ease-in-out;padding:0;list-style:none;overflow:hidden}.related-thumb-outer{float:left;margin:0 15px 0 0;min-width:250px;height:180px;overflow:hidden;background:#f4f5f9}a.related-post-item-title{min-width:220px}img.related-post-item-thumbnail{border-radius:5px;height:100%;object-fit:cover;width:100%}.related-post-item-tooltip{color:#222;font-size:1.1rem;font-weight:600;padding:5px 10px 15px;display:block;line-height:1.6}.related-post h4{font-weight:700;line-height:1.8;margin:1.5em 0 .6em;border-top:1px solid #f4f5f9;padding:15px 0;font-size:1.4rem;color:#222}@media screen and (max-width:768px){.related-thumb-outer{min-width:150px;width:150px;height:auto}.related-post-item-tooltip{font-size:.9rem}.blanter-post-container,#main-material,#sidebar-css{width:auto;float:none}ul.related-post-style-3,#comments{display:block}.avatar-container{float:none;width:100%;text-align:center}.authorboxwrap h5{text-align:center}.share-post li{width:100%}.share-post ul{max-width:250px}}
+</style>
+</b:if>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'/>
+&lt;/head&gt;&lt;!--<head/>--&gt;<!-- DESIGN BY BLANTER -->
+<body itemscope='itemscope' itemtype='https://schema.org/WebPage'>
+<b:section id='license' name='License' showaddelement='false'>
+  <b:widget id='HTML99' locked='true' title='License' type='HTML' version='2' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='content'>MWF9NGt4LWZcMaVcNGZ5NqJdND0bBno9BmEgzJ==</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+<div class='license-code' style='display:none'><data:content/></div>
+</b:includable>
+  </b:widget>
+</b:section>
+<div class='header-blanter'>
+<div class='container' id='header-material'>
+<div class='sosmedimut' itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/Person'>
+<b:section class='social-media' id='social-media' maxwidgets='1' name='Social Media' showaddelement='no'>
+  <b:widget id='LinkList1' locked='true' title='Social Media' type='LinkList' version='2' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='sorting'>NONE</b:widget-setting>
+      <b:widget-setting name='text-1'>Instagram</b:widget-setting>
+      <b:widget-setting name='link-1'>https://www.instagram.com/komunitas.odop/</b:widget-setting>
+      <b:widget-setting name='text-0'>Facebook</b:widget-setting>
+      <b:widget-setting name='link-0'>https://www.facebook.com/OneDayOnePost</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <b:include name='content'/>
+</b:includable>
+    <b:includable id='content'><link expr:href='data:blog.homepageUrl' itemprop='url'/>
+<ul><b:loop values='data:links' var='link'><li><a expr:href='data:link.target' expr:title='data:link.name' itemprop='sameAs' rel='noopener' target='_blank'><data:link.name/></a></li></b:loop></ul>
+</b:includable>
+  </b:widget>
+</b:section>
+</div>
+<header itemscope='itemscope' itemtype='https://schema.org/WPHeader'>
+<b:section class='header' id='header' maxwidgets='1' name='Header Title' showaddelement='no'>
+  <b:widget id='Header1' locked='true' title='Ngodop (Header)' type='Header' version='1'>
+    <b:widget-settings>
+      <b:widget-setting name='displayUrl'/>
+      <b:widget-setting name='displayHeight'>0</b:widget-setting>
+      <b:widget-setting name='sectionWidth'>296</b:widget-setting>
+      <b:widget-setting name='useImage'>false</b:widget-setting>
+      <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+      <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+      <b:widget-setting name='displayWidth'>0</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:if cond='data:useImage'>
+    <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
+      <b:if cond='data:mobile'>
+          <div id='header-inner'>
+            <div class='titlematerial' style='background: transparent'>
+              <h1 class='title' itemprop='headline' style='background: transparent; border-width: 0px'><b:include name='title'/></h1>
+            </div>
+            <b:include name='description'/>
+          </div>
+        <b:else/>
+          <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                        + &quot;background-position: &quot;                        + data:backgroundPositionStyleStr + &quot;; &quot;                        + data:widthStyleStr                        + &quot;min-height: &quot; + data:height                        + &quot;_height: &quot; + data:height                        + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
+            <div class='titlematerial' style='background: transparent'>
+              <h1 class='title' itemprop='headline' style='background: transparent; border-width: 0px'><b:include name='title'/></h1>
+            </div>
+            <b:include name='description'/>
+          </div>
+        </b:if>
+    <b:else/>
+      <!--Show the image only-->
+      <div id='header-inner'>
+	    <b:if cond='data:blog.pageType != &quot;item&quot;'>
+		  <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+            <h1 style='text-indent:-9999px;margin:0 0 0 0;padding:0 0 0 0;height:0'><b:include name='title'/></h1>
+          </b:if>
+		</b:if>
+        <a expr:href='data:blog.homepageUrl' style='display: block'>
+          <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
+        </a>
+        <!--Show the description-->
+        <b:if cond='data:imagePlacement == &quot;description&quot;'>
+          <b:include name='description'/>
+		  <b:if cond='data:blog.pageType != &quot;item&quot;'>
+		    <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+              <h1 itemprop='headline' style='text-indent:-9999px;margin:0 0 0 0;padding:0 0 0 0;height:0'><b:include name='title'/></h1>
+		    </b:if>
+		  </b:if>
+        </b:if>
+      </div>
+    </b:if>
+  <b:else/>
+    <!--No header image -->
+    <div id='header-inner'>
+      <div class='titlematerial'>  	
+        <b:if cond='data:blog.pageType != &quot;item&quot;'>
+		  <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+             <p class='title' itemprop='headline'><b:include name='title'/></p>
+		   <b:else/>
+		     <h1 class='title' itemprop='headline'><b:include name='title'/></h1>
+		   </b:if>
+		<b:else/>
+          <p class='title' itemprop='headline'><b:include name='title'/></p>
+		</b:if>
+	    <b:include name='description'/>
+      </div>
+	</div>
+  </b:if>
+</b:includable>
+    <b:includable id='description'>
+<div class='descriptionmaterial'><p class='description' itemprop='description'><span><data:description/></span></p></div>
+</b:includable>
+    <b:includable id='title'>
+  <b:if cond='data:blog.url == data:blog.homepageUrl'>
+    <data:title/>
+  <b:else/>
+    <a expr:href='data:blog.homepageUrl' expr:title='data:title' itemprop='url'><span itemprop='name'><data:title/></span></a>
+  </b:if>
+</b:includable>
+  </b:widget>
+</b:section>
+</header>
+<div class='search-button'>
+<a class='show-search' href='javascript:void' title='Search'><svg class='ionicon' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><path d='M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/><path d='M338.29 338.29L448 448' fill='none' stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32'/></svg></a>
+<ul id='dark-myar' title='Dark Mode'/></div>
+</div>
+<div class='float_material' id='menu-blanter'>
+<div id='menublanter'>
+<ul class='show-mobile'><li><a class='show-nav' href='javascript:void' title='Menu'><i class='fas fa-bars'/></a></li></ul>
+<b:section class='menu-widget' id='menu-widget' maxwidgets='1' name='Header Menu' showaddelements='none'>
+  <b:widget id='LinkList100' locked='true' title='Menu Navigation' type='LinkList' version='1'>
+    <b:widget-settings>
+      <b:widget-setting name='text-8'>Redaksi</b:widget-setting>
+      <b:widget-setting name='link-7'>/p/kirim-artikel-ke-ngodop-ngodop.html</b:widget-setting>
+      <b:widget-setting name='link-8'>/p/redaksi-ngodop-ngodop-adalah-bentuk.html</b:widget-setting>
+      <b:widget-setting name='link-5'>/search/label/Dolan</b:widget-setting>
+      <b:widget-setting name='link-6'>/search/label/Edisi%20Khusus%20Munas%202019</b:widget-setting>
+      <b:widget-setting name='link-3'>/search/label/Kiat</b:widget-setting>
+      <b:widget-setting name='link-4'>/search/label/Pustaka</b:widget-setting>
+      <b:widget-setting name='text-1'>_Lakon</b:widget-setting>
+      <b:widget-setting name='text-0'>Tulisan</b:widget-setting>
+      <b:widget-setting name='text-3'>_Kiat</b:widget-setting>
+      <b:widget-setting name='text-2'>_Bait</b:widget-setting>
+      <b:widget-setting name='text-5'>_Dolan</b:widget-setting>
+      <b:widget-setting name='text-4'>_Pustaka</b:widget-setting>
+      <b:widget-setting name='text-7'>Kirim Tulisan</b:widget-setting>
+      <b:widget-setting name='text-6'>_Munas 2019</b:widget-setting>
+      <b:widget-setting name='sorting'>NONE</b:widget-setting>
+      <b:widget-setting name='link-1'>/search/label/Lakon</b:widget-setting>
+      <b:widget-setting name='link-2'>/search/label/Bait</b:widget-setting>
+      <b:widget-setting name='link-0'>javascript:void</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+<nav id='blanter-menu' itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/SiteNavigationElement'>
+<ul class='blanterui'>
+<b:loop values='data:links' var='link'>
+<li><a expr:href='data:link.target' expr:title='data:link.name' itemprop='url'><span itemprop='name'><data:link.name/></span></a></li>
+</b:loop>
+</ul>
+</nav>
+</b:includable>
+  </b:widget>
+</b:section>
+</div></div>
+</div>
+<div class='clear'/>
+<div id='outer-material'>
+<div itemscope='itemscope' itemtype='https://schema.org/Blog'>
+<div id='content-material'>
+
+	<b:section id='form-laporan'></b:section>
+
+<b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+<b:if cond='data:view.isHomepage'>
+<b:section class='featured-post' id='featured-post' maxwidgets='2' name='Featured Posts' showaddelement='yes'>
+  <b:widget id='FeaturedPost1' locked='false' title='Entri yang Diunggulkan' type='FeaturedPost' version='2' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='showSnippet'>false</b:widget-setting>
+      <b:widget-setting name='showPostTitle'>true</b:widget-setting>
+      <b:widget-setting name='postId'>8045934263614717632</b:widget-setting>
+      <b:widget-setting name='showFirstImage'>true</b:widget-setting>
+      <b:widget-setting name='useMostRecentPost'>false</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main' var='this'>
+<div class='this-featured'><b:loop values='data:posts' var='post'><div class='item-thumbnail'><a expr:href='data:post.url' expr:title='data:post.title'><img class='lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.featuredImage,450)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/></a></div><h2 class='item-title'><a expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a></h2></b:loop></div>
+</b:includable>
+  </b:widget>
+  <b:widget id='PopularPosts2' locked='false' title='Popular Posts' type='PopularPosts' version='2' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='numItemsToShow'>1</b:widget-setting>
+      <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+      <b:widget-setting name='showSnippets'>false</b:widget-setting>
+      <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main' var='this'>
+<div class='this-featured'><b:loop values='data:posts' var='post'><div class='item-thumbnail'><a expr:href='data:post.url' expr:title='data:post.title'><img class='lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.featuredImage,450)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/></a></div><h2 class='item-title'><a expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a></h2></b:loop></div>
+</b:includable>
+  </b:widget>
+</b:section><div class='clear'/>
+</b:if>
+<b:if cond='data:view.isSearch'><b:else/>
+<b:section class='largebanner' id='largebanner' maxwidgets='1' name='Banner Ads 970x90' showaddelement='yes'/>
+</b:if></b:if>
+<div class='clear'/>
+<b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+<b:if cond='data:view.isPost'>
+<div id='material-breadcrumbs'/>
+</b:if>
+<div id='main-material' itemscope='itemscope' itemtype='https://schema.org/Blog' role='main'>
+<b:section class='main' id='main' maxwidgets='1' name='Post Settings' showaddelement='no'>
+  <b:widget id='Blog1' locked='true' title='Postingan Blog' type='Blog' version='1'>
+    <b:widget-settings>
+      <b:widget-setting name='commentLabel'>apresiasi</b:widget-setting>
+      <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+      <b:widget-setting name='authorLabel'>By</b:widget-setting>
+      <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+      <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+      <b:widget-setting name='timestampLabel'>-</b:widget-setting>
+      <b:widget-setting name='reactionsLabel'/>
+      <b:widget-setting name='showAuthorProfile'>true</b:widget-setting>
+      <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+      <b:widget-setting name='showLocation'>false</b:widget-setting>
+      <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+      <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+      <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+      <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+      <b:widget-setting name='style.textcolor'>#ff486a</b:widget-setting>
+      <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+      <b:widget-setting name='style.urlcolor'>#1cbfc3</b:widget-setting>
+      <b:widget-setting name='showAuthor'>true</b:widget-setting>
+      <b:widget-setting name='style.linkcolor'>#0d9ad0</b:widget-setting>
+      <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+      <b:widget-setting name='showLabels'>true</b:widget-setting>
+      <b:widget-setting name='postLabelsLabel'>Labels:</b:widget-setting>
+      <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+      <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+      <b:widget-setting name='showReactions'>false</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main' var='top'>
+<div class='displaynone'>BLANTERORBITv102</div><b:if cond='data:mobileindex'><div class='blog-posts hfeed'><b:loop values='data:posts' var='post'><div expr:onclick='data:post.indexOnclick'><b:include data='post' name='mobile-index-post'/></div><b:if cond='data:post.trackLatency'><data:post.latencyJs/></b:if></b:loop><b:if cond='data:numPosts != 0'/></div><b:else/>
+      <div class='blog-posts hfeed'>
+        <b:include data='top' name='status-message'/><data:defaultAdStart/>
+        <b:loop values='data:posts' var='post'>
+          <div class='post-outer'>
+            <b:if cond='data:view.search.label in [&quot;Produk&quot;,&quot;Products&quot;]'>
+                <b:include data='post' name='post'/>
+            <b:elseif cond='data:view.isPage'/>
+                <b:include data='post' name='post'/>
+            <b:elseif cond='data:view.isPost'/>
+                <b:if cond='data:posts any (p =&gt; p.labels any (l =&gt; l.name in [&quot;Produk&quot;,&quot;Products&quot;]))'>
+                    <b:include name='defaultproduk'/>
+                <b:else/>
+                    <b:include data='post' name='post'/>
+                </b:if>
+            <b:else/>
+                <b:include data='post' name='post'/>
+            </b:if>
+            <b:include data='posts' name='breadcrumb'/>
+            <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+              <b:include data='post' name='comments'/>
+            </b:if>
+            <b:if cond='data:blog.pageType == &quot;item&quot;'>
+              <b:include data='post' name='comments'/>
+            </b:if>
+          </div>
+          <b:if cond='data:post.includeAd'><b:if cond='data:post.isFirstPost'><data:defaultAdEnd/><b:else/><data:adEnd/></b:if><b:if cond='data:mobile == &quot;false&quot;'><div class='inline-ad'><data:adCode/></div></b:if><data:adStart/></b:if><b:if cond='data:post.trackLatency'><data:post.latencyJs/></b:if></b:loop><b:if cond='data:numPosts != 0'/><data:adEnd/>
+        <div id='blanter-popular'/>
+      </div>
+      </b:if>
+      <b:if cond='data:blog.pageType == &quot;index&quot;'><b:include name='nextprev'/><b:else/><b:if cond='data:blog.pageType == &quot;archive&quot;'><b:include name='nextprev'/><b:else/><b:if cond='data:blog.homepageUrl != data:blog.url'><b:include name='nextprev'/></b:if></b:if></b:if><!-- DESIGN BY WWW.IDBLANTER.COM -->
+</b:includable>
+    <b:includable id='backlinkDeleteIcon' var='backlink'/>
+    <b:includable id='backlinks' var='post'>
+  <a name='links'/><h4><data:post.backlinksLabel/></h4>
+  <b:if cond='data:post.numBacklinks != 0'>
+    <dl class='comments-block' id='comments-block'>
+      <b:loop values='data:post.backlinks' var='backlink'>
+        <div class='collapsed-backlink backlink-control'>
+          <dt class='comment-title'>
+            <span class='backlink-toggle-zippy'>&#160;</span>
+            <a expr:href='data:backlink.url' rel='dofollow'><data:backlink.title/></a>
+            <b:include data='backlink' name='backlinkDeleteIcon'/>
+          </dt>
+          <dd class='comment-body collapseable'>
+            <data:backlink.snippet/>
+          </dd>
+          <dd class='comment-footer collapseable'>
+            <span class='comment-author'><data:post.authorLabel/> <data:backlink.author/></span>
+            <span class='comment-timestamp'><data:post.timestampLabel/> <data:backlink.timestamp/></span>
+          </dd>
+        </div>
+      </b:loop>
+    </dl>
+  </b:if>
+  <p class='comment-footer'>
+    <a class='comment-link' expr:href='data:post.createLinkUrl' expr:id='data:widget.instanceId + &quot;_backlinks-create-link&quot;' rel='external dofollow' target='_blank'><data:post.createLinkLabel/></a>
+  </p>
+</b:includable>
+    <b:includable id='breadcrumb' var='posts'>
+<b:if cond='data:blog.pageType == &quot;item&quot;'><br/>
+<b:loop values='data:posts' var='post'>
+<b:if cond='data:post.labels'>
+<div class='breadcrumbs' itemscope='itemscope' itemtype='https://schema.org/BreadcrumbList'>
+<span itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+<a expr:href='data:blog.homepageUrl' itemprop='item' title='Home'>
+<span itemprop='name'>Home</span></a>
+<meta content='1' itemprop='position'/>
+</span>
+<b:loop index='num' values='data:post.labels' var='label'>
+<span class='labelb' itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'><a expr:href='data:label.url + &quot;?&amp;max-results=9&quot;' expr:title='data:label.name' itemprop='item'><span itemprop='name'><data:label.name/></span>
+</a><meta expr:content='data:num+2' itemprop='position'/>
+</span>
+<b:if cond='data:label.isLast != &quot;true&quot;'/>
+</b:loop>
+<span class='judulb'><data:post.title/></span>
+</div>
+</b:if>
+</b:loop>
+</b:if>
+</b:includable>
+    <b:includable id='comment-form' var='post'>
+<div class='comment-form'>
+<a name='comment-form'/>
+<b:if cond='data:mobile'>
+<h4 id='comment-post-message'>
+<a expr:id='data:widget.instanceId + &quot;_comment-editor-toggle-link&quot;' href='javascript:void(0)'><data:postCommentMsg/></a></h4>
+<p><data:blogCommentMessage/></p>
+<data:blogTeamBlogMessage/>
+<a aria-label='comment form' expr:href='data:post.commentFormIframeSrc + &quot;&amp;skin=contempo&quot; + data:variantParam' id='comment-editor-src'/>
+<iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' title='comment-editor' width='100%'/>
+<b:else/>
+<h4 id='comment-post-message'><data:postCommentMsg/></h4>
+<div id='threaded-comment-form'>
+<p><data:blogCommentMessage/>   </p>
+<data:blogTeamBlogMessage/>
+<a aria-label='comment form' expr:href='data:post.commentFormIframeSrc + &quot;&amp;skin=contempo&quot; + data:variantParam' id='comment-editor-src'/>
+<iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' title='comment-editor' width='100%'/>
+</div>
+</b:if>
+<data:post.cmtfpIframe/>
+<script>BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);</script>
+<div class='comments-thanks'>Thank You, For Your Comments (Design by www.idblanter.com)</div>
+<div class='clear'/> 
+</div>
+</b:includable>
+    <b:includable id='commentDeleteIcon' var='comment'/>
+    <b:includable id='comment_count_picker' var='post'>
+  <b:if cond='data:post.forceIframeComments'>
+    <span class='cmt_count_iframe_holder' expr:data-count='data:post.numComments' expr:data-onclick='data:post.addCommentOnclick' expr:data-url='data:post.canonicalUrl'>
+    </span>
+  <b:else/>
+    <b:if cond='data:post.commentSource == 1'>
+      <span class='cmt_count_iframe_holder' expr:data-count='data:post.numComments' expr:data-onclick='data:post.addCommentOnclick' expr:data-url='data:post.canonicalUrl'>
+      </span>
+    <b:else/>
+      <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+        <data:post.commentLabelFull/>:
+      </a>
+    </b:if>
+  </b:if>
+</b:includable>
+    <b:includable id='comment_picker' var='post'>
+  <b:if cond='data:post.commentSource == 1'>
+    <b:include data='post' name='iframe_comments'/>
+  <b:else/>
+    <b:if cond='data:post.showThreadedComments'>
+      <b:include data='post' name='threaded_comments'/>
+    <b:else/>
+      <b:include data='post' name='comments'/>
+    </b:if>
+  </b:if>
+</b:includable>
+    <b:includable id='comments' var='post'>
+<b:include data='post' name='threaded_comments'/>
+</b:includable>
+    <b:includable id='defaultproduk'>
+<div class='post post-body' expr:id='&quot;post-body-&quot; + data:post.id'>
+<div class='produk-blanter'>
+<b:if cond='data:post.title'>
+<h1 class='post-title entry-title'><data:post.title/></h1>
+</b:if>
+<data:post.body/>
+<div class='share-post'>
+  <ul>
+    <li><b>Share:</b></li>
+    <li><a class='e-waves waves-light facebook' expr:href='&quot;https://www.facebook.com/sharer.php?u=&quot; + data:blog.url' rel='nofollow' target='_blank' title='Share To Facebook'><i class='fab fa-facebook'/></a></li>
+    <li><a class='e-waves waves-light twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url' rel='nofollow' target='_blank' title='Share To Twitter'><i class='fab fa-twitter'/></a></li>
+	<li><a class='e-waves waves-light wa' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; &quot; + data:post.url' rel='nofollow' target='_blank' title='Share To Whatsapp'><i aria-hidden='true' class='fab fa-whatsapp'/></a></li>
+  </ul>
+</div>
+<div class='move-breadcrumbs'/>
+</div>
+</div>
+    </b:includable>
+    <b:includable id='feedLinks'>
+  <b:if cond='data:blog.pageType != &quot;item&quot;'>
+    <b:if cond='data:feedLinks'>
+      <div class='blog-feeds'>
+        <b:include data='feedLinks' name='feedLinksBody'/>
+      </div>
+    </b:if>
+    <b:else/>
+    <div class='post-feeds'>
+      <b:loop values='data:posts' var='post'>
+        <b:if cond='data:post.allowComments'>
+          <b:if cond='data:post.feedLinks'>
+            <b:include data='post.feedLinks' name='feedLinksBody'/>
+          </b:if>
+        </b:if>
+      </b:loop>
+    </div>
+  </b:if>
+</b:includable>
+    <b:includable id='feedLinksBody' var='links'/>
+    <b:includable id='iframe_comments' var='post'>
+  <b:if cond='data:post.allowIframeComments'>
+    <script expr:src='data:post.iframeCommentSrc' type='text/javascript'/>
+    <div class='cmt_iframe_holder' expr:data-href='data:post.url.canonical' expr:data-viewtype='data:post.viewType'/>
+
+    <b:if cond='data:post.embedCommentForm == &quot;false&quot;'>
+      <a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><data:postCommentMsg/></a>
+    </b:if>
+  </b:if>
+</b:includable>
+    <b:includable id='mobile-index-post' var='post'>
+  <b:if cond='data:post.dateHeader'>
+    <div class='mobile-index-date'>
+      <div class='date-header'>
+        <span><data:post.dateHeader/></span>
+      </div>
+    </div>
+  </b:if>
+
+  <div class='mobile-post-outer'>
+    <div class='mobile-index-title-outer'>
+      <h3 class='mobile-index-title entry-title'>
+        <a href='javascript:void(0)'><data:post.title/></a>
+      </h3>
+    </div>
+
+    <div>
+      <div class='mobile-index-arrow'>
+        <a href='javascript:void(0)'>&amp;rsaquo;</a>
+      </div>
+
+      <div class='mobile-post-contents'>
+        <b:if cond='data:post.thumbnailUrl'>
+          <div class='mobile-index-thumbnail'>
+            <div class='Image'>
+              <img expr:src='data:post.thumbnailUrl'/>
+            </div>
+          </div>
+        </b:if>
+
+        <div class='post-body'>
+          <b:if cond='data:post.snippet'><data:post.snippet/></b:if>
+        </div>
+      </div>
+      <div class='clear'/>
+    </div>
+
+    <div class='mobile-index-comment'>
+      <b:if cond='data:blog.pageType != &quot;item&quot;'>
+        <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+          <b:if cond='data:post.allowComments'>
+            <b:if cond='data:post.numComments != 0'>
+              <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 1'>1 <data:top.commentLabel/><b:else/><data:post.numComments/> <data:top.commentLabelPlural/></b:if></a>
+            </b:if>
+          </b:if>
+        </b:if>
+      </b:if>
+    </div>
+  </div>
+</b:includable>
+    <b:includable id='mobile-main' var='top'>
+    <div class='blog-posts hfeed'>
+      <b:include data='top' name='status-message'/>
+      <b:if cond='data:blog.pageType == &quot;index&quot;'>
+        <b:loop values='data:posts' var='post'>
+          <b:include data='post' name='mobile-index-post'/>
+        </b:loop>
+      <b:else/>
+        <b:loop values='data:posts' var='post'>
+          <b:include data='post' name='mobile-post'/>
+        </b:loop>
+      </b:if>
+    </div>
+   <b:include name='mobile-nextprev'/>
+</b:includable>
+    <b:includable id='mobile-nextprev'>
+  <div class='clear'/>
+</b:includable>
+    <b:includable id='mobile-post' var='post'>
+  <div class='date-outer'>
+    <b:if cond='data:post.dateHeader'>
+      <h2 class='date-header'><span><data:post.dateHeader/></span></h2>
+    </b:if>
+    <div class='date-posts'>
+      <div class='post-outer'>
+
+        <div class='post hentry uncustomized-post-template'>
+                    <b:if cond='data:post.title'>
+            <h3 class='post-title entry-title'>
+              <b:if cond='data:post.link'>
+                <a expr:href='data:post.link'><data:post.title/></a>
+              <b:else/>
+                <b:if cond='data:post.url'>
+                  <b:if cond='data:blog.url != data:post.url'>
+                    <a expr:href='data:post.url'><data:post.title/></a>
+                  <b:else/>
+                    <data:post.title/>
+                  </b:if>
+                <b:else/>
+                  <data:post.title/>
+                </b:if>
+              </b:if>
+            </h3>
+          </b:if>
+          <div class='post-header'>
+            <div class='post-header-line-1'/>
+          </div>
+          <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id'>
+<data:post.body/>
+            <div class='clear'/>
+          </div>
+<div class='post-info'>
+<div class='post-info-icon admin'>
+<a class='g-profile' expr:href='data:post.authorProfileUrl' rel='noopener' target='_blank' title='Author Profile'>
+<span class='post-author vcard'><span class='fn' itemprop='name'><data:post.author/></span></span></a></div>
+<b:if cond='data:blog.pageType != &quot;item&quot;'>
+<b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+<div class='post-info-icon'>
+<a class='updated' expr:href='data:post.url' rel='bookmark' title='permanent link'><abbr class='updated' expr:title='data:post.timestampISO8601' itemprop='datePublished dateModified'> <data:post.timestamp/></abbr></a></div> 
+</b:if>
+</b:if>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+<div class='post-info-icon tanggal'>
+<b:if cond='data:post.dateHeader'>
+<a class='tanggal'><span><data:post.dateHeader/></span></a>
+</b:if>     
+</div> 
+</b:if>
+<div class='post-info-icon komentar'>
+<b:if cond='data:post.allowComments'>
+<a class='komentar' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 1'>1 <data:top.commentLabel/><b:else/><data:post.numComments/> <data:top.commentLabelPlural/></b:if></a></b:if>
+</div>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+<span class='post-info-icon label'>
+<b:if cond='data:post.labels'>
+<data:postLabelsLabel/><b:loop values='data:post.labels' var='label'>
+<a expr:href='data:label.url' rel='tag'><data:label.name/></a><b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
+</b:loop></b:if></span> 
+</b:if>
+<div class='clear'/>
+</div>
+</div>
+
+        <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+          <b:include data='post' name='comments'/>
+        </b:if>
+        <b:if cond='data:blog.pageType == &quot;item&quot;'>
+         <b:include data='post' name='comments'/>
+        </b:if>
+      </div>
+    </div>
+  </div>
+</b:includable>
+    <b:includable id='nextprev'>
+<b:if cond='data:blog.pageType != &quot;item&quot;'>
+<b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+<div class='blog-pager' id='blog-pager'><b:if cond='data:newerPageUrl'><span id='blog-pager-newer-link'><a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a></span></b:if><b:if cond='data:olderPageUrl'><span id='blog-pager-older-link'><a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a></span></b:if><div class='mobile-link-button' id='blog-pager-home-link'><a class='home-link' expr:href='data:blog.homepageUrl' expr:title='data:homeMsg'><data:homeMsg/></a></div><div class='mobile-desktop-link'><a class='home-link' expr:href='data:blog.homepageUrl' expr:title='data:homeMsg'><data:homeMsg/></a></div></div></b:if></b:if><div class='clear'/>
+</b:includable>
+    <b:includable id='post' var='post'>
+<article class='post hentry' expr:id='data:post.id' itemprop='blogPost' itemscope='itemscope' itemtype='https://schema.org/BlogPosting'>
+<div itemType='https://schema.org/WebPage' itemprop='mainEntityOfPage' itemscope='itemscope'/><div itemprop='publisher' itemscope='itemscope' itemtype='https://schema.org/Organization'>
+<div itemprop='logo' itemscope='itemscope' itemtype='https://schema.org/ImageObject'>
+<meta content='https://4.bp.blogspot.com/-rmTjQDUOEHY/Wge2DnMAyPI/AAAAAAAAHxM/xObVDsgGbBwWmnCv4pL69vOIHldkqtKNACK4BGAYYCw/s1600/DuniaBlanterLogoNew.png' itemprop='url'/>
+<meta content='600' itemprop='width'/>
+<meta content='600' itemprop='height'/>
+</div>
+<meta expr:content='data:blog.title' itemprop='name'/>
+</div>
+<b:if cond='data:post.firstImageUrl'>
+<div itemprop='image' itemscope='itemscope' itemtype='https://schema.org/ImageObject'><meta expr:content='data:post.firstImageUrl' itemprop='url'/><meta content='700' itemprop='width'/><meta content='700' itemprop='height'/></div>
+<b:else/>
+<div itemprop='image' itemscope='itemscope' itemtype='https://schema.org/ImageObject'><meta content='https://2.bp.blogspot.com/-LGfDcNv6jF0/Wm1S_ET-yyI/AAAAAAAAJFo/bOijmeJNpqsSoNTmPgwkQlKp0gjun9EKACLcBGAs/s340/blanterimage.png' itemprop='url'/><meta content='700' itemprop='width'/><meta content='700' itemprop='height'/></div>
+</b:if>
+<b:if cond='data:blog.pageType != &quot;item&quot;'><b:if cond='data:blog.pageType != &quot;static_page&quot;'/></b:if>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+<b:if cond='data:post.title'>
+<h1 class='post-title entry-title' itemprop='name headline'>
+<b:if cond='data:post.link'>
+<a expr:href='data:post.link' expr:title='data:post.title' itemprop='url'><data:post.title/></a>
+<b:else/>
+<b:if cond='data:post.url'>
+<b:if cond='data:blog.url != data:post.url'>
+<a expr:href='data:post.url' expr:title='data:post.title' itemprop='url'><data:post.title/></a>
+<b:else/>
+<data:post.title/>
+</b:if>
+<b:else/>
+<data:post.title/>
+</b:if>
+</b:if>
+</h1>
+</b:if>
+<div class='clear'/>
+</b:if>
+<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+<b:if cond='data:post.title'>
+<h1 class='post-title entry-title' itemprop='name headline'>
+<b:if cond='data:post.link'>
+<a expr:href='data:post.link' expr:title='data:post.title' itemprop='url'><data:post.title/></a>
+<b:else/>
+<b:if cond='data:post.url'>
+<b:if cond='data:blog.url != data:post.url'>
+<a expr:href='data:post.url' expr:title='data:post.title' itemprop='url'><data:post.title/></a>
+<b:else/>
+<data:post.title/>
+</b:if>
+<b:else/>
+<data:post.title/>
+</b:if>
+</b:if>
+</h1>
+</b:if></b:if>
+<b:if cond='data:blog.pageType != &quot;item&quot;'>
+<b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+<div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'>
+<div class='box-deg'>
+<b:if cond='data:post.url'>
+<div class='post-thumbnail'>
+<b:if cond='data:post.thumbnailUrl'>
+<div class='blanterimgthumb'>
+<a expr:href='data:post.url'><img class='lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.thumbnailUrl,340)' expr:title='data:post.title' height='74' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' width='74'/></a></div>
+<b:else/>
+<b:if cond='data:post.firstImageUrl'>
+<div class='blanterimgthumb e-waves waves-light'><a expr:href='data:post.url'><img class='lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.firstImageUrl,340)' expr:title='data:post.title' height='74' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' width='74'/></a></div>
+<b:else/>
+<div class='blanterimgthumb e-waves waves-light'><a expr:href='data:post.url'><img class='lazy' data-src='https://2.bp.blogspot.com/-dEUogHGF5yU/Wu0UW3B8JMI/AAAAAAAAJ-0/b5QVUcmL1nUvP0BGa0PX4rA8UyFhlvVIQCLcBGAs/s340/lina.jpg' expr:alt='data:post.title' expr:title='data:post.title' height='74' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' width='74'/></a></div>
+</b:if>
+</b:if>
+<b:if cond='data:post.labels'>
+<div class='label-info'><b:loop values='data:post.labels' var='label'><a expr:href='data:label.url + &quot;?max-results=6&quot;' rel='tag'><data:label.name/></a><b:if cond='data:label.isLast != &quot;true&quot;'/></b:loop></div></b:if>
+</div>
+</b:if>
+<div class='box-body-deg'>
+<h2 class='post-title entry-title' itemprop='name headline'><b:if cond='data:post.link'>
+<a expr:href='data:post.link' expr:title='data:post.title' itemprop='url'><data:post.title/></a>
+<b:else/>
+<b:if cond='data:post.url'>
+<a expr:href='data:post.url' expr:title='data:post.title' itemprop='url'><data:post.title/></a>
+<b:else/>
+<data:post.title/>
+</b:if>
+</b:if>
+</h2>
+<b:loop index='x' values='data:post.labels' var='label'>
+<b:if cond='data:label.name == &quot;Produk&quot; or data:label.name == &quot;Products&quot;'>
+<div class='produk-snippet produk-wrap kolom-info' expr:id='&quot;produk-snippet&quot; + data:post.id'/>
+<div class='js-produk-snippet' expr:id='&quot;js-produk-snippet-&quot; + data:post.id'>
+&lt;!--<data:post.body/>--&gt;
+</div>
+<b:else/>
+<b:if cond='data:label.name != &quot;Produk&quot; or data:label.name != &quot;Products&quot;'>
+<b:if cond='data:x==0'>
+<div class='snippet-material' itemprop='description'><b:eval expr='snippet(data:post.snippet, {length: 90})'/></div>
+<div class='tanggalx'>
+<b:if cond='data:top.showAuthor'>
+<b:if cond='data:post.authorProfileUrl'>
+<div class='fn madamx author-info' itemprop='author' itemscope='itemscope' itemtype='https://schema.org/Person'>
+<a expr:href='data:post.authorProfileUrl' target='blank' title='Author Profile'><meta expr:content='data:post.authorProfileUrl' itemprop='url'/><a class='g-profile' expr:href='data:post.authorProfileUrl' rel='noopener' target='_blank' title='Author Profile'><span itemprop='name'><data:post.author/></span></a></a></div>
+<b:else/>
+<span class='author-info'><span class='fn' itemprop='author' itemscope='itemscope' itemtype='https://schema.org/Person'><span itemprop='name'><data:post.author/></span></span></span></b:if>
+</b:if>
+<span class='dunia-blanter-info tanggal'> &#8226; <span itemprop='dateModified'><abbr class='published updated timeago' expr:title='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></abbr></span></span>
+</div>
+</b:if>
+</b:if>
+</b:if>
+</b:loop>
+</div>
+</div><div class='clear'/></div>
+</b:if>
+</b:if>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+<b:if cond='data:post.dateHeader'><div class='datex'/></b:if>
+<div class='blanter-post-container'>
+<div class='blanter-posttop'>
+<div class='post-author vcard'>
+<span class='fn' itemprop='author' itemscope='itemscope' itemtype='https://schema.org/Person'>
+<svg class='ionicon' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><path d='M258.9 48C141.92 46.42 46.42 141.92 48 258.9c1.56 112.19 92.91 203.54 205.1 205.1 117 1.6 212.48-93.9 210.88-210.88C462.44 140.91 371.09 49.56 258.9 48zm126.42 327.25a4 4 0 01-6.14-.32 124.27 124.27 0 00-32.35-29.59C321.37 329 289.11 320 256 320s-65.37 9-90.83 25.34a124.24 124.24 0 00-32.35 29.58 4 4 0 01-6.14.32A175.32 175.32 0 0180 259c-1.63-97.31 78.22-178.76 175.57-179S432 158.81 432 256a175.32 175.32 0 01-46.68 119.25z'/><path d='M256 144c-19.72 0-37.55 7.39-50.22 20.82s-19 32-17.57 51.93C191.11 256 221.52 288 256 288s64.83-32 67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39 151.44 275.59 144 256 144z'/></svg>
+<b:if cond='data:top.showAuthor'>
+<b:if cond='data:post.authorProfileUrl'>
+Posted by <a expr:href='data:post.authorProfileUrl' itemprop='url' rel='author' target='_blank' title='Author'><span itemprop='name'><data:post.author/></span></a>
+<b:else/>
+Posted by <a expr:href='data:post.homepageUrl' itemprop='url' rel='author' target='_blank' title='Author'><span itemprop='name'><data:post.author/></span></a>
+</b:if>
+</b:if>
+</span>
+</div>
+<div class='time-publish'>
+<svg class='ionicon' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><rect fill='none' height='384' rx='48' stroke='currentColor' stroke-linejoin='round' stroke-width='32' width='416' x='48' y='80'/><circle cx='296' cy='232' r='24'/><circle cx='376' cy='232' r='24'/><circle cx='296' cy='312' r='24'/><circle cx='376' cy='312' r='24'/><circle cx='136' cy='312' r='24'/><circle cx='216' cy='312' r='24'/><circle cx='136' cy='392' r='24'/><circle cx='216' cy='392' r='24'/><circle cx='296' cy='392' r='24'/><path d='M128 48v32M384 48v32' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path d='M464 160H48' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/></svg><abbr class='published updated timeago' expr:title='data:post.timestampISO8601' itemprop='datePublished dateModified'><data:post.dateHeader/></abbr>
+</div>
+</div>
+<div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id'>
+<!-- IKLAN ATAS POSTINGAN -->
+<data:post.body/>
+<!-- IKLAN BAWAH POSTINGAN -->
+</div></div>
+<div id='post-sidebar'/>
+</b:if>
+<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+<b:if cond='data:post.dateHeader'><div class='datex'><div><data:post.dateHeader/></div></div></b:if>
+<div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id'>
+<data:post.body/>
+</div>
+</b:if><div class='clear'/>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+<!--RELATED POST AND PAGE NAV DESIGN BY WWW.IDBLANTER.COM-->
+<div class='related-post' id='related-post'/>
+<script type='text/javascript'>
+var postLabels = [<b:if cond='data:post.labels'><b:loop values='data:post.labels' var='label'>&quot;<data:label.name/>&quot;<b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if></b:loop></b:if>];
+var relatedConfig={postUrl:&quot;<data:post.url/>&quot;,homePageUrl:&quot;<data:blog.homepageUrl/>&quot;,relatedTitleText: &quot;Related Posts&quot;,callBack:function(){}};
+//<![CDATA[
+var RelatedSetting,msRelatedPosts,msRandomIndex;!function(){"use strict";var A={postUrl:"https://www.idblanter.com",homePageUrl:"https://www.idblanter.com",relatedTitleOuterOpen:'<h4 class="related-title">',relatedTitleOuterClose:"</h4>",relatedTitleText:"Artikel Terkait",thumbWidth:250,thumbHeight:180,imgBlank:"data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",relatedOuter:"related-post"};for(var e in relatedConfig)"undefined"!=relatedConfig[e]&&(A[e]=relatedConfig[e]);var P={relatedPosts:!0,jumlahRelatedPosts:4,relatedPostsThumb:!0,judulRelatedPosts:A.relatedTitleText,relatedPostsNoThumbImg:"https://2.bp.blogspot.com/-dEUogHGF5yU/Wu0UW3B8JMI/AAAAAAAAJ-0/b5QVUcmL1nUvP0BGa0PX4rA8UyFhlvVIQCLcBGAs/s340/lina.jpg"};for(var t in RelatedSetting)"undefined"!=RelatedSetting[t]&&(P[t]=RelatedSetting[t]);function s(e){var t=document.createElement("script");t.src=e,document.getElementsByTagName("head")[0].appendChild(t)}function T(e){var t,a,l=e.length;if(0===l)return!1;for(;--l;)t=Math.floor(Math.random()*(l+1)),a=e[l],e[l]=e[t],e[t]=a;return e}var d="object"==typeof postLabels&&0<postLabels.length?"/-/"+T(postLabels)[0]:"";msRelatedPosts=function(e){var t,a,l,r,s,d,i,n,o,m=A.relatedTitleOuterOpen+P.judulRelatedPosts+A.relatedTitleOuterClose,u=document.getElementById(A.relatedOuter),h=T(e.feed.entry);1==P.relatedPostsThumb?m+='<ul class="related-post-style-3">':m+='<ul class="related-post-style-3">';for(var c=0;c<h.length;c++)for(var g=0,f=h[c].link.length;g<f;g++)h[c].link[g].href==A.postUrl&&h.splice(c,1);if(0<h.length){for(var p=0;p<P.jumlahRelatedPosts&&p<h.length;p++){a=h[p].title.$t,void 0!==h[p].content&&(s=(r=h[p].content.$t).indexOf("<img",0));var b=function(e){l=e.replace(/.*?:\/\//g,"//").replace(/(\/s[0-9]+(\-c)?|\/w[0-9]+(\-h)[0-9]+()?|\/d)+(\/)/,"/w"+A.thumbWidth+"-h"+A.thumbHeight+"-c/")};"media$thumbnail"in h[p]?b(h[p].media$thumbnail.url):void 0!==s&&-1!==s?(d=r.indexOf("/>",s),n=(i=r.slice(s,d)).indexOf("src=",0)+5,o=i.indexOf('"',n),b(i.slice(n,o))):l=P.relatedPostsNoThumbImg;for(var v=0,f=h[p].link.length;v<f;v++)t="alternate"==h[p].link[v].rel?h[p].link[v].href:"#";m+='<li class="related-post-item"><a class="related-post-item-title" title="'+a+'" href="'+t+'">'+(1==P.relatedPostsThumb?'<div class="related-thumb-outer"><img alt="'+a+'" class="lazy related-post-item-thumbnail" src="'+A.imgBlank+'" data-src="'+l+'" width="'+A.thumbWidth+'" height="'+A.thumbHeight+'"></div>':"")+'<div class="related-post-item-tooltip">'+a+"</div></a></li>"}1==P.relatedPosts&&(u.innerHTML=m+="</ul>")}},msRandomIndex=function(e){var t,a=P.jumlahRelatedPosts+1,l=e.feed.openSearch$totalResults.$t-a,r=(t=0<l?l:1,Math.floor(Math.random()*(t-1+1))+1);s(A.homePageUrl.replace(/\/$/,"")+"/feeds/posts/default"+d+"?alt=json-in-script&orderby=updated&start-index="+r+"&max-results="+a+"&callback=msRelatedPosts")},s(A.homePageUrl.replace(/\/$/,"")+"/feeds/posts/summary"+d+"?alt=json-in-script&orderby=updated&max-results=0&callback=msRandomIndex")}();
+//]]>
+</script><!-- WWW. I D B L A N T E R .COM --><div class='clear'/>
+<div class='share-post'><ul><li><a class='e-waves waves-light facebook' expr:href='&quot;https://www.facebook.com/sharer.php?u=&quot; + data:blog.url' rel='nofollow' target='_blank' title='Share To Facebook'><i class='fab fa-facebook'/></a></li><li><a class='e-waves waves-light twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url' rel='nofollow' target='_blank' title='Share To Twitter'><i class='fab fa-twitter'/></a></li><li><a class='e-waves waves-light xmail' expr:href='&quot;https://www.blogger.com/share-post.g?blogID=&quot; + data:blog.blogId + &quot;&amp;postID=&quot; + data:post.id + &quot;&amp;target=email&quot;' rel='nofollow' target='_blank' title='Share To Email'><i class='far fa-envelope'/></a></li><li><a class='e-waves waves-light pinterest' expr:href='&quot;https://pinterest.com/pin/create/button/?url=&quot; + data:post.url + &quot;&amp;amp;media=&quot; + data:post.thumbnailUrl + &quot;&amp;amp;description=&quot; + data:post.title' rel='nofollow' target='_blank' title='Share To Pinterest'><i class='fab fa-pinterest'/></a></li><li><a class='e-waves waves-light wa' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; &quot; + data:post.url' rel='nofollow' target='_blank' title='Share To Whatsapp'><i aria-hidden='true' class='fab fa-whatsapp'/></a></li></ul>
+</div>
+<div class='move-breadcrumbs'/>
+</b:if>
+</article>
+</b:includable>
+    <b:includable id='postQuickEdit' var='post'/>
+    <b:includable id='shareButtons' var='post'/>
+    <b:includable id='status-message'>
+<b:if cond='data:navMessage'><div class='clear'/></b:if>
+</b:includable>
+    <b:includable id='threaded-comment-form' var='post'>
+<div class='comment-form' id='comment-form'>
+<div id='pesan-komentar'><div class='idbpesan'><div class='pesanbro'><span class='bcm'><data:blogCommentMessage/></span><div class='google_emo'/></div>
+  <div class='menupesan'>
+    <a class='tutup pencet' style='display:none'>https://www.idblanter.com/?assets/script/emoticon.xml</a>
+    <a class='show_emo pencet e-waves waves-light'>Emoticon</a>
+  </div></div></div>
+<data:blogTeamBlogMessage/>
+<a aria-label='comment form' expr:href='data:post.commentFormIframeSrc + &quot;&amp;skin=contempo&quot; + data:variantParam' id='comment-editor-src'/>
+<iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' title='comment-editor' width='100%'/>
+<data:post.cmtfpIframe/>
+<script>BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);</script>
+</div>
+</b:includable>
+    <b:includable id='threaded_comment_js' var='post'>
+<script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
+<script type='text/javascript'>
+(function() {
+var items = <data:post.commentJso/>;
+var msgs = <data:post.commentMsgs/>;
+var config = <data:post.commentConfig/>;
+// <![CDATA[
+var cursor=null;items&&0<items.length&&(cursor=parseInt(items[items.length-1].timestamp)+1);var startThread,targetComment,bodyFromEntry=function(e){if(e.gd$extendedProperty)for(var t in e.gd$extendedProperty)if("blogger.contentRemoved"==e.gd$extendedProperty[t].name)return'<span class="deleted-comment">'+e.content.$t+"</span>";return e.content.$t},parse=function(e){cursor=null;var t=[];if(e&&e.feed&&e.feed.entry)for(var r,o=0;r=e.feed.entry[o];o++){var n={},a=/blog-(\d+).post-(\d+)/.exec(r.id.$t);if(n.id=a?a[2]:null,n.body=bodyFromEntry(r),n.timestamp=Date.parse(r.published.$t)+"",r.author&&r.author.constructor===Array){var d=r.author[0];d&&(n.author={name:d.name?d.name.$t:void 0,profileUrl:d.uri?d.uri.$t:void 0,avatarUrl:d.gd$image?d.gd$image.src:void 0})}if(r.link&&(r.link[2]&&(n.link=n.permalink=r.link[2].href),r.link[3])){var l=/.*comments\/default\/(\d+)\?.*/.exec(r.link[3].href);l&&l[1]&&(n.parentId=l[1])}if(n.deleteclass="item-control blog-admin",r.gd$extendedProperty)for(var i in r.gd$extendedProperty)"blogger.itemClass"==r.gd$extendedProperty[i].name?n.deleteclass+=" "+r.gd$extendedProperty[i].value:"blogger.displayTime"==r.gd$extendedProperty[i].name&&(n.displayTime=r.gd$extendedProperty[i].value);t.push(n)}return t},paginator=function(r){if(hasMore()){var e=config.feed+"?alt=json&v=2&orderby=published&reverse=false&max-results=50";cursor&&(e+="&published-min="+new Date(cursor).toISOString()),window.bloggercomments=function(e){var t=parse(e);cursor=t.length<50?null:parseInt(t[t.length-1].timestamp)+1,r(t),window.bloggercomments=null},e+="&callback=bloggercomments";var t=document.createElement("script");t.type="text/javascript",t.src=e,document.getElementsByTagName("head")[0].appendChild(t)}},hasMore=function(){return!!cursor},getMeta=function(e,t){return"iswriter"==e?t.author&&t.author.name==config.authorName&&t.author.profileUrl==config.authorUrl?"true":"":"deletelink"==e?config.baseUri+"/delete-comment.g?blogID="+config.blogId+"&postID="+t.id:"deleteclass"==e?t.deleteclass:""},replybox=null,replyUrlParts=null,replyParent=void 0,onReply=function(e,t){null==replybox&&null!=(replybox=document.getElementById("comment-editor"))&&(replybox.height="250px",replybox.style.display="block",replyUrlParts=replybox.src.split("#")),replybox&&e!==replyParent&&(document.getElementById(t).insertBefore(document.getElementById("threaded-comment-form"),null),replybox.src=replyUrlParts[0]+(e?"&parentID="+e:"")+"#"+replyUrlParts[1],replyParent=e)},hash=(window.location.hash||"#").substring(1);/^comment-form_/.test(hash)?startThread=hash.substring("comment-form_".length):/^c[0-9]+$/.test(hash)&&(targetComment=hash.substring(1));var configJso={maxDepth:config.maxThreadDepth},provider={id:config.postId,data:items,loadNext:paginator,hasMore:hasMore,getMeta:getMeta,onReply:onReply,rendered:!0,initComment:targetComment,initReplyThread:startThread,config:configJso,messages:msgs},render=function(){if(window.goog&&window.goog.comments){var e=document.getElementById("comment-holder");window.goog.comments.render(e,provider)}};window.goog&&window.goog.comments?render():(window.goog=window.goog||{},window.goog.comments=window.goog.comments||{},window.goog.comments.loadQueue=window.goog.comments.loadQueue||[],window.goog.comments.loadQueue.push(render));
+})();
+// ]]>
+  </script>
+</b:includable>
+    <b:includable id='threaded_comments' var='post'>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+<div class='authorboxwrap'><div class='authorboxfull'><h4>Author</h4><div class='avatar-container'><a expr:href='data:blog.homepageUrl' target='_blank' title='Author'><img class='author_avatar img-circle lazy' expr:alt='data:post.author' expr:data-src='resizeImage(data:post.authorPhoto.url,110)' height='96' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' width='96'/></a></div><div class='author_description_container'><h5><a expr:href='data:blog.homepageUrl' rel='author' target='_blank' title='Author'><data:post.author/></a></h5><p><data:post.authorAboutMe/></p></div></div></div>
+</b:if>
+  <div class='comments' id='comments'>
+<div class='blanter-comments'><a name='comments'/>
+<div class='menu-komentar'><h3><b:if cond='data:post.numComments == 1'>1 <data:commentLabel/><b:else/><data:post.numComments/> <data:commentLabelPlural/></b:if></h3></div>
+    <p class='comment-footer'>
+      <b:if cond='data:post.allowNewComments'>
+        <b:include data='post' name='threaded-comment-form'/>
+      <b:else/>
+        <data:post.noNewCommentsText/>
+      </b:if>
+    </p>
+    <div class='comments-content'>
+      <b:include cond='data:post.embedCommentForm' data='post' name='threaded_comment_js'/>
+      <div id='comment-holder'>
+         <data:post.commentHtml/>
+      </div>
+    </div>
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+    <div id='backlinks-container'>
+    <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'>
+      <b:include cond='data:post.showBacklinks' data='post' name='backlinks'/>
+    </div>
+    </div>
+  </div>
+<script type='text/javascript'>
+<b:if cond='data:post.numComments != 0'>
+var Items = <data:post.commentJso/>;
+var Msgs = <data:post.commentMsgs/>;
+var Config = <data:post.commentConfig/>;
+<b:else/>
+var Items = {};
+var Msgs = {};
+var Config = {&#39;maxThreadDepth&#39;:&#39;0&#39;};
+</b:if>
+//<![CDATA[
+$(function(){document.getElementById("top-continue").appendChild(document.getElementById("pesan-komentar"))});
+function blockLinks(A,e){for(var o=document.getElementById(A).getElementsByTagName(e),t=0;t<o.length;t++)-1!==o[t].innerHTML.indexOf("</a>")&&(o[t].innerHTML=o[t].innerHTML.replace(/<a[^>]*>|<\/a>/g,""))}Config.maxThreadDepth=5,Display_Emo=!0,Replace_Youtube_Link=!0,Replace_Image_Link=!0,Replace_Force_Tag=!0,Replace_Image_Ext=["JPG","GIF","PNG","BMP"],Emo_List=[":)","https://lh3.googleusercontent.com/-cQugl5FMRuM/V1U_XbfQigI/AAAAAAAAEAU/_5Q9Hv4xAGo7Z_TUaGMyoch8vEPO1KnYgCLcB/h120/1.png",":(","https://lh3.googleusercontent.com/-nQpusekLOCY/V1U_XmFH4LI/AAAAAAAAEAY/TXKngRHW9go5Qrh9wkZR5QFCAEPPvVeeACLcB/h120/2.png","hihi","https://lh3.googleusercontent.com/-RqDpqWecyMw/V1U_j-B12EI/AAAAAAAAECc/s7jdJHYiDQogwTJGmkwO7H4m2JR5qvB6ACLcB/h120/3.png",":-)","https://lh3.googleusercontent.com/-LWEIDBVvX1c/V1U_lnGQezI/AAAAAAAAEC8/rjH9OARs2xEp48_v9Q4KaaBvwo6YMZ-ggCLcB/h120/4.png",":D","https://lh3.googleusercontent.com/-XxQdOt_KU0Q/V1U_mKKhA8I/AAAAAAAAEDA/bvjgNnnHctg9ueVNu5NFxQ18wQh-hqykACLcB/h120/5.png",":-d","https://lh3.googleusercontent.com/-cPixj9X9VU4/V1U_mRajeVI/AAAAAAAAEDI/rLjaySYljNY7ldS5KBJYinqcz5JsQwLKACLcB/h120/7.png",";-(","https://lh3.googleusercontent.com/-OIvn-XD877c/V1U_m0TggsI/AAAAAAAAEDU/dfIUcK-mvzwcuBYgE93WdXp8nUiaax-kwCLcB/h120/9.png","(y)","https://lh3.googleusercontent.com/-DOR5NAJ7fag/V1U_jLkDwhI/AAAAAAAAECE/elfZGm0x7FoChkEsbK_UMuxvyO2dx2gpwCLcB/h120/27.png","(k)","https://lh3.googleusercontent.com/-Sf533Lx2XDo/V1U_khMZ9eI/AAAAAAAAECg/WOgTOgQB3D4RSYHCj9hfLrlOURjA3XEawCLcB/h120/30.png","(h)","https://lh3.googleusercontent.com/--Rzg7PE7FYQ/V1U_kpnrH0I/AAAAAAAAECo/XrBlEvaRaawUxgC-i_UC0uQf_0EEGwlfgCLcB/h120/31.png"],Force_Tag=["[pre]","<pre>","[/pre]","</pre>",'<pre class="brush: plain; title: ; notranslate" title="">',"&lt;code&gt;","</pre>","</code>"],blockLinks("comments","p"),eval(function(A,e,o,t,n,c){if(n=function(A){return(A<62?"":n(parseInt(A/62)))+(35<(A%=62)?String.fromCharCode(A+29):A.toString(36))},!"".replace(/^/,String)){for(;o--;)c[n(o)]=t[o]||n(o);t=[function(A){return c[A]}],n=function(){return"\\w+"},o=1}for(;o--;)t[o]&&(A=A.replace(new RegExp("\\b"+n(o)+"\\b","g"),t[o]));return A}("3 q='.W';3 1a=$('#N-Y').B('y');u 1w(H){3 1h=' \\n\\r\\t\\f\\2p\\1S\\1T\\1U\\24\\25\\26\\27\\2e\\2h\\2k\\2m\\2n\\2u\\2y\\2z\\2A\\2F\\1L\\1N\\1O\\1P\\1Q';G(3 i=0;i<H.5;i++){b(1h.g(H.1V(i))!=-1){H=H.d(0,i);11}}C H}$('#28 .1B p').k(u(D,7){b(2r){3 m='1g://13.Z.X/1t?v=';3 8=7.g(m);F(8!=-1){1H=7.d(8);K=1w(1H);3 1c=K.g('&');3 T='';b(1c==-1){T=K.d(m.5)}1e{T=K.d(m.5,1c)}3 1j='<1k I=\"1W\" y=\"1g://13.Z.X/1X/'+T+'?1Y=1\" 20=\"0\" 21></1k>';7=7.d(0,8)+1j+7.d(8+K.5);8=7.g(m);b(8==-1){m='22://13.Z.X/1t?v=';8=7.g(m)}}}b(23){3 1d='';3 x=7;G(3 i=0;i<1z.5;i++){3 m='.'+1z[i];3 o=x.E();3 8=o.g(m);F(8!=-1){l=x.d(0,8+m.5);o=l.E();3 w='2j://';3 z=o.g(w);3 L='';F(z!=-1){L=w.R();l=l.d(z+w.5);o=l.E();z=o.g(w)}w='1K://';o=l.E();z=o.g(w);F(z!=-1){L=w.R();l=l.d(z+w.5);o=l.E();z=o.g(w)}b(L==''||l.5<6){11}l=L+l;1d+=x.d(0,8+m.5-l.5)+'<S y=\"'+l+'\" I=\"2s\"/>';x=x.d(8+m.5);o=x.E();8=o.g(m)}}7=1d+x}b(1m){3 5=A.5;b(5%2==1){5--}G(3 i=0;i<5;i+=2){3 V='<S y=\"'+A[i+1]+'\" I=\"1x\"/>';8=7.g(A[i]);F(8!=-1){7=7.d(0,8)+V+7.d(8+A[i].5);8=7.g(A[i])}}}b(2G){3 5=U.5;b(5%2==1){5--}G(3 i=0;i<5;i+=2){F(1){3 x=7.R();8=x.g(U[i]);b(8!=-1){7=7.d(0,8)+U[i+1]+7.d(8+U[i].5)}1e{11}}}}C 7});$('.1M').k(u(D,7){b(1m){3 5=A.5;b(5%2==1){5--}3 15='';G(3 i=0;i<5;i+=2){3 1C='<1F>'+A[i]+'</1F>';3 V='<S y=\"'+A[i+1]+'\" I=\"1x\"/>';15+='<M I=\"1R\">'+V+1C+'</M>'}C 15}});$('.1f .1B p').k(u(i,h){10=h.R();D=10.g('@<a 12=\"#c');b(D!=-1){14=10.g('</a>',D);b(14!=-1){h=h.d(0,D)+h.d(14+4)}}C h});u 1l(j){r=j.g('c');b(r!=-1)j=j.d(r+1);C j}u 1n(j){j='&1Z='+j+'#%1o';1p=1a.1q(/#%1o/,j);C 1p}u 1r(){k=$(q).k();$(q).k('');q='.W';$(q).k(k);$('#N-Y').B('y',1a)}u 1s(e){j=$(e).B('16');j=1l(j);k=$(q).k();b(q=='.W'){1u='<a 12=\"#1v\" 29=\"1r()\">'+2a.2b+'</a><a 2c=\"1v\"/>';$(q).k(1u)}1e{$(q).k('')}q='#2d'+j;$(q).k(k);$('#N-Y').B('y',1n(j))}17=2f.2g.12;18='#N-2i';19=17.g(18);b(19!=-1){1y=17.d(19+18.5);1s('#2l'+1y)}G(3 i=0;i<O.5;i++){b('1A'2o O[i]){3 j=O[i].1A;3 1b=2q($('#c'+j+':P').B('1D-1E'));$('#c'+j+' .2t:P').k(u(D,7){3 J=O[i].16;b(1b>=2v.2w){$('#c'+J+':P .2x').1G()}3 Q=$('#c'+J+':P').k();Q='<M I=\"1f\" 16=\"c'+J+'\" 1D-1E=\"'+(1b+1)+'\">'+Q+'</M>';$('#c'+J).1G();C(7+Q)})}}3 1I=$(\"#2B\");1I.2C('.2D S').2E(u(){3 1J=$(1i).B('y');$(1i).2H().B('y',1J.1q(/\\/s[0-9]+(\\-c)?\\//,\"/2I-c/\"))});",0,169,"|||var||length||oldhtml|check_index|||if||substring|||indexOf|||par_id|html|img_src|search_key||upper_html||Cur_Cform_Hdr||||function||http_search|temp_html|src|find_http|Emo_List|attr|return|index|toUpperCase|while|for|str|class|child_id|yt_link|save_http|div|comment|Items|first|child_html|toLowerCase|img|yt_code|Force_Tag|img_html|main|com|editor|youtube|temp|break|href|www|index_tail|newhtml|id|cur_url|search_formid|search_index|Cur_Cform_Url|par_level|yt_code_index|save_html|else|comment_wrap|http|whitespace|this|yt_video|iframe|Valid_Par_Id|Display_Emo|Cform_Ins_ParID|7B|n_cform_url|replace|Reset_Comment_Form|Display_Reply_Form|watch|reset_html|origin_cform|trim|comment_emo|ret_id|Replace_Image_Ext|parentId|comment-block|img_code|data|level|span|remove|ht|avatar|ava|HTTPS|u200a|google_emo|u200b|u2028|u2029|u3000|item|x5d|x7c|x7d|charAt|comment_youtube|embed|autohide|parentID|frameborder|allowfullscreen|https|Replace_Image_Link|x3c|x3e|x0b|xa0|top-ra|onclick|Msgs|addComment|name|r_f_c|u2000|window|location|u2001|form_|HTTP|u2002|rc|u2003|u2004|in|x5b|parseInt|Replace_Youtube_Link|comment_img|comment_child|u2005|Config|maxThreadDepth|comment_reply|u2006|u2007|u2008|comments|find|comment_avatar|each|u2009|Replace_Force_Tag|show|s45".split("|"),0,{}));
+//]]>
+</script>
+<div class='moveauthor'/>
+</div>
+</b:includable>
+  </b:widget>
+</b:section>
+</div>
+<b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+<div id='sidebar-blanter' itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/WPSideBar'>
+<aside id='sidebar-css'>
+<div id='sidebar1-material'>
+<b:section class='sidebar1' cond='data:view.isPost' id='sidebar1' name='Sidebar Widget' showaddelement='yes'>
+  <b:widget id='Followers1' locked='false' title='Pengikut' type='Followers' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='borderColorTransparent'>true</b:widget-setting>
+      <b:widget-setting name='useTemplateDefaultStyles'>true</b:widget-setting>
+      <b:widget-setting name='contentSecondaryTextColor'>#000000</b:widget-setting>
+      <b:widget-setting name='contentHeadlineColor'>#000000</b:widget-setting>
+      <b:widget-setting name='endcapTextColor'>#222222</b:widget-setting>
+      <b:widget-setting name='contentTextColor'>#222222</b:widget-setting>
+      <b:widget-setting name='contentSecondaryLinkColor'>#FFFFFF</b:widget-setting>
+      <b:widget-setting name='endcapLinkColor'>#2196f3</b:widget-setting>
+      <b:widget-setting name='contentLinkColor'>#2196f3</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:if cond='data:title != &quot;&quot; and data:codeSnippet != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <div expr:id='data:widget.instanceId + &quot;-wrapper&quot;'>
+      <b:if cond='data:codeSnippet != &quot;&quot;'>
+        <div style='margin-right:2px;'>
+          <data:codeSnippet/>
+        </div>
+      </b:if>
+    </div>
+    <b:include name='quickedit'/>
+  </div>
+</b:includable>
+  </b:widget>
+  <b:widget id='PopularPosts3' locked='false' title='Popular Posts' type='PopularPosts' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+      <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+      <b:widget-setting name='showSnippets'>false</b:widget-setting>
+      <b:widget-setting name='timeRange'>LAST_YEAR</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main' var='this'>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <b:include name='snippetedPosts'/>
+  </div>
+</b:includable>
+  </b:widget>
+  <b:widget id='HTML2' locked='false' title='Recent Posts' type='HTML' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='content'><![CDATA[<ul id="recent-ui"></ul>]]></b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
+  </b:widget>
+</b:section>
+</div><div class='clear'/>
+</aside></div>
+</b:if>
+<div class='clear'/>
+</b:if>
+<b:if cond='data:blog.pageType == &quot;error_page&quot;'>
+<!-- ERROR PAGE HTML -->
+<style type='text/css'>
+#error-material b{display:block;line-height:2}#error-material{padding:15px;text-align:center;color:#d81313;margin:80px 0}#error-material .a404{background:#d81313;display:inline-block;font-weight:700;color:#fff;font-size:70px;padding:15px 30px;margin:0 0 10px;border-radius:20px}.darkmode #error-material{background:#333;color:#fff}
+</style>
+<div id='error-material'><div class='a404'>404</div><b>Sorry, the page you&#39;re looking for in this blog does not exist.</b><b>You will be redirected to homepage shortly.</b></div>
+<script type='text/javascript'>
+my_redirect = setTimeout(function() {
+  window.location.href = &quot;<data:blog.homepageUrl/>&quot;;
+}, 8000);
+</script>
+<!-- END ERROR PAGE -->
+</b:if>
+<div class='clear'/>
+<b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+<b:if cond='data:view.isSearch'><b:else/>
+<b:section class='footerbanner' id='footerbanner' maxwidgets='1' name='Footer Banner Ads 970x90' showaddelement='yes'/>
+</b:if></b:if>
+<div class='clear'/>
+</div>
+<b:section class='subscribe-blanter' id='subscribe-blanter' maxwidgets='1' name='Subscribe Widget' showaddelement='yes'/>
+<b:section class='popular-home' cond='data:view.isMultipleItems' id='popular-home' maxwidgets='1' name='Popular Posts on Homepage' showaddelement='yes'>
+  <b:widget id='PopularPosts1' locked='true' title='Popular Posts' type='PopularPosts' version='2' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+      <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+      <b:widget-setting name='showSnippets'>false</b:widget-setting>
+      <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main' var='this'>
+<div class='this-popular'><h3 class='title'><data:title/></h3><ul><b:loop values='data:posts' var='post'><li><div class='item-thumbnail'><a expr:href='data:post.url' expr:title='data:post.title'><img class='lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.featuredImage,90)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/></a></div><h3 class='item-title'><a expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a></h3>
+<b:loop values='data:post.labels' var='label'><b:if cond='data:label.name == &quot;Produk&quot; or data:label.name == &quot;Products&quot;'>
+<div class='popular-post-info'><div class='popular-post-snippet produk-wrap kolom-info'/><div class='js-popular-post-snippet'>&lt;!--<data:post.body/>--&gt;</div></div>
+</b:if></b:loop></li></b:loop></ul></div>
+</b:includable>
+  </b:widget>
+</b:section>
+<div id='footer-material'>
+  <div class='container'>
+  <b:section class='footer-ui' id='footer-ui1' name='Footer Widgets 1' showaddelement='yes'>
+    <b:widget id='Followers2' locked='false' title='Pengikut' type='Followers' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='borderColorTransparent'>true</b:widget-setting>
+        <b:widget-setting name='useTemplateDefaultStyles'>true</b:widget-setting>
+        <b:widget-setting name='contentSecondaryTextColor'>#000000</b:widget-setting>
+        <b:widget-setting name='contentHeadlineColor'>#000000</b:widget-setting>
+        <b:widget-setting name='endcapTextColor'>#222222</b:widget-setting>
+        <b:widget-setting name='contentTextColor'>#222222</b:widget-setting>
+        <b:widget-setting name='contentSecondaryLinkColor'>#FFFFFF</b:widget-setting>
+        <b:widget-setting name='endcapLinkColor'>#2196f3</b:widget-setting>
+        <b:widget-setting name='contentLinkColor'>#2196f3</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+  <b:if cond='data:title != &quot;&quot; and data:codeSnippet != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <div expr:id='data:widget.instanceId + &quot;-wrapper&quot;'>
+      <b:if cond='data:codeSnippet != &quot;&quot;'>
+        <div style='margin-right:2px;'>
+          <data:codeSnippet/>
+        </div>
+      </b:if>
+    </div>
+    <b:include name='quickedit'/>
+  </div>
+</b:includable>
+    </b:widget>
+  </b:section>
+  <b:section class='footer-ui' id='footer-ui2' name='Footer Widgets 2' showaddelement='yes'/>
+  <b:section class='footer-ui' id='footer-ui3' name='Footer Widgets 3' showaddelement='yes'/>
+  </div>
+<footer id='footer-bottom' itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/WPFooter'>
+<div class='material'>
+<div id='copyright'>
+<p>Copyright &#169; <span itemprop='copyrightYear'>2020</span> <span itemprop='copyrightHolder' itemscope='itemscope' itemtype='https://schema.org/Organization'><a expr:href='data:blog.homepageUrl' expr:title='data:blog.title' rel='noopener'><data:blog.title/></a></span></p>
+</div></div></footer>
+</div>
+</div></div><div class='clear'/>
+<div id='box' itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/WebSite'><button class='sayanglina' type='button'>&#215;</button><meta expr:content='data:blog.homepageUrl' itemprop='url'/><div class='search-wrapper'><div id='search-wrap'><div id='search-blanter'><form action='/search' id='searchform' itemprop='potentialAction' itemscope='itemscope' itemtype='https://schema.org/SearchAction' method='get' target='_top'><meta content='/search?q={q}' itemprop='target'/><input id='search-form' itemprop='query-input' name='q' placeholder='Type to Search' required='required' type='search'/><input name='max-results' type='hidden' value='10'/><button aria-label='Search' class='search-btn' title='Search' type='submit'><svg class='ionicon' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><path d='M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/><path d='M338.29 338.29L448 448' fill='none' stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32'/></svg></button></form></div></div></div></div><a href='javascript:void' id='BackToTop' title='Back To Top'><i class='fa fa-angle-up'/></a>
+<b:section class='all-settings' id='all-settings' maxwidgets='1' showaddelement='no'>
+  <b:widget id='HTML60' locked='true' title='All Settings (Pengaturan)' type='HTML' version='2' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='content'>// Settings Shop Whatsapp Number
+var phone_number = [&#39;6281977094280&#39;,&#39;6281977094280&#39;],
+text_wa = &#39;Hello.. I want to buy &#39;,
+text_note = &#39;Note&#39;,
+text_qty = &#39;Qty&#39;,
+text_qty_num = &#39;1&#39;,
+text_link = &#39;Product Link&#39;;
+
+// Full Settings
+var load_more = &#39;Load More&#39;,
+loading_text = &#39;&lt;i class=&quot;fas fa-circle-notch fa-spin&quot;&gt;&lt;/i&gt;&#39;,
+all_post_show = &#39;All Post Show&#39;,
+error_text = &#39;Error Loading Feed&#39;,
+recent_post = &#39;https://&#39;+window.location.hostname+&#39;/&#39;,
+recent_count = 8,
+dark_text = &#39;&#39;,
+css1 = &#39;https://use.fontawesome.com/releases/v5.8.2/css/all.css&#39;,
+css2 = &#39;https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap&#39;;</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  &lt;script&gt;
+    <data:content/>
+  &lt;/script&gt;
+</b:includable>
+  </b:widget>
+</b:section>
+<script async='async'>
+//<![CDATA[
+// GLOBAL SCRIPT (THEME DESIGN BY WWW.IDBLANTER.COM)
+var _0x3364=['smo1vSkBDq==','WRBdJSoeWQS=','hXzDACkOW58heM7cOCoiDSo9W57dTrG/uSoUWRpcRHaEW6WeWOWMWQBcICo1DgRcMu46WOZcNmoEWPFdKSkrD8ozEKZcNSoYWPBcVZzKhvKKWQmhW53cVG==','W4pcL8ocurVcJvZcR3BcLIzvW5W=','aw1Gkd1vWQW/WOhdOG==','isddT8kb','W5pdTmoWW44OW4ddLWRcJIFdH0FdVSkljvtdOmoGWOnLtmoXmZVcVxyjmmkouxFdVmkjsSkJlZ5FW7qVWP5Qk8ovySofELVdKe7cJaZcQSoDDmkBW6GYme9jW7tcL8kyAubHW6xcGa==','gCk/qCkcDCkZnG==','WPFcR8oqrN/dGCoZcX8=','wHrDDmkEW5SheGdcPSodFG==','c8kvW65l','FmoQxbDbF27cLCkNDCo7','W584B8oa','dcXVsCoDrG==','W79IWOCGvKPwrmoNlSkC','W5tdV8o8W4C6WPVdGG==','W5i5BComW5vt','B3RcKJBdG8kwq8kmWRJdISkjW4JcSW==','nW9NW4q=','WPucr2K4bCkzACk1cSolzSoOnXJdMuKLAhNdHZNdOWSsWQPan8kpWQJcTsesASoarmk7WRRdMG==','mSoPybu=','WOWJW5hdQq8YW6GTW6m=','fhpcUmoUa13dRe/dQa==','W54PWOCFv2O=','qmoiCKahhSkMWPtcMs7dLh4VW4pcRa==','W4Dqs2S4bSkDx8k/hmkxmCoXmq==','W5NcMCkRW4NcOMBcJmkNuXaP','W67cNCorWPTOsKSjwqhcQSksW5rstW==','W7G7W5G=','WORdJ8oNnSk6zCofWQRdG0ibmCoFkvy9','dCkiW7/cVYtcLJ3cPbvbW7BcTG==','W795WP88bhO=','W604otTAhc/cSq==','W4NcUCogsgpcHmo1crRdNWVcNSkcWQBcIGGgFSkGarvGp8kIW7VcK0ZdM8otW7BcH8k9WQSnW4q=','n8kdW7JcIJhcHt3cRbO=','WQBcKmorWP4=','W6HcAJZdJKpdNutdUq==','WRxdIxjVW792Fmowosq=','WR/dM8ovWQRdI0OfWPNcNSomWQa=','W5O5ymobW4HPh1BdINpdTW==','x8kzzIfkiq8=','W5K/WQNdIG==','xSkmWR8=','W7ZdSCo/WQvbWQddJSo4wSkBW5JdGuldVIBcVM8=','WRrtEZ7dIeFdMq==','aeLbACk8W51y','jb5+W5KlW6JdHSkiFh8=','dmoXdZxcVW==','xciUtSouq0RcGmkClrBdL0lcOKiuWOqnWQxcIx8RWP9OWR9aW7/dPHzRBSkwW60NsdnfFg7cTvvqorJdPh/dMSk6xhxdQmkiWOVdTSkRDCooWO59W5GEWPyTWRrbW7SJWRFdQsyIWRi+At7dS8oic8k8','WOhcS8ogta==','zCoUDab0W5u2W6xdQmo4FCkJW5yjW4fx','yZldU8kIWQrQWPi=','pYFdPmk+WRbLWPBcV01Fe8o7BSkwWOWvWOxcNW==','oCkVWOBcKW==','WR87W4ddLW==','WOS5W5pdSZO=','W7ZcHSoaWOnGsGChwqhcQSksW5rst2GVW4tcJCojumk7W5nGp8koo1btW7XRwxBcSqr7WQONWPVdQSkWW7RdO8kYBSooW6ddUSoFc8kVt8kewCoDrKBdKb8uDSosW5/cVhZcKYeSW7pcObrvzSkuW5eBeSkiW7NdRSkgyWtcMa9vo8oPW7r1WQ9MW7hcIJJcS8k5W6ldUHNdVYytFCkZWPxcIxHmWRC1WPiTWQDFW5ZdPbhcN8oHB1/cJttcHSodWPKBeSobWRdcS8k8W5xdO8oZaCoJW63dOYz6WQiwD8kGWOC+uCoHz8kpW6qNWRRdKeyUWQ1oWRv+nKtdUKlcTSoqW4hcUdjLvSk5W5FcHbaYWPGuWOuaWPldTCkWqg/cQwCLW6m2Cq9pW5KhWOhdSmkNtItdH8oKvI5UWOfdW6OrW47dMmkRyMTXWRNdKCofwIhcQSk4if/cRd0raYVcTepdGwRcL8kEWPntDSktbGdcUCk8l8kUWRnpqCkVW7xdQSovDmkwBCoRCYXvzsRcHWDhW6tdS8k7W6pcJ8oRfCkEWPlcPYZdQSoXW6tcV8kOeCoyWRSADmkRE0tdTLqJW6neW5XZW6NdN2PQW77dPxGRW4fWW6hdVmkNWOJdJHdcJWK6WRhcJr8LqCkHA8oRhr3dQmkQW69BWOFdP8k5drf4W6ZcMmoyuutdUrW=','jXFdOSkaymon','k2/cIqddM8oExCkaWRldM8kyW6VcUe/cNMHJWOBdT8k/','WQDsBXFdN0hdKLZdJu9fWRHzW7P7qG==','EmoucqjE','W5JdISoTnmk2wSobWRtcI0KAm8oi','WPyUcbW=','fcz2wq==','W5iKWQRdKSkhWQBcIa==','waDgEmoWW4addcBcQSotFSo8','WOJdMCoWk8kVwSoOWQpdJ0yDkG==','WPqZbbq=','W4DqqxKOa8oeCmk7fmkxkG==','ySoPWQW=','uNVcS8oUfxRcPKFdS0LgW50/WRxdP8oIW7NdUmoGC8kpCHVdHxL9WPFcVc5v','cxlcSCoShwZdILVdVuLb','rLuSW7KZW6S=','WO7cL8oktXJcNHtcSq==','WPeIW5hdVq==','EspdPSkI','W5rHWRnB','nrn6W5OzW7/dQSks','W6eJnYi=','WO7cKSkTW5ZcPw7cOmkVvW==','WOeZW7m=','EbfGWPSnW7/dOmkyBhNcR8ocW6HIWQpcIKqB','hmk3sc8=','cmkgW6jopSo6fSkHWPldMcKx','kSoJEqv/W4u=','u8opCeezgSk4WPddPM3cNMaVW4pcVa==','W6ldMmovWQ7dIW4LWP3cLSotWRDmiweqqCopuqylgZxcMmo1','W4D7WRG=','aSoQasW=','W4ZcKmk4W4VcVgBcOCkV','DqT6W5OuW6xdRSks','b8o+W5HQeCkPyua=','W4aLBq==','WP99q8kdtCofW7hcVvvBxG==','DrL8W45rWQ7dRCktytldOmoeW7j/WRZcLa8CW6xdRH1hegX8q8kf','lrVdOSkd','AmoTDGjYW44H','iHNdOI4=','CSoPWQ7dIwG=','hCkxW79kdCoM','pCkPWPZcG3Sq','hgNcOSo5','WQ90WRddOCo0xc3dVCkYWPJdIubgv8oPCsaliepdTmkJBConvCo+','WRNdG8oLWOH2BhbwtcNdS8kx','WOr+WRhdOCoSuq==','emkcW7NcKZhcJG==','yZldPSkHWRnSWRtcOqfCdW==','AYO8uf3cIq==','WQFcKmoa','WQv4W4FcNmoHW65vh8oXWOTzqCkBu13cG8obWO7cQSkCWPVdHK8qqSkZo8kLWOq+pLi=','vSoeDW==','WRDWWRRdV8oltx8=','WPFdN8oSi8k3xG==','WO0+WQJcMmoEWQtcLsnqW6jFW57cK0FdRfVdVYq3qSk+W6pcNCouW4Pon8kBvW==','WPLrrNiQbCkgACk/','is/cSW==','CCkGWO3cLMaix8kpW4xcVCktDv7dI8oSW7LYW5CeWPTenSkmW65KebhcMSkRW6pdIrxcJmkP','qmkOqSop','bL8HW6OCW6T4m8ojW5KNcmkoW4mIW5FcNSkBsK4WySoNuIG=','WRlcKmoeWPzTtfW=','kmoZWRldINRcLmkmtra=','CJ/dQSk8WOzMWPpcQcfB','b8oyDq==','rfmKW6ytW6T4','W5ldTmoHW683WORdIGdcKYFdTHhdHmkA','W5OGW4BdTcOGW643WROyaCoLWQi=','wqHgA8kK','WRldHmoeWQS=','iCo2ruWtEG3cLCk8Fmo5vmkU','wSkFEIzBdbmhWPKw','CCo1trzkFW==','D3pdHmoesd8=','dCkyW6NcJstcKa==','W6xdRMDyW71pDSoTiYa=','vSoIWO4=','WRhcGmorWOH1FfXixG7cV8ktW5j2usK=','rCofCfeAc8o7WPhdIG==','W5LHWRbmW4JdVCo5jSoRnHC=','A8okbrDquwJcJmkyWQVdOxNcKuW=','zJ9QtSklW6yYmXhcMmo3vmowWR/cMIaCF8odWPBcIsD3W40QWQWYWQVcLmoWlJhcJ08TWPZcImosWOVdISkqFSoapWRcMmoHWOFcSZP0hG9KW6ndWONdUGRcT00dauOY','WQvEyJ7dJvBdMuy=','qeuOW6G=','eHzDASkPWP4jftFcRmov','A8kGW73dHSoQxrRcImkGW7qdpfqAkmkTWOxcUmk7WOrldmoOmCoWW4xcN8otWORdUW==','w8kHv8oe','WQhdV8oIWRXiW6e=','WOr0WRZdP8o0ANNdGSkHWP7dIWu=','q8o0sgim','W6u4os9BkJxcQINcM2xcQq==','oXpdVSkcESor','iSoTBaa3W5i2W7VcOmoRzSk2W4C=','W7vLWOeQvG==','lCkJWOxcMgiyBSkgW4ddO8kq','WPi7WQ3dISklWQdcNxnmW7TsWPZcLuC=','FmkUWONcHxmC','FtldPCkPWRfH','aY9NsmowvNhcLSoiAbtdKa==','BsOIsW==','WRxcHSorWOHnsfXktW==','W7uUWPmk','bYz6B8oxv1FcL8oiyrVdPWpcP0GBWPr/WQxdH3W=','W6K5WO4y','WO7cHSkLW4lcP2VcRSkL','W7GJW4dcJCoJW6GUvCk7WOqt','WOBcPSoFtwJdSmo5aHZdGb0=','WPTRWRpdR8oS','W4uXWPtdUci0W74WWQPEdSoLW6WiWQhdPwVdPuOiWONdK8ouW5PbW43dICodW4BcV8kcWRtdRSoGa2qlW6PjnG==','WQbVWPC=','W7ZdSCo/WQvbW6ZdMCo+v8kvW44=','Dmk5WRtdICoVvaJcLq==','W7XYWP0IugO=','CSowdGrhD0JcHCkX','pZS0r1/dKq==','WP5TWRjgW53cMmoDcSoa','FSoYrr5lAuJcKW==','WPGUaGD3WR/cR3FcUg7dVvBdQd0d','W7ldQMfNW7LnD8oN','xCksBbbzkHuAWRKBWRCJW6CnxLC=','hgNcOSoQeMhdJehdUvrg','f8kdW6xcMYlcQHVcGdS=','W6C5WOqtEMNdMGJcKY/dVq8=','eHvADSkQWP4vbslcU8oeCW==','WOG4erC=','r8oPcCorjuNdJXbYW5BdUJhdHa==','WRVdSSoJWRzwW7NdRCoUvCkBW5/dH17dVWpcIff8','WRRdISorWQ7cIf0JWP3cKSodWRauzW==','W4NcMCkVW5VcO2BcOCk/DW8/cvJdKSkC','rSoXr3u=','dMbVpqPs','DsO/wf/cHa==','dmkiW7VcKJhcGsO=','WPz3WQHr','WRJdR8o/WR1u','WOGUeq==','exJcUmoSbwe=','W7iOWPKrvw0=','WRrtAdFdH1dcKv3dQa==','q8o5xmkw','W4pcNSowvXtcGWpcVwVcGtvsW5zc','CJVdQSk9WRzfWP7cVHq=','AhxdMmomudS=','t8kgzdXB','WRDUWQVdOmkGzMNdImkWWPddIau=','W5fxqh4PaCkgDq==','extcUmoG','gmo7hcZcRCkVCq==','bgtcPq==','W5aVWQddO8kuWQ3cKMKGW75aWORcLuxdQfO=','is/cUG==','BgtdM8oh','W6nIWPeOqwXg','WQDcFYa=','WP8SWQVdICkfWQtcMuijW7PC','xmkWtSohpG==','ymk2WOdcMhOyea==','W4bUeGj7WRtdVZ/dKMpcPGFcOJ8Ebq==','W53dO8oWW4W=','WPO8W5xdQd0zW6qWW6m=','W7O7W5xcN8oZW44ktSk7','nmkLWRtdHSoThalcNSoKWQyv','CCo/qHvBCW==','WPldLmoSiCkXyCojWQldKKK=','W6iNWOOnsK/dMHFcTq==','ygVcQwTEWOSl','d8kAW65leSoG','tfmJW64aW5D4kmkdW5W2','W7a5W5dcICo4W48n','W5OUWR3dPCknWQZcMq==','lXpdUmkgoCovcba6W7S=','zIRdH2u=','dCkBW6nxhmo7gCkG','gCoRdJpcUmk+','W77dV2D8W6CypmkTnYrIWQqbWRhcLCkapmkYWQ1aWQeGWQtdSvf+WOOLW5q=','W6ddLCkrW4Pnbq==','rIq0rNJcMaK=','fuv+','WPhcR8ovrMNdGq==','rSoIv8ktymk4tvZdI8k5vv1J','orFdV8kxE8olcrWnW7VcGMy=','tJZdRSk3WPz9WOu=','w8k5vCogl04=','vvi+W78b','WRRdJSogWQddGuS=','kGpdUdNcPerMWQJcPW==','W5BdUCo0W5GAWPS=','WPr7WOu=','WRjtCYy=','W7GZW5dcQCo2W6ufv8ksWOmucCklurJcKG==','rmo3sMqsAw4rEaxdPYbnx8k9','uCoTtgmgx2ujwaRdTIjA','W50UWQRdGCkwWQa=','iCk1wr4rjWlcKCkNj8kJbCoLW4HEBwdcKSodimk/W6yj','c8o6ca==','WPVdT8o5W4u6WPVdUaJcNcFdKrRdPmkFjbxcOSo9WO8UsmoVAMVcTNedlmokwxu=','u8o7w34tyfqktq==','WOL4WQVdR8oUxa==','aSkrW6necCo6','W59Ls8kDz8ocW7tcTJrd','kb7dPCkeFW==','AIC+sa==','WOJdHSkn','p8k9WRddIq==','Emk+W6ZcKmk2eqhdISkOW6nk','W6uYncLdeq==','WPjIWR9l','gNJcOSocbwZdPa==','bSo7aIFcUmkK','WOS1W4tdTY82W6G=','WPFdLCoHjCk3x8opWQG=','ESo7v8klr8kPEG==','u3dcUCo9fctdQ0xdUvTwW41IWQtdR8oMW6S=','omolcqvqxx3cUSoqWQ/dRg3cK0XOWPq=','k8kNWPRcKhej','W5GLWQRdG8kqWOdcQfaG','W5uLyCojW7Ljg03dRNtdP3a=','W5FdQSocqhNdImoZwfK=','nWJdRIG=','rfKPW44eW7PZnCkOW50XeSkEWO0YW4K=','WRFdVCoZWRS=','vCkyBdbxab0=','WRO6W5hcGSo1WQ0jt8k/WOqtgmkChWJcJa==','W7n/WPi3zxy=','ngJcGW==','WO8KFSofW5qbgvpdJgJdScJcO8oqWQa3W73cPCk4n2lcK8kdjY7cJvKZwCoCfNVdVGzrk3f9WQpdHIZcJ0aen8kN','WPJdKSoJnSkcqG==','ma7dPdpcUMbMWORcMW==','WR0IW4SDvwddIaNdRwFdVWTYWQtdJmoAwSkJW5VcGSoaW40ZnmkxcmkIW5VcJCo4WR0DW7G=','WRVdISogWQC=','fmooDKWaimk5WPBdH2tcIq==','W4eYFSoiW5TchW==','qhNcUgS=','ECk5WQ/dISoIsqldLSoUWR0mluzFoG==','sCoUbsZcPCkKDCouW6e3W7zXWPjgtL87WPJcUG4=','W4HOuSkB','W4e+WRFdJG==','AhxdKmoF','DmoLWRVdGxq=','nCo+EW==','vmo5w3yAEa==','fuv0','W6iNWO4Fs1xdKHFcTs/dRb4=','DwxdK8ozxqdcQSomEMGhzaO3pb0=','qLG5W44EW7PWjmkkW4aah8kYWOC=','W4ueWQy9vM/dJX/cVJtdLqvXW6ddJ8oF','ytJdUmk6','Amo8DXjUWOW8W6lcSCoTya==','W73dICojWQ7dI1OJWOpdMSonWQeFDISwaa==','hNxcV8oNfxVdRfK=','W4CYDSoq','WQvEAIddQfa=','CSo8sGfkB2xcMmkNFSo3hq==','WPT+WQVdJ8oSxga=','W4ZcMmkVW4BcOxhcVa==','sCo8achcOSk4CCoiW6W2W7OXWPqdtLm=','W7a+WO4mqfldNHBcTspdRqvI','W4HKxSkdqq==','u8oSsguA','W4dcL8k4W43cPG==','W6r2WOeIqxy=','WPP6WRhdOSo3va==','gCokybKeemkMWPhdJ2dcIsa6W4lcU8kDWPtdJCkidbxcLwa9','WPTMWRjeW5VcUa==','W7ZdRmoIWRXaW7JdH8kNtmkuW5xdKKddRJ8=','c8o6caxcUSkPESooWO0YW6WRWOrnr0G=','DYxdPmkJWOzHWPBcVYnagmoT','kSoJEqvZW480','jHFdQmkoDq==','v8o1x8kDySk4s1ZdJ8kNqW==','v8o1x8kDySk4','i2tcNINdNSoywW==','W7ZdV8oZW4m1WOBdKWdcRJddHGFdOCks','uaLrEmkPW5OjdG==','tu8OW60=','WPVcNSop','W6ldPmoX','aCksW6S=','WRCKW5VcN8oTW6upsSkZWP8txCkp','EdSLtq==','bSoIv8krCCkZFb3dM8k9','WO7cL8ocut/cGXxcUKxcJq==','W7GZW5dcR8oSW6eyua==','W55mxxGVhmkOF8kWg8kviCoZmtZcRZPv','pmkUWOhcM3apsmke','W7HLWPyJ','W6yUWP87vwtdLH/cVJtdQIHPW4FdHSoAbmk2W7tcGmoiW4O=','WOhcMSonraJcHa==','lCkJWP7cKMyosa==','fmocF1uAc8kZWPBcJMZcNMm/WO3cPmka','q8o0sgimqMeiwa==','vmoiCKy1cW==','fuv9','jrD6W5iyW5NdOmkBFN7dPW==','CCo1try=','WRlcLmogwI/cMam=','W5HarhG+ha==','WO00babJWONcPg/cMghdRftdVW==','igpdHY3dLSoigmkqWRdcHG==','C8omdq0=','WRZdS8oIWR5fW6e=','W6GLWOuBs0NdRZFcNa==','uaLtFCk4W5C=','W4xcGSkHW4i=','aa8sESkXW5ive37dRSobESo6W5lcSaP7x8oLWQlcUWnuW7WjWObVW6ZdKmkOmxO=','umo3wMu=','W5uQWRddH8opWRVcJN4=','WPaKdXvUWRi=','q8obyvmrcW==','c8o0dtG=','W6iJWOisxxpdNHq=','lw7cMqBdM8oAq8kw','W5bIs8kl','WOFcR8ogrwZdH8oZ','g8kFW7NcKsi=','WPhcMSkLWO7cP2FdSSoPvGiOd1ddK8kmWQ4sWP3cR8kCW711WPNdHCoWvqJcRmoxjeiHW4qhc2vxWPhdM8kDWO7cSxqPfuRcGmoDafjJW7NcLcD3W5DLWQmmfCksa37dISkxWQJcMCkwW58VWRZcICkxWPFdOfH8W5b1BvRcKSkUimozaq==','W70+lIjs','FtJdQSkQWQXNWPa=','W7FdR3C=','B8oDeXu=','iHZdQmkcBmoQha==','ngFdIG==','t1iKW6u=','nX93W7urW6ZdVmkp','WPuVdXDOWPlcLu7cSq==','W7fJWOCKr2P2w8oLkmkC','oSoPW7RdHMhdMmkrx1VdQsi9W75UdK0Ors5mWRvzW5KVFSo8F8kwW67dSG==','W54+WP8yav7dNHtcSY/dVq8=','DCoMW5ldLW==','W5HmqNi8da==','W6n0WOeQsg5NqSoW','vmoiELGqdCkZWOO=','omoWncX5bIxdQmotWQhdQw/cMfz+WOpdTeC0BwC=','WPtcVSocwW==','WQRdJSoDWRS=','W5Tlqhy=','W5jqxhiV','x8ouFLG=','WQJcH8orWPW=','nWZdPdVcS3G=','y8oHWRNdJq==','dCkyW6rafG==','iWH2W4q8W6RdQSksBq==','xZ3cOSoIbwxdRaRcVG==','W782W5dcICouW68mrmkYWO8=','W54UsSofW4Hkn1ddIx4=','WOX1ga==','WRpcKmoyWP9Vw1Xa','WPeKW5NdT2i3W6iNW64=','mJRdRSkGWRaKWPxcOqfbcmoTAmkBWOKsW5NcMmoPESkolSk9aG==','rmk6W4HacCkKDW4w','jCo+FqbUW4qwW7VcOmoLD8k9W5C=','v3pcRMTpWOanyq==','WRDdBIddKhFdMutdPevcWQno','WONdVCo8WOO4WOpdHHBcJM7cLHRdQmkDlvFdTCk/WO8Zd8kJE2FdT20uo8ofbtS=','pXv3W5mfW4ldQq==','WQONkcftdclcSxBcNMFcVZu=','aw1OnHPiWQ00','WO5YWRhdOG==','AbddOmkgESorhWT0W7pcN3ZcMG==','q8opDfmygG==','zCoSWRpdHMy=','vCopD00=','pmk0WO3cLMayAmkgW4tdVCkgDfK=','WQpcNCoDWPzOxvXk','WRddHmkiWRZdHLWPWP3cMW==','nWldHsJcPgvCWOi=','W6WLkcff','Amo8DXfVW40YW6xdQmoQFCkRWOmmW41c','ASoLWRtdGNNdKq==','WOeZW7e=','p2NcJYRdM8oxzmkkWQW=','iHZdQSkoESomdHX0W63cMwdcGf/dHeX/qCk8W5bPW60=','WPTSWR1hW4BcVSoU','WP9XWRLf','iWBdOCkl','W7r2WOCKcwfCq8o0i8kgBq==','yIpdQSk6WQa=','zCo/FqbOW4i7WRRcP8oKC8k9W5CaW5ifbCoSuee9WP4pW493eY/dI0RdPcRdUCkmW5NcMJhdOCo9v8o8BJBcJWW1','W7a5W5RcICoYW4G/BSks','W5WQWRddHCkk','hCkxW79meCo+','WO/dN8o6ma==','v1GSW68l','W7NdPx9JW7vg','W5O5ymobW4HPlNldOq==','W6xdP3POW7f2FmoLmtHU','W5VcUCoErNRdU8oZcbq=','f8oVW5LBbmkBD19rW4xcL8k4W7S=','w8obAu0=','B8k+WOO=','c18/W64tW7T+m8krW5KGfq==','mCoLFbvY','WPzLWQHgW53cSSoSimoLpq==','W7OLoq==','gGfgiG==','W5v5t8kc','WP/cMSovrG7cNXq=','qCoSxwm=','W7ZdUSo8WRXfW7NdS8oNxSkoW5NdKfNdQIFdSd9FrSk6WOSolCo0r8o9W58nmJRcKa==','W7n/WPOPqhbwqW==','WOJcNSoasW==','q8oIxCkFv8k1AuldRCk7vfy=','eZzSxSomua==','EmoucqrBs0VcOCkzWRNdQa==','l2BcLcBdNa==','h8kgytLgjXOaW5uEWQ15W7egv0dcSmoBvsG=','sCo2r3qnrfqOCq==','DmoLWRy=','W7ZcI8orWQ7dL0KJWOxdISkcWPStB2Onb8kbhHukeMZcMmkLW6W2WOzwyCoXWQ/cTCkV','eYb8qSoutM3cNmor','W5iJWQxdLmkJWRW=','DCoJWQJdJh3dJq==','mb/dTq==','AmoDdarws3NcRa==','b8kAW75gd8oMnSk3WRVdLI4xcCkIgbNdT8k6','WQ3dImoxWQddIuisWP7cHW==','W5hdKmochq==','mHPNW5DqW67dOmksBxFdRmof','oaBdTCklCCoweHW8W6O=','W4VcMSkJW4hcVa==','gCocF1StuSkMWOVdKhxcIa==','jwtcJIddHCopCSkaWRRdGmkzW4W='];(function(_0x35857d,_0x4bdd45){var _0x3364f8=function(_0xa18dcc){while(--_0xa18dcc){_0x35857d['push'](_0x35857d['shift']());}};_0x3364f8(++_0x4bdd45);}(_0x3364,0xa3));var _0xa18d=function(_0x35857d,_0x4bdd45){_0x35857d=_0x35857d-0x123;var _0x3364f8=_0x3364[_0x35857d];if(_0xa18d['WNykAD']===undefined){var _0xa18dcc=function(_0x41602a){var _0x3317c2='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=',_0x2db05f=String(_0x41602a)['replace'](/=+$/,'');var _0x5c5a8e='';for(var _0x1d58b1=0x0,_0x47dd52,_0x5bf0f3,_0x18cd6b=0x0;_0x5bf0f3=_0x2db05f['charAt'](_0x18cd6b++);~_0x5bf0f3&&(_0x47dd52=_0x1d58b1%0x4?_0x47dd52*0x40+_0x5bf0f3:_0x5bf0f3,_0x1d58b1++%0x4)?_0x5c5a8e+=String['fromCharCode'](0xff&_0x47dd52>>(-0x2*_0x1d58b1&0x6)):0x0){_0x5bf0f3=_0x3317c2['indexOf'](_0x5bf0f3);}return _0x5c5a8e;};var _0x2e61d1=function(_0x3ff729,_0x5e00ab){var _0x4cbab4=[],_0xd40222=0x0,_0x26db5e,_0x5dd0fc='',_0x19f8ff='';_0x3ff729=_0xa18dcc(_0x3ff729);for(var _0x3f77fc=0x0,_0x1039c0=_0x3ff729['length'];_0x3f77fc<_0x1039c0;_0x3f77fc++){_0x19f8ff+='%'+('00'+_0x3ff729['charCodeAt'](_0x3f77fc)['toString'](0x10))['slice'](-0x2);}_0x3ff729=decodeURIComponent(_0x19f8ff);var _0x34dd16;for(_0x34dd16=0x0;_0x34dd16<0x100;_0x34dd16++){_0x4cbab4[_0x34dd16]=_0x34dd16;}for(_0x34dd16=0x0;_0x34dd16<0x100;_0x34dd16++){_0xd40222=(_0xd40222+_0x4cbab4[_0x34dd16]+_0x5e00ab['charCodeAt'](_0x34dd16%_0x5e00ab['length']))%0x100,_0x26db5e=_0x4cbab4[_0x34dd16],_0x4cbab4[_0x34dd16]=_0x4cbab4[_0xd40222],_0x4cbab4[_0xd40222]=_0x26db5e;}_0x34dd16=0x0,_0xd40222=0x0;for(var _0x1ac799=0x0;_0x1ac799<_0x3ff729['length'];_0x1ac799++){_0x34dd16=(_0x34dd16+0x1)%0x100,_0xd40222=(_0xd40222+_0x4cbab4[_0x34dd16])%0x100,_0x26db5e=_0x4cbab4[_0x34dd16],_0x4cbab4[_0x34dd16]=_0x4cbab4[_0xd40222],_0x4cbab4[_0xd40222]=_0x26db5e,_0x5dd0fc+=String['fromCharCode'](_0x3ff729['charCodeAt'](_0x1ac799)^_0x4cbab4[(_0x4cbab4[_0x34dd16]+_0x4cbab4[_0xd40222])%0x100]);}return _0x5dd0fc;};_0xa18d['aLHeIQ']=_0x2e61d1,_0xa18d['eplClt']={},_0xa18d['WNykAD']=!![];}var _0x15f896=_0xa18d['eplClt'][_0x35857d];return _0x15f896===undefined?(_0xa18d['vWZvxR']===undefined&&(_0xa18d['vWZvxR']=!![]),_0x3364f8=_0xa18d['aLHeIQ'](_0x3364f8,_0x4bdd45),_0xa18d['eplClt'][_0x35857d]=_0x3364f8):_0x3364f8=_0x15f896,_0x3364f8;};var _0x223adc=_0xa18d,_0x2f0e=[_0x223adc(0x235,'CTx4'),_0x223adc(0x14f,'#NC3'),_0x223adc(0x29d,'0KwP'),_0x223adc(0x2eb,'0KwP'),_0x223adc(0x147,'HOKN'),_0x223adc(0x222,'3l&&'),_0x223adc(0x130,'rpy)'),_0x223adc(0x1b7,'Ip78'),_0x223adc(0x28f,'gNW['),_0x223adc(0x2f3,'Ip78'),_0x223adc(0x189,'EnzQ'),_0x223adc(0x213,'(#fz'),'documentElement','\x20darkmode','querySelector','#dark-myar'];!function(_0x15f896){!function(_0x2e61d1){var _0x5a6950=_0xa18d;for(;--_0x2e61d1;)_0x15f896['push'](_0x15f896[_0x5a6950(0x155,'DtpH')]());}(0xaa);}(_0x2f0e);var _0x2b5b=function(_0x41602a,_0x3317c2){return _0x2f0e[_0x41602a=+_0x41602a];};function MaterialUIRecent(_0x2db05f){var _0xeca440=_0x223adc;if(document[_0xeca440(0x1ae,'PreU')](_0xeca440(0x144,'nI8D'))){for(var _0x5c5a8e,_0x1d58b1=_0x2db05f['feed'][_0xeca440(0x2df,'0GPF')],_0x47dd52='',_0x5bf0f3=document['getElementById'](_0xeca440(0x2e9,'3l&&')),_0x18cd6b=0x0;_0x18cd6b<recent_count;_0x18cd6b++){for(var _0x3ff729,_0x5e00ab=0x0;_0x5e00ab<recent_count;_0x5e00ab++)if('alternate'==_0x1d58b1[_0x18cd6b]['link'][_0x5e00ab]['rel']){_0x5c5a8e=_0x1d58b1[_0x18cd6b][_0xeca440(0x209,'5VNP')][_0x5e00ab][_0xeca440(0x1cc,'PreU')];break;}_0x47dd52+=_0xeca440(0x21c,'AIUA')+_0x5c5a8e+_0xeca440(0x211,'EnzQ')+(_0x3ff729=_0x1d58b1[_0x18cd6b][_0xeca440(0x1bb,'ubd5')]['$t'])+_0xeca440(0x253,'mIUE')+_0x3ff729+'</a></li>';}_0x5bf0f3[_0xeca440(0x191,'#NC3')]=_0x47dd52;}}function run(){var _0x1545da=_0x223adc;function _0x4cbab4(_0x417a8f,_0x7a5b60,_0x43b2c5){var _0x4c9549=_0xa18d;'use strict';var _0x2644ef=window[_0x4c9549(0x281,'*T2U')][_0x4c9549(0x219,'daj1')](_0x4c9549(0x14c,'EnzQ')),_0x37ce9f=_0x7a5b60||window['document']['getElementsByTagName'](_0x4c9549(0x2c4,'ONc8'))[0x0];_0x2644ef[_0x4c9549(0x252,'Q#eK')]=_0x4c9549(0x25d,'n)X5'),_0x2644ef[_0x4c9549(0x302,'rBk5')]=_0x417a8f,_0x2644ef[_0x4c9549(0x261,'IKH[')]=_0x4c9549(0x280,'1gU['),_0x37ce9f['parentNode'][_0x4c9549(0x260,'!WCQ')](_0x2644ef,_0x37ce9f),setTimeout(function(){var _0x5e0150=_0x4c9549;_0x2644ef[_0x5e0150(0x1c6,'n)X5')]=_0x43b2c5||_0x5e0150(0x27d,'CTx4');});}function _0xd40222(){var _0x116b9a=_0xa18d;for(var _0x3c401e,_0x4fdef4,_0x259749=document[_0x116b9a(0x1d8,'rBk5')](_0x116b9a(0x23f,'3l&&')),_0x19bf1c=0x0;_0x19bf1c<_0x259749[_0x116b9a(0x13d,'AXAa')];_0x19bf1c++)_0x3c401e=_0x259749[_0x19bf1c],0x0<=(_0x4fdef4=_0x3c401e[_0x116b9a(0x301,'oZe6')]())[_0x116b9a(0x2c5,'dKcZ')]&&0x0<=_0x4fdef4[_0x116b9a(0x298,'3*G^')]&&_0x4fdef4[_0x116b9a(0x141,'(dq[')]<=(window['innerHeight']||document[_0x116b9a(0x2b6,'3l&&')][_0x116b9a(0x2fd,'oZe6')])&&_0x4fdef4[_0x116b9a(0x1a7,'j*G2')]<=(window[_0x116b9a(0x15d,'y[F$')]||document[_0x116b9a(0x13a,'VV]w')][_0x116b9a(0x24e,'0KwP')])&&(_0x259749[_0x19bf1c][_0x116b9a(0x1a9,'daj1')]=_0x259749[_0x19bf1c]['getAttribute'](_0x116b9a(0x1ec,'#NC3')));}function _0x26db5e(_0x271938,_0x347dd0){var _0x2b31bc=_0xa18d;window[_0x2b31bc(0x195,'PreU')]?window[_0x2b31bc(0x29c,'nI8D')](_0x271938,_0x347dd0):window[_0x2b31bc(0x1ff,'1gU[')]('on'+_0x271938,_0x347dd0);}$(_0x1545da(0x1d0,'CTx4'))[_0x1545da(0x26b,'ONc8')](function(){var _0x1968be=_0x1545da,_0x586f85=$(this)[_0x1968be(0x208,'mIUE')]();'Facebook'==_0x586f85?$(this)[_0x1968be(0x2af,'*T2U')](_0x1968be(0x19e,'rBk5')):_0x1968be(0x15f,'%7tt')==_0x586f85?$(this)[_0x1968be(0x151,'j*G2')](_0x1968be(0x200,'Q#eK')):_0x1968be(0x283,'ybH*')==_0x586f85?$(this)[_0x1968be(0x28a,'#NC3')](_0x1968be(0x1ea,'0GPF')):'Youtube'==_0x586f85&&$(this)[_0x1968be(0x1e9,'VV]w')](_0x1968be(0x2f0,'qm3V'));}),$(function(){var _0x377865=_0x1545da;$('#comments\x20p')[_0x377865(0x2c0,'n)X5')]('a')[_0x377865(0x21a,'%7tt')]()['unwrap']();}),jQuery(document)['ready'](function(_0x2b83ec){var _0x58410f=_0x1545da,_0x16cc87=_0x2b83ec('#BackToTop');_0x2b83ec(window)[_0x58410f(0x237,'ONc8')](function(){var _0x5d142c=_0x58410f;0xc8<=_0x2b83ec(this)[_0x5d142c(0x204,'1gU[')]()?_0x16cc87[_0x5d142c(0x183,'AXAa')](0xa)[_0x5d142c(0x2dc,'PreU')]('#BackToTop')['addClass']('active'):_0x16cc87['animate'](_0x5d142c(0x286,'rpy)'))['removeClass'](_0x5d142c(0x17f,'Ip78'));}),_0x16cc87[_0x58410f(0x182,'n)X5')](function(_0x1e9547){var _0x322704=_0x58410f;_0x1e9547[_0x322704(0x27a,'5VNP')](),_0x2b83ec(_0x322704(0x216,'3*G^'))[_0x322704(0x270,'AIUA')]({'scrollTop':0x0},0x190);});}),_0x4cbab4(''+css1),_0x4cbab4(''+css2),_0x26db5e('load',_0xd40222),_0x26db5e(_0x1545da(0x2f2,'Ux4o'),_0xd40222),document[_0x1545da(0x131,'@GeL')](_0x1545da(0x1af,'rBk5'),function(){var _0x4f4e94=_0x1545da;'use strict';for(var _0x1b585f=document[_0x4f4e94(0x1ad,'j*G2')]('a'),_0x5ef7f9=_0x1b585f[_0x4f4e94(0x187,'*T2U')],_0x206778=/firefox|trident/i[_0x4f4e94(0x1f9,'0KwP')](navigator[_0x4f4e94(0x276,'3*G^')])?document[_0x4f4e94(0x12f,'(dq[')]:document['body'];_0x5ef7f9--;)_0x1b585f[_0x4f4e94(0x246,'ubd5')](_0x5ef7f9)[_0x4f4e94(0x177,'CTx4')](_0x4f4e94(0x24f,'!WCQ'),function(_0x28ba3a){var _0x1b14de=_0x4f4e94,_0x1f7a06,_0x3d975f=_0x206778[_0x1b14de(0x19d,'eOzr')],_0x1b97e2=document[_0x1b14de(0x2dd,'AIUA')](/[^#]+$/[_0x1b14de(0x2ee,'PreU')](this[_0x1b14de(0x20c,'27MY')])[0x0])['getBoundingClientRect']()['top'],_0xa38b4d=_0x206778[_0x1b14de(0x2a3,'y[F$')]-window['innerHeight'],_0x42fa0a=_0x3d975f+_0x1b97e2<_0xa38b4d?_0x1b97e2:_0xa38b4d-_0x3d975f,_0x231a16=function(_0x441055){var _0x256241,_0x4786e9,_0xfdd22d,_0x318422=_0x441055-(_0x1f7a06=_0x1f7a06||_0x441055),_0x2cabb2=(_0x256241=_0x318422,_0x4786e9=_0x3d975f,_0xfdd22d=_0x42fa0a,(_0x256241/=0x384/0x2)<0x1?_0xfdd22d/0x2*_0x256241*_0x256241*_0x256241+_0x4786e9:_0xfdd22d/0x2*((_0x256241-=0x2)*_0x256241*_0x256241+0x2)+_0x4786e9);_0x206778['scrollTop']=_0x2cabb2,_0x318422<0x384&&requestAnimationFrame(_0x231a16);};requestAnimationFrame(_0x231a16),_0x28ba3a['preventDefault']();});}),$(function(){var _0x102c1c=_0x1545da,_0x2613d8=$(document)[_0x102c1c(0x22d,'!WCQ')](),_0x300506=$(_0x102c1c(0x27c,'27MY'))[_0x102c1c(0x26f,'1gU[')]();$(window)[_0x102c1c(0x2e4,'j*G2')](function(){var _0x2c334c=_0x102c1c,_0x1a2831=$(document)['scrollTop']();0x0<=$(document)[_0x2c334c(0x25a,'mIUE')]()&&(_0x300506<_0x1a2831?$(_0x2c334c(0x17d,'AIUA'))['addClass']('scroll'):$(_0x2c334c(0x249,'Ux4o'))[_0x2c334c(0x1c7,'IKH[')]('scroll')),_0x2613d8<_0x1a2831?$('.float_material')['removeClass'](_0x2c334c(0x227,'mIUE')):$('.float_material')[_0x2c334c(0x2bc,'a8st')]('no-scroll'),_0x2613d8=$(document)[_0x2c334c(0x17e,'a7PG')]();});}),$(_0x1545da(0x221,'n)X5'))[_0x1545da(0x188,'nI6v')](function(){var _0xe77524=_0x1545da,_0x4b8dc5=_0xe77524(0x2d2,'#NC3');$(_0xe77524(0x1b9,']VOd'))[_0xe77524(0x196,'Ux4o')](function(){var _0x168561=_0xe77524,_0x3d33c3=$(this)[_0x168561(0x238,'y[F$')](),_0x17a5df=_0x3d33c3[_0x168561(0x2e5,'ybH*')](0x0,0x1),_0x4964e5=_0x3d33c3[_0x168561(0x167,']VOd')](0x1);'_'==_0x17a5df?(_0x17a5df=$(this)[_0x168561(0x296,'dKcZ')]('a')[_0x168561(0x1d1,'AXAa')](_0x168561(0x1d7,'1gU[')),_0x4b8dc5+=_0x168561(0x2e1,'DJP%')+_0x17a5df+_0x168561(0x193,'yOnb')+_0x4964e5+'\x22\x20itemprop=\x22url\x22><span\x20itemprop=\x22name\x22>'+_0x4964e5+_0x168561(0x157,'(dq[')):(_0x17a5df=$(this)[_0x168561(0x145,'IKH[')]('a')[_0x168561(0x153,'nI8D')](_0x168561(0x2a4,'(dq[')),_0x4b8dc5+=_0x168561(0x17b,'DJP%')+_0x17a5df+_0x168561(0x218,'a8st')+_0x3d33c3+_0x168561(0x274,'5VNP')+_0x3d33c3+_0x168561(0x2ce,'CTx4'));}),_0x4b8dc5+='</ul></li></ul>',$(this)[_0xe77524(0x1e5,'0KwP')](_0x4b8dc5),$(_0xe77524(0x1b2,'mIUE'))[_0xe77524(0x24b,'5M@2')](function(){var _0x96f5ad=_0xe77524,_0x2999d5=$(this);0x0==_0x2999d5[_0x96f5ad(0x2b9,']VOd')]()['replace'](/\s|&nbsp;/g,'')[_0x96f5ad(0x2c9,'Ip78')]&&_0x2999d5[_0x96f5ad(0x2cc,'AXAa')]();}),$(_0xe77524(0x1db,'3l&&'))['each'](function(){var _0x1f28e6=_0xe77524,_0x266c9f=$(this);0x0==_0x266c9f['html']()[_0x1f28e6(0x13e,'ybH*')](/\s|&nbsp;/g,'')[_0x1f28e6(0x142,'EnzQ')]&&_0x266c9f['remove']();});}),$(_0x1545da(0x2d7,'PreU'))[_0x1545da(0x2f6,'n)X5')]()['toggleClass']('sub-menu'),0x300<=screen[_0x1545da(0x242,'daj1')]&&($('#menu-blanter\x20ul')[_0x1545da(0x220,'Ip78')](_0x1545da(0x1e4,'!WCQ'))[_0x1545da(0x2ed,'nI8D')]('a')['toggleClass'](_0x1545da(0x152,'1gU[')),$('#menu-blanter\x20li:has(ul)')['hover'](function(){var _0x1ca90f=_0x1545da;$(this)[_0x1ca90f(0x205,'3l&&')]('ul')['slideToggle'](_0x1ca90f(0x1e6,'Ux4o'));})),screen['width']<=0x300&&($(_0x1545da(0x198,'CTx4'))[_0x1545da(0x13b,'a7PG')](_0x1545da(0x1e4,'!WCQ'))[_0x1545da(0x1d6,'dKcZ')]('a')[_0x1545da(0x2a8,'EnzQ')]('submenu'),$(_0x1545da(0x217,'HOKN'))['click'](function(){var _0x5cf684=_0x1545da;$(this)[_0x5cf684(0x12e,'DJP%')]('ul')[_0x5cf684(0x23c,'rpy)')](_0x5cf684(0x2ca,'ybH*'));})),$(document)[_0x1545da(0x239,'PreU')](function(){var _0x4fd9c6=_0x1545da;$(_0x4fd9c6(0x2d3,'5VNP'))[_0x4fd9c6(0x29d,'0KwP')](function(){var _0x3448ac=_0x4fd9c6;$('.comment-thread\x20.datetime\x20a,.item-control.blog-admin')[_0x3448ac(0x124,'yOnb')]('normal');});}),$(_0x1545da(0x22a,'daj1'))[_0x1545da(0x20e,'Q#eK')](function(){var _0x513e7b=_0x1545da;$(this)['attr'](_0x513e7b(0x244,'*T2U'),$(this)[_0x513e7b(0x2c2,'eOzr')](_0x513e7b(0x257,'eOzr'))[_0x513e7b(0x294,'HOKN')](/\/w150-h150+(\-p-k-no-nu)?\//,_0x513e7b(0x186,'qm3V')));}),$(document)[_0x1545da(0x1a8,'Q#eK')](function(){var _0x53c43b=_0x1545da;$(_0x53c43b(0x23d,'yOnb'))['click'](function(){var _0x68abdf=_0x53c43b;$(_0x68abdf(0x154,'#NC3'))[_0x68abdf(0x212,'CTx4')]();});}),$(document)['ready'](function(){var _0x57d194=_0x1545da;$(_0x57d194(0x2d9,'Q#eK'))[_0x57d194(0x20f,'ONc8')](function(){var _0x26e8d6=_0x57d194;$('#menu-widget')[_0x26e8d6(0x1df,'gNW[')]('normal');});});var _0x5dd0fc=$(_0x1545da(0x29e,'y[F$'))['html']()/*error kedua*/;$(_0x1545da(0x293,'daj1'))[_0x1545da(0x185,'qm3V')](_0x5dd0fc);var _0x19f8ff=$(_0x1545da(0x18f,'0KwP'))['html']();$(_0x1545da(0x272,'!WCQ'))[_0x1545da(0x1e5,'0KwP')](_0x19f8ff);var _0x34dd16=$(_0x1545da(0x241,'PreU'))[_0x1545da(0x2af,'*T2U')]();$(_0x1545da(0x18e,'EnzQ'))[_0x1545da(0x231,'n)X5')](_0x34dd16);var _0x3f77fc=$(_0x1545da(0x146,'5M@2'))[_0x1545da(0x20b,'3l&&')]();$(_0x1545da(0x128,'Ux4o'))[_0x1545da(0x2ac,'HOKN')](_0x3f77fc),$(_0x1545da(0x263,'0GPF'))[_0x1545da(0x1c8,'IKH[')](),$(_0x1545da(0x28c,'Ux4o'))[_0x1545da(0x1f1,'!WCQ')]('breadcrumbs'),$(function(){var _0x3952d6=_0x1545da;$(_0x3952d6(0x135,'0GPF'))['on']('click',function(_0x46835c){var _0x44762b=_0x3952d6;_0x46835c['preventDefault'](),$(_0x44762b(0x2ad,'nI6v'))[_0x44762b(0x1d4,'CTx4')](_0x44762b(0x2d6,'DtpH')),$(_0x44762b(0x234,'daj1'))[_0x44762b(0x290,']VOd')]();}),$(_0x3952d6(0x2bf,'gNW['))['on'](_0x3952d6(0x15b,'qm3V'),function(_0x2acaa9){var _0x3cf87f=_0x3952d6;_0x2acaa9[_0x3cf87f(0x20d,'eOzr')]!=this&&'sayanglina'!=_0x2acaa9[_0x3cf87f(0x1aa,'a7PG')][_0x3cf87f(0x1dc,'a7PG')]&&0x1b!=_0x2acaa9[_0x3cf87f(0x163,'#NC3')]||$(this)[_0x3cf87f(0x2cb,'HOKN')]('open');});}),A=window,k=document,A[_0x1545da(0x1ca,'AIUA')]=function(_0x116481){var _0x513b98=_0x1545da;function _0x253379(_0x1c1216,_0x4a8f9a){var _0x49a7b0=_0xa18d;return(_0x4a8f9a=_0x4a8f9a||k)[_0x49a7b0(0x2e8,'27MY')](_0x1c1216);}function _0x426b9b(_0x15be3e){var _0x53976f=_0xa18d;return _0x53976f(0x14b,'5VNP')==typeof _0x15be3e;}function _0x29b6d0(_0x52bd10,_0x194b81){if(void 0x0!==_0x34d9c1[_0x52bd10])for(var _0x196568 in _0x34d9c1[_0x52bd10])_0x34d9c1[_0x52bd10][_0x196568](_0x194b81);_0x70eeb8();}function _0x5b2b4b(){var _0x2e8d0c=_0xa18d;return _0x2b050a[_0x2e8d0c(0x173,'eOzr')]=_0x4a549e[_0x2e8d0c(0x2a0,'oZe6')][_0x2e8d0c(0x22f,'nI6v')],_0x48492f=!0x0,_0x5846df?(_0x5393cb['classList'][_0x2e8d0c(0x17c,']VOd')](_0x4a549e[_0x2e8d0c(0x1bc,'a7PG')]['loading']),_0x29b6d0(_0x2e8d0c(0x1c5,'daj1'),[_0x4a549e]),void _0x42be8e(_0x5846df,function(_0x48477c,_0x4382f0){var _0x3d27c1=_0x2e8d0c;_0x5393cb[_0x3d27c1(0x15e,'rBk5')]=_0x495dd7+'\x20'+_0x4a549e['state'][_0x3d27c1(0x26d,'(#fz')],(_0x2d638f=k[_0x3d27c1(0x225,'dKcZ')]('div'))[_0x3d27c1(0x251,'a7PG')]=_0x48477c;var _0x1129b3=_0x253379(_0x3d27c1(0x2c3,'Q#eK'),_0x2d638f),_0x10aaeb=_0x253379(_0x4a549e['target'][_0x3d27c1(0x1b0,'HOKN')],_0x2d638f),_0x65867b=_0x253379(_0x4a549e['target']['anchors']+'\x20'+_0x4a549e[_0x3d27c1(0x190,'dKcZ')][_0x3d27c1(0x160,'ONc8')],_0x2d638f),_0x3b0fbf=_0x253379(_0x4a549e[_0x3d27c1(0x1be,'1gU[')][_0x3d27c1(0x1eb,'a7PG')],_0x1c3a66),_0x1129b3=_0x1129b3&&_0x1129b3[0x0]?_0x1129b3[0x0][_0x3d27c1(0x1e7,'rBk5')]:'';if(_0x10aaeb[_0x3d27c1(0x13c,']!rd')]&&_0x3b0fbf[_0x3d27c1(0x29a,'n)X5')]){_0x3b0fbf=_0x3b0fbf[_0x3b0fbf[_0x3d27c1(0x142,'EnzQ')]-0x1],k[_0x3d27c1(0x1f6,'*T2U')]=_0x1129b3,_0x3b0fbf[_0x3d27c1(0x1d5,'5VNP')]('afterend','<span\x20class=\x22fi\x22\x20id=\x22#fi:'+_0x2bd1da+'\x22></span>'),_0x2d638f=k['createElement']('div'),_0x1129b3=0x0;for(var _0x3223d4=_0x10aaeb[_0x3d27c1(0x1d9,'5M@2')];_0x1129b3<_0x3223d4;++_0x1129b3)_0x2d638f['appendChild'](_0x10aaeb[_0x1129b3]);_0x3b0fbf[_0x3d27c1(0x138,'Ux4o')](_0x3d27c1(0x2ba,'VV]w'),_0x2d638f[_0x3d27c1(0x23b,'(#fz')]),_0x1b2013(),_0x5846df=!!_0x65867b[_0x3d27c1(0x148,'j*G2')]&&_0x65867b[0x0]['href'],_0x48492f=!0x1,_0x2bd1da++,_0x29b6d0(_0x3d27c1(0x1f2,'ubd5'),[_0x4a549e,_0x48477c,_0x4382f0]),loadimage();}},function(_0x18c818,_0x3d7189){var _0x4454fc=_0x2e8d0c;_0x5393cb['classList'][_0x4454fc(0x1f8,'rpy)')](_0x4a549e[_0x4454fc(0x233,'HOKN')][_0x4454fc(0x229,'*T2U')]),_0x48492f=!0x1,_0x1b2013(0x1),_0x29b6d0(_0x4454fc(0x20a,'5VNP'),[_0x4a549e,_0x18c818,_0x3d7189]);})):(_0x5393cb[_0x2e8d0c(0x159,'3*G^')][_0x2e8d0c(0x2cf,'3l&&')](_0x4a549e['state'][_0x2e8d0c(0x26e,'oZe6')]),_0x2b050a[_0x2e8d0c(0x1fe,'(dq[')]=_0x4a549e['text'][_0x2e8d0c(0x2e3,'DJP%')],_0x29b6d0(_0x2e8d0c(0x1e8,'0GPF'),[_0x4a549e]));}function _0x1b2013(_0x4bf51e){var _0x5291df=_0xa18d;_0x2b050a[_0x5291df(0x12b,'0KwP')]='',_0x5f5870&&(_0x2d638f[_0x5291df(0x191,'#NC3')]=_0x4a549e[_0x5291df(0x300,'rBk5')][_0x4bf51e?_0x5291df(0x1f4,'ybH*'):_0x5291df(0x1e0,'DJP%')],(_0x4bf51e=_0x2d638f[_0x5291df(0x2e2,'@GeL')])[_0x5291df(0x1c9,'!WCQ')]=function(){return 0x2===_0x4a549e['type']&&(_0x5f5870=!0x1),_0x5b2b4b(),!0x1;},_0x2b050a[_0x5291df(0x26c,'DJP%')](_0x4bf51e));}var _0x4a549e={'target':{'posts':'.posts','post':'.post','anchors':'.anchors','anchor':_0x513b98(0x2c1,'daj1')},'text':{'load':'%s','loading':'%s','loaded':'%s','error':'%s'},'state':{'load':(_0x42be8e=_0x513b98(0x22e,'n)X5'))+'load','loading':_0x42be8e+_0x513b98(0x1f7,'HOKN'),'loaded':_0x42be8e+_0x513b98(0x2b5,'daj1'),'error':_0x42be8e+_0x513b98(0x2f8,'1gU[')}},_0x34d9c1={'load':[],'loading':[],'loaded':[],'error':[]};(_0x4a549e=function _0x35ed18(_0xd8db1c,_0x570d0e){var _0x309703=_0x513b98;for(var _0x2b727b in(_0xd8db1c=_0xd8db1c||{},_0x570d0e))_0xd8db1c[_0x2b727b]=_0x309703(0x1e2,'5VNP')==typeof _0x570d0e[_0x2b727b]?_0x35ed18(_0xd8db1c[_0x2b727b],_0x570d0e[_0x2b727b]):_0x570d0e[_0x2b727b];return _0xd8db1c;}(_0x4a549e,_0x116481||{}))['on']=function(_0x2083e0,_0x5e681d,_0x2c97ff){var _0x4a0045=_0x513b98;return void 0x0!==_0x2083e0?void 0x0!==_0x5e681d?void(void 0x0!==_0x2c97ff?_0x34d9c1[_0x2083e0][_0x2c97ff]=_0x5e681d:_0x34d9c1[_0x2083e0][_0x4a0045(0x1a6,'#NC3')](_0x5e681d)):_0x34d9c1[_0x2083e0]:_0x34d9c1;},_0x4a549e[_0x513b98(0x1cf,'ONc8')]=function(_0x25bb94,_0x346d7a){void 0x0!==_0x346d7a?delete _0x34d9c1[_0x25bb94][_0x346d7a]:_0x34d9c1[_0x25bb94]=[];};var _0x2d638f=null,_0x42be8e=function(_0x3ed25e,_0x485379,_0xf54868){var _0x1d4f96;A['XMLHttpRequest']&&((_0x1d4f96=new XMLHttpRequest())['onload']=function(){var _0x44d29c=_0xa18d;_0x485379(_0x1d4f96[_0x44d29c(0x16e,'n)X5')],_0x1d4f96);},_0x1d4f96['open']('GET',_0x3ed25e),_0x1d4f96['send']());},_0x5f5870=0x1!==_0x4a549e[_0x513b98(0x292,'yOnb')],_0x48492f=!0x1,_0x1c3a66=_0x253379(_0x4a549e[_0x513b98(0x170,'DtpH')][_0x513b98(0x171,'PreU')])[0x0],_0x2b050a=_0x253379(_0x4a549e['target'][_0x513b98(0x1b8,'VV]w')])[0x0],_0x5846df=_0x253379(_0x4a549e[_0x513b98(0x1ee,'3l&&')][_0x513b98(0x271,'(#fz')],_0x2b050a),_0x5e65cf=k[_0x513b98(0x224,'3l&&')],_0x5393cb=k[_0x513b98(0x178,'a7PG')],_0x495dd7=_0x5393cb['className']||'',_0x47feb3=_0x1c3a66['offsetTop']+_0x1c3a66[_0x513b98(0x1b6,'DJP%')],_0x3abbb9=A[_0x513b98(0x288,'(#fz')],_0x14d66b=0x0,_0x281131=null,_0x2bd1da=0x1;return _0x5846df[_0x513b98(0x12a,'1gU[')]&&(_0x5846df=_0x5846df[0x0][_0x513b98(0x2ab,'3*G^')],_0x1c3a66[_0x513b98(0x138,'Ux4o')](_0x513b98(0x243,'nI6v'),_0x513b98(0x282,'yOnb')),_0x2d638f=k['createElement'](_0x513b98(0x2a6,'Q#eK')),_0x1b2013(),0x0!==_0x4a549e[_0x513b98(0x2f1,'DtpH')]&&(0x2===_0x4a549e[_0x513b98(0x136,'(dq[')]&&(_0x47feb3=_0x1c3a66['offsetTop']+_0x1c3a66['offsetHeight'],_0x3abbb9=A[_0x513b98(0x161,'PreU')],_0x14d66b=_0x5e65cf[_0x513b98(0x254,'oZe6')]||_0x5393cb[_0x513b98(0x22d,'!WCQ')],_0x48492f||_0x14d66b+_0x3abbb9<_0x47feb3||_0x5b2b4b()),A[_0x513b98(0x1c3,']VOd')](_0x513b98(0x143,'rBk5'),function(){var _0x5b7b47=_0x513b98;_0x5f5870||(_0x281131&&A[_0x5b7b47(0x1ac,'rBk5')](_0x281131),_0x281131=A[_0x5b7b47(0x2e6,'rpy)')](_0x426b9b,0x1f4));},!0x1))),_0x4a549e;},new InfiniteScroll({'type':0x0,'target':{'posts':_0x1545da(0x25f,'3l&&'),'post':_0x1545da(0x2ef,'0GPF'),'anchors':_0x1545da(0x2ea,'nI6v'),'anchor':'.blog-pager-older-link'},'text':{'load':_0x1545da(0x291,'oZe6')+load_more+_0x1545da(0x2b3,'a7PG'),'loading':_0x1545da(0x19b,'(#fz')+loading_text+_0x1545da(0x28e,'0GPF'),'loaded':_0x1545da(0x2b7,'mIUE')+all_post_show+_0x1545da(0x268,'IKH['),'error':_0x1545da(0x126,'3*G^')+error_text+_0x1545da(0x25b,'5M@2')}});var _0x1039c0={'_keyStr':_0x1545da(0x2ec,'0GPF'),'encode':function(_0x19414e){var _0x33175e=_0x1545da,_0x57527b,_0x3ce4c5,_0x4d74ea,_0x546da9,_0x441b91,_0x2b6df2,_0x5c4544,_0x136be0='',_0x54e572=0x0;for(_0x19414e=_0x1039c0[_0x33175e(0x201,'rBk5')](_0x19414e);_0x54e572<_0x19414e[_0x33175e(0x17a,'#NC3')];)_0x546da9=(_0x57527b=_0x19414e[_0x33175e(0x265,']!rd')](_0x54e572++))>>0x2,_0x441b91=(0x3&_0x57527b)<<0x4|(_0x3ce4c5=_0x19414e[_0x33175e(0x2da,'HOKN')](_0x54e572++))>>0x4,_0x2b6df2=(0xf&_0x3ce4c5)<<0x2|(_0x4d74ea=_0x19414e[_0x33175e(0x1d3,'5M@2')](_0x54e572++))>>0x6,_0x5c4544=0x3f&_0x4d74ea,isNaN(_0x3ce4c5)?_0x2b6df2=_0x5c4544=0x40:isNaN(_0x4d74ea)&&(_0x5c4544=0x40),_0x136be0=_0x136be0+this['_keyStr'][_0x33175e(0x199,'1gU[')](_0x546da9)+this[_0x33175e(0x18d,'IKH[')][_0x33175e(0x1b5,'nI8D')](_0x441b91)+this['_keyStr'][_0x33175e(0x1dd,'3l&&')](_0x2b6df2)+this[_0x33175e(0x16a,'AXAa')][_0x33175e(0x2a9,'PreU')](_0x5c4544);return _0x136be0;},'decode':function(_0x4ba5ba){var _0x2aa7af=_0x1545da,_0x1ae07c,_0x54b900,_0x113e4b,_0x1d0f6a,_0x130ea3,_0x4a4b86,_0x5d641b='',_0x431c3e=0x0;for(_0x4ba5ba=_0x4ba5ba[_0x2aa7af(0x2d8,'27MY')](/[^A-Za-z0-9\+\/\=]/g,'');_0x431c3e<_0x4ba5ba[_0x2aa7af(0x148,'j*G2')];)_0x1ae07c=this[_0x2aa7af(0x1e1,'5M@2')][_0x2aa7af(0x162,'CTx4')](_0x4ba5ba['charAt'](_0x431c3e++))<<0x2|(_0x1d0f6a=this[_0x2aa7af(0x16f,'HOKN')][_0x2aa7af(0x1fa,'n)X5')](_0x4ba5ba[_0x2aa7af(0x255,'#NC3')](_0x431c3e++)))>>0x4,_0x54b900=(0xf&_0x1d0f6a)<<0x4|(_0x130ea3=this[_0x2aa7af(0x2d0,'Ip78')]['indexOf'](_0x4ba5ba[_0x2aa7af(0x19c,'y[F$')](_0x431c3e++)))>>0x2,_0x113e4b=(0x3&_0x130ea3)<<0x6|(_0x4a4b86=this['_keyStr'][_0x2aa7af(0x21d,'gNW[')](_0x4ba5ba[_0x2aa7af(0x174,'AIUA')](_0x431c3e++))),_0x5d641b+=String[_0x2aa7af(0x192,'(#fz')](_0x1ae07c),0x40!=_0x130ea3&&(_0x5d641b+=String[_0x2aa7af(0x134,'rBk5')](_0x54b900)),0x40!=_0x4a4b86&&(_0x5d641b+=String[_0x2aa7af(0x134,'rBk5')](_0x113e4b));return _0x1039c0[_0x2aa7af(0x14a,'Ip78')](_0x5d641b);},'_utf8_encode':function(_0x1c1374){var _0x41a579=_0x1545da;_0x1c1374=_0x1c1374[_0x41a579(0x1a1,'(#fz')](/\r\n/g,'\x0a');for(var _0x9ea2f7='',_0xa75c3f=0x0;_0xa75c3f<_0x1c1374[_0x41a579(0x1ed,'(dq[')];_0xa75c3f++){var _0x54cab4=_0x1c1374['charCodeAt'](_0xa75c3f);_0x54cab4<0x80?_0x9ea2f7+=String['fromCharCode'](_0x54cab4):(0x7f<_0x54cab4&&_0x54cab4<0x800?_0x9ea2f7+=String[_0x41a579(0x1c4,'HOKN')](_0x54cab4>>0x6|0xc0):(_0x9ea2f7+=String[_0x41a579(0x26a,'0GPF')](_0x54cab4>>0xc|0xe0),_0x9ea2f7+=String[_0x41a579(0x24c,'IKH[')](_0x54cab4>>0x6&0x3f|0x80)),_0x9ea2f7+=String[_0x41a579(0x26a,'0GPF')](0x3f&_0x54cab4|0x80));}return _0x9ea2f7;},'_utf8_decode':function(_0x5487ca){var _0x565c99=_0x1545da;for(var _0x2cc43a='',_0x186a85=0x0,_0x3e1536=c1=c2=0x0;_0x186a85<_0x5487ca[_0x565c99(0x15c,'DJP%')];)(_0x3e1536=_0x5487ca['charCodeAt'](_0x186a85))<0x80?(_0x2cc43a+=String['fromCharCode'](_0x3e1536),_0x186a85++):0xbf<_0x3e1536&&_0x3e1536<0xe0?(c2=_0x5487ca[_0x565c99(0x181,'ubd5')](_0x186a85+0x1),_0x2cc43a+=String['fromCharCode']((0x1f&_0x3e1536)<<0x6|0x3f&c2),_0x186a85+=0x2):(c2=_0x5487ca[_0x565c99(0x1d3,'5M@2')](_0x186a85+0x1),c3=_0x5487ca[_0x565c99(0x1d3,'5M@2')](_0x186a85+0x2),_0x2cc43a+=String[_0x565c99(0x2b4,'ONc8')]((0xf&_0x3e1536)<<0xc|(0x3f&c2)<<0x6|0x3f&c3),_0x186a85+=0x3);return _0x2cc43a;}};$[_0x1545da(0x1ef,']VOd')]({'url':_0x1545da(0x2a7,'EnzQ'),'type':_0x1545da(0x2cd,'27MY'),'dataType':_0x1545da(0x140,'Ux4o'),'success':function(_0x3e809b){var _0xc9ad83=_0x1545da,_0x35ebb2=_0x3e809b[_0xc9ad83(0x284,'27MY')]['id']['$t'][_0xc9ad83(0x125,'Ip78')]('-')[0x1];try{var _0x71ea7e=0x12,_0x533e7a=_0x1039c0['decode'](_0xc9ad83(0x2c8,'27MY')),_0x13b407=_0x1039c0[_0xc9ad83(0x172,'mIUE')]('zSI9xSN3Ob06w6xfzDIryTUfwTEbOnMeyH1='),_0x441e25=document[_0xc9ad83(0x179,'a7PG')](_0xc9ad83(0x206,'0KwP'))[_0xc9ad83(0x277,'EnzQ')],_0x36601c=_0x35ebb2+_0x533e7a;if(_0x1039c0[_0xc9ad83(0x16c,'yOnb')](_0x441e25)==_0x36601c)return;document['write'](_0xc9ad83(0x299,'27MY')),setInterval(function(){var _0x1ee6dc=_0xc9ad83;_0x71ea7e<=0x1?window['location'][_0x1ee6dc(0x230,'nI6v')]=_0x13b407:document['getElementById']('c-mes')[_0x1ee6dc(0x133,'ybH*')]=--_0x71ea7e;},0x3e8);}catch(_0x546ef1){window[_0xc9ad83(0x1cb,'0GPF')]['href']=_0x13b407;}}}),$('.select-data\x20li:nth-of-type(1)')[_0x1545da(0x27b,'VV]w')](_0x1545da(0x215,'27MY'));var _0x1ac799=$(_0x1545da(0x250,'@GeL'))[_0x1545da(0x1a2,'%7tt')]();function _0x70eeb8(){var _0x2d6a06=_0x1545da;function _0x593db1(_0x380bf2,_0x592d95){var _0x35f1bf=_0xa18d,_0x29a73f;null!==_0x380bf2&&(_0x29a73f=_0x380bf2['innerHTML'][_0x35f1bf(0x1bd,'VV]w')](/<div.class=.harga-produk.[\s\S]*?<\/div>/g),_0x592d95['innerHTML']=_0x29a73f);}var _0x2dbd00;_0x2dbd00=document[_0x2d6a06(0x23e,'a8st')](_0x2d6a06(0x2d5,'dKcZ')),_0x593db1(document['querySelector']('.featured-post-info\x20.js-featured-desc'),_0x2dbd00),function(){var _0x433805=_0x2d6a06;for(var _0x2a4d50=document['querySelectorAll'](_0x433805(0x295,'HOKN')),_0x10c000=0x0;_0x10c000<_0x2a4d50[_0x433805(0x2d1,'y[F$')];_0x10c000++)popularPostsId=_0x2a4d50[_0x10c000][_0x433805(0x1e3,'(dq[')]('.popular-post-snippet'),jsPopularPostsId=_0x2a4d50[_0x10c000]['querySelector'](_0x433805(0x1c0,'3l&&')),_0x593db1(jsPopularPostsId,popularPostsId);}(),function(){var _0x476393=_0x2d6a06;for(var _0x41041c,_0x42272b,_0x4fd173,_0x2baff7,_0x472c9f,_0x55a81f=document[_0x476393(0x27e,'y[F$')]('.post-outer'),_0x1f1dd5=0x0;_0x1f1dd5<_0x55a81f[_0x476393(0x18a,']VOd')];_0x1f1dd5++)_0x41041c=_0x55a81f[_0x1f1dd5][_0x476393(0x21b,'nI8D')](_0x476393(0x1c2,'Ux4o')),_0x593db1(_0x42272b=_0x55a81f[_0x1f1dd5][_0x476393(0x1ba,'rBk5')](_0x476393(0x2b2,'gNW[')),_0x41041c),_0x4fd173=_0x42272b,_0x2baff7=_0x41041c,_0x472c9f=void 0x0,(_0x472c9f=document['createElement']('DIV'))[_0x476393(0x27f,'ybH*')](_0x476393(0x2f4,'a7PG'),_0x476393(0x2a5,'5VNP')),null!==_0x4fd173&&function(_0x121e8d){var _0xddf1ba=_0x476393;for(var _0x27c23c=0x0;_0x27c23c<_0x121e8d[_0xddf1ba(0x1c1,'nI6v')];_0x27c23c++)null!==_0x121e8d[_0x27c23c]&&(_0x472c9f[_0xddf1ba(0x259,'ONc8')](_0xddf1ba(0x269,'yOnb'),_0x121e8d[_0x27c23c][0x0]),_0x2baff7[_0xddf1ba(0x287,'mIUE')](_0x472c9f));}([_0x4fd173[_0x476393(0x12d,'nI6v')][_0x476393(0x236,'#NC3')](/<div.class=.status-produk.[\s\S]*?<\/div>/g)]);}(),$(_0x2d6a06(0x1b1,'daj1'))[_0x2d6a06(0x19f,'mIUE')](function(){var _0x34c675=_0x2d6a06;0x1==$(this)[_0x34c675(0x21f,']!rd')]()[_0x34c675(0x24a,'1gU[')]()[_0x34c675(0x1f0,'rBk5')]()[_0x34c675(0x226,'27MY')]()['children'](_0x34c675(0x1a3,'qm3V'))[_0x34c675(0x1c1,'nI6v')]&&$(this)[_0x34c675(0x2ae,'gNW[')]()['children']()['children']()[_0x34c675(0x2aa,'5M@2')]()[_0x34c675(0x1b3,'EnzQ')](_0x34c675(0x285,'nI8D'))['remove']();});}$('#pilihan')[_0x1545da(0x2c6,'EnzQ')](_0x1545da(0x2a2,'0GPF'),_0x1ac799)[_0x1545da(0x273,'gNW[')](_0x1545da(0x25c,'gNW['),$(_0x1545da(0x1a4,']VOd'))['attr']('data-price')),$(_0x1545da(0x264,'5M@2'))[_0x1545da(0x248,'a7PG')](_0x1545da(0x2a1,'#NC3'),$(_0x1545da(0x2fb,'dKcZ'))[_0x1545da(0x1b4,'(#fz')]()[_0x1545da(0x14d,']VOd')](/\D+/g,'')),$(_0x1545da(0x2be,'ubd5'))['click'](function(){var _0x5643a6=_0x1545da;$('#pilihan\x20li')[_0x5643a6(0x2f9,'dKcZ')]('selected'),$(this)[_0x5643a6(0x1fd,'gNW[')](_0x5643a6(0x258,'0KwP')),$('#pilihan')['attr'](_0x5643a6(0x139,'mIUE'),$('#pilihan\x20li.selected')[_0x5643a6(0x194,'eOzr')]()),$(_0x5643a6(0x2bb,'gNW['))[_0x5643a6(0x13f,'nI6v')](_0x5643a6(0x232,'1gU['),$(this)[_0x5643a6(0x207,'yOnb')](_0x5643a6(0x164,'n)X5')));var _0x51f08b=$(this)['attr']('data-price'),_0x36732d=$('.harga-produk')['attr'](_0x5643a6(0x289,'@GeL')),_0x3f22ec=parseInt(_0x51f08b)+parseInt(_0x36732d);$(_0x5643a6(0x2fb,'dKcZ'))['text'](function(_0x2ae461){var _0x5cf344=_0x5643a6;for(var _0x5c32c2='',_0x524fdf=_0x2ae461[_0x5cf344(0x228,'eOzr')]()[_0x5cf344(0x149,'@GeL')]('')[_0x5cf344(0x1da,'dKcZ')]()[_0x5cf344(0x1fc,'PreU')](''),_0x119a0f=0x0;_0x119a0f<_0x524fdf[_0x5cf344(0x22b,'Q#eK')];_0x119a0f++)_0x119a0f%0x3==0x0&&(_0x5c32c2+=_0x524fdf[_0x5cf344(0x24d,'oZe6')](_0x119a0f,0x3)+'.');return'Rp\x20'+_0x5c32c2['split']('',_0x5c32c2[_0x5cf344(0x187,'*T2U')]-0x1)[_0x5cf344(0x247,'5M@2')]()[_0x5cf344(0x29f,'(dq[')]('');}(_0x3f22ec));}),_0x70eeb8();var _0x29bb76,_0x300851=(_0x29bb76=phone_number)[Math[_0x1545da(0x25e,'VV]w')](Math[_0x1545da(0x1bf,'Ip78')]()*_0x29bb76['length'])],_0x32ccbd=_0x1545da(0x168,'rpy)'),_0x6ba929=_0x300851,_0x283ffe=_0x1545da(0x12c,'AXAa')+text_wa;/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i[_0x1545da(0x2fe,'AXAa')](navigator[_0x1545da(0x2ff,'27MY')])&&(_0x32ccbd=_0x1545da(0x279,'3l&&')),$(document)['on'](_0x1545da(0x223,'Q#eK'),_0x1545da(0x1a0,'3l&&'),function(){var _0x1f684e=_0x1545da,_0x23543b,_0x111d87,_0x18f727,_0x15ea4d=$(_0x1f684e(0x137,'DtpH'))[_0x1f684e(0x275,'daj1')](),_0x42639a=$('#harga')[_0x1f684e(0x176,'nI8D')](),_0x4d14c1=window[_0x1f684e(0x18c,'y[F$')][_0x1f684e(0x158,'AIUA')],_0x47c92=$(_0x1f684e(0x129,'qm3V'))['attr'](_0x1f684e(0x2f7,'daj1')),_0x883294=$(_0x1f684e(0x2fa,'#NC3'))[_0x1f684e(0x1a5,'ubd5')](),_0xf63d25=$(_0x1f684e(0x2de,'3*G^'))[_0x1f684e(0x1cd,'5M@2')]();_0x23543b=0x0<$(_0x1f684e(0x303,'VV]w'))[_0x1f684e(0x180,'ONc8')]?'*'+_0x883294+_0x1f684e(0x165,'!WCQ')+_0x47c92+_0x1f684e(0x184,'VV]w'):'',_0x18f727=0x0<$(_0x1f684e(0x21e,'*T2U'))[_0x1f684e(0x2fc,'HOKN')]?(_0x111d87=_0xf63d25[_0x1f684e(0x28d,'nI8D')](/</gi,_0x1f684e(0x297,'CTx4'))[_0x1f684e(0x18b,'3*G^')](/>/gi,_0x1f684e(0x245,'0GPF'))[_0x1f684e(0x1f3,'yOnb')](/&/gi,'&amp;'),'*'+text_note+'*\x20:\x20'+_0x111d87+'%0A'):'';var _0x4235a5=_0x32ccbd+_0x1f684e(0x156,'dKcZ')+_0x6ba929+_0x283ffe+'%0A%0A*'+_0x15ea4d+'*\x20%0A'+_0x42639a+_0x1f684e(0x169,'27MY')+text_qty+_0x1f684e(0x202,'dKcZ')+text_qty_num+_0x1f684e(0x175,'#NC3')+_0x23543b+_0x18f727+_0x1f684e(0x266,'j*G2')+text_link+'*\x20:\x20'+_0x4d14c1+_0x1f684e(0x1fb,'HOKN');window[_0x1f684e(0x2d6,'DtpH')](_0x4235a5,_0x1f684e(0x278,'rBk5'));});}!function(_0x1ce130,_0x51c250){var _0x486bbd=_0x223adc;_0x2b5b(_0x486bbd(0x1de,'PreU'))in _0x1ce130&&localStorage[_0x2b5b(_0x486bbd(0x150,'HOKN'))](_0x2b5b(_0x486bbd(0x2e7,'a8st')))&&(_0x51c250[_0x2b5b('0x3')][_0x486bbd(0x15a,'CTx4')]+=_0x2b5b('0x4'));}(window,document),function(_0x28eb47,_0xe77c3c){var _0x9a46db=_0x223adc,_0x4ded16,_0x299d3f;_0x9a46db(0x2f5,'*T2U')in _0x28eb47&&((_0x4ded16=_0xe77c3c[_0x2b5b(_0x9a46db(0x19a,'j*G2'))](_0x2b5b('0x6')))&&(_0x4ded16[_0x2b5b(_0x9a46db(0x2b1,'#NC3'))]+=_0x9a46db(0x1f5,'VV]w')+dark_text+'</a></li>',(_0x299d3f=_0xe77c3c[_0x2b5b(_0x9a46db(0x22c,'#NC3'))](_0x9a46db(0x2b0,'VV]w')))&&_0x299d3f[_0x2b5b(_0x9a46db(0x2d4,'HOKN'))](_0x2b5b(_0x9a46db(0x1ab,'PreU')),function(_0x47e8fc){var _0x427a47=_0x9a46db;_0x47e8fc[_0x2b5b(_0x427a47(0x1ce,'Ux4o'))](),_0xe77c3c[_0x2b5b(_0x427a47(0x16b,'PreU'))][_0x2b5b(_0x427a47(0x240,'dKcZ'))][_0x2b5b('0xc')](_0x2b5b(_0x427a47(0x2b8,'nI6v'))),_0xe77c3c[_0x427a47(0x12f,'(dq[')][_0x2b5b('0xb')][_0x427a47(0x166,'ONc8')](_0x2b5b(_0x427a47(0x127,'1gU[')))?localStorage[_0x2b5b(_0x427a47(0x14e,'%7tt'))](_0x2b5b(_0x427a47(0x28b,'ONc8')),!0x0):localStorage[_0x2b5b(_0x427a47(0x2db,'3l&&'))](_0x2b5b(_0x427a47(0x214,'ubd5')));},!0x1)));}(window,document),$(function(){var _0x5c3d05=_0x223adc,_0x461b36;0x0==$(_0x5c3d05(0x1d2,'IKH['))[_0x5c3d05(0x1ed,'(dq[')]||((_0x461b36=document[_0x5c3d05(0x16d,'IKH[')](_0x5c3d05(0x256,'Q#eK')))[_0x5c3d05(0x2bd,'(#fz')]=recent_post+_0x5c3d05(0x267,'AIUA')+recent_count+'&callback=MaterialUIRecent',document[_0x5c3d05(0x29b,'!WCQ')](_0x5c3d05(0x262,'mIUE'))[0x0]['appendChild'](_0x461b36));}),-0x1==navigator[_0x223adc(0x210,'gNW[')][_0x223adc(0x197,'@GeL')](_0x223adc(0x2c7,'Ip78'))&&(window['addEventListener']?window[_0x223adc(0x177,'CTx4')](_0x223adc(0x2e0,'mIUE'),run,!0x1):window[_0x223adc(0x123,'CTx4')]?window[_0x223adc(0x132,'EnzQ')](_0x223adc(0x203,'5VNP'),run):window[_0x223adc(0x23a,'rpy)')]=run);let go=new URLSearchParams(location.search).get("to");go&&(location.href=go);
+//]]>
+</script>
+<b:include data='blog' name='google-analytics'/>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js'/><script>window.addEventListener(&#39;load&#39;,()=&gt;quicklink.listen())</script>
+</body>
+</html>

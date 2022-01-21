@@ -7,7 +7,7 @@
     <script src="vue.js"></script>
   </head>
   <body>
-    <section class="header">
+    <header class="header">
       <section class="menu app" v-cloak>
         <nav class="tombol-menu" @click="tampil_menu = true">
           {% include './icon/menu.html' %}
@@ -16,11 +16,11 @@
           <section @click="tampil_menu = false" class="latar-hitam"></section>
           <nav class="menunya">
             <ol>
-              <li><a href="/">Satu</a></li>
-              <li><a href="/">_Dua</a></li>
-              <li><a href="/">_Tiga</a></li>
-              <li><a href="/">Empat</a></li>
-              <li><a href="/">Lima</a></li>
+              <li><a href="/" @vue:mounted="olah_menu($el)">Satu</a></li>
+              <li><a href="/" @vue:mounted="olah_menu($el)">_Dua</a></li>
+              <li><a href="/" @vue:mounted="olah_menu($el)">_Tiga</a></li>
+              <li><a href="/" @vue:mounted="olah_menu($el)">Empat</a></li>
+              <li><a href="/" @vue:mounted="olah_menu($el)">Lima</a></li>
             </ol>
           </nav>
         </section>
@@ -30,24 +30,63 @@
           <a href="/">Cuap Cuap</a>
         </h1>
       </section>
-      <section class="cari">{% include './icon/cari.html' %}</section>
-    </section>
+      <section class="cari app" v-cloak>
+        <nav class="tombol-cari" @click="tampil_cari = true">
+          {% include './icon/cari.html' %}
+        </nav>
+        <section v-if="tampil_cari == true">
+          <section @click="tampil_cari = false" class="latar-putih"></section>
+          <section class="mau-cari">
+            <center>
+              <form action="/search">
+                <h2>Cari Apa?</h2>
+                <input
+                  @vue:mounted="$el.focus()"
+                  type="search"
+                  name="q"
+                  required
+                />
+              </form>
+            </center>
+          </section>
+        </section>
+      </section>
+    </header>
     {% block isi %}{% endblock %}
-
+    <footer class="credit">Download <a href="/">Template MinMax</a></footer>
     <script>
       PetiteVue.createApp({
-        tampil_menu: true,
+        tampil_menu: false,
+        olah_menu(x) {
+          if (x.innerText.match(/_.*/)) {
+            x.classList.add("anak")
+            x.innerText = x.innerText.replace(/^_(.*)/, "$1")
+          }
+        },
       }).mount(".menu.app")
+
+      PetiteVue.createApp({
+        tampil_cari: false,
+      }).mount(".cari.app")
     </script>
   </body>
 </html>
 
 <style lang="windi">
+  * {
+    @apply focus:!outline-none;
+  }
+  .credit {
+    @apply p-3 bg-black text-white w-full text-sm text-center
+  }
+  .credit a {
+    @apply underline
+  }
   [v-cloak]{
     @apply hidden
   }
   .header {
-    @apply bg-green-300 flex justify-between sticky top-0 left-0
+    @apply bg-green-300 flex justify-between sticky top-0 left-0 border-b-green-500 border-b-3
   }
   .menu, .cari {
     @apply p-2 text-lg
@@ -55,19 +94,46 @@
   .tombol-menu, .cari, .latar-hitam {
     @apply cursor-pointer select-none
   }
+  .tombol-menu, .cari, .judul {
+    @apply text-gray-600
+  }
+  .judul {
+    @apply w-full
+  }
   .judul a {
     @apply p-2 block text-sm text-center
   }
   .latar-hitam {
-    @apply bg-black/30 w-full h-screen fixed top-0 left-0 backdrop-filter backdrop-blur
+    @apply bg-black/50
+  }
+  .latar-putih {
+    @apply bg-white/50
+  }
+  .latar-hitam, .latar-putih {
+    @apply w-full h-screen fixed top-0 left-0 backdrop-filter backdrop-blur
+  }
+  .mau-cari {
+    @apply fixed top-0 left-0 p-3 mt-30 w-full
+  }
+  .mau-cari form {
+    @apply mx-auto block
+  }
+  .mau-cari [type='search'] {
+    @apply border border-b-black bg-transparent border-t-transparent border-l-transparent border-r-transparent text-sm py-1 w-[80%] mt-10
   }
   .menunya {
-    @apply bg-white w-70 max-w-[70%] h-screen fixed top-0 left-0
+    @apply bg-white w-70 max-w-[70%] h-screen fixed top-0 left-0 text-gray-600 overflow-auto
   }
   .menunya ol {
     @apply p-5 text-base
   }
   .menunya li {
     @apply pb-3
+  }
+  .menunya a:not(.anak) {
+    @apply font-bold
+  }
+  .menunya a.anak {
+    @apply pl-3
   }
 </style>
