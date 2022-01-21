@@ -4,6 +4,7 @@
   <img src="gambar.jpg" alt="" class="cover-postingan" />
 
   <h1 class="judul-artikel">judul</h1>
+
   <article class="konten">
     @markdown
 			## h2
@@ -44,7 +45,36 @@ tiga</code></pre>
 		@endmarkdown
   </article>
 
+  <section class="list-komentar app">
+  	<section class="isi-komentar" v-for='x in Array(3)'>
+  		<img src="gambar.jpg" alt="" />
+  		<section class="konten-komentar">
+	  		<h2>Orang</h2>
+	  		<p>Isi komentar</p>
+  		</section>
+  	</section>
+  </section>
+
+  <script>
+  	PetiteVue.createApp({
+  		
+  	}).mount('.list-komentar.app')
+  </script>
+
   <style lang="windi">
+  	.list-komentar {
+  		@apply p-3
+  	}
+  	.isi-komentar {
+  		@apply flex pb-3 text-sm gap-2
+  	}
+  	.isi-komentar h2 {
+  		@apply font-bold
+  	}
+  	.isi-komentar img {
+  		@apply w-15 h-15;
+  	}
+
     .cover-postingan {
     	@apply w-full;
     	object-fit: cover;
@@ -55,7 +85,11 @@ tiga</code></pre>
     	font-family: cursive;
     }
     .konten {
-    	@apply p-5
+    	@apply p-5 py-0
+    }
+    [imageanchor] {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
     }
     .konten :where(h2, h3, h4, h5, h6) {
     	@apply font-bold

@@ -41,19 +41,19 @@
   </head>
   <body>
     <header class="header">
-      <section class="menu app" v-cloak>
-        <nav class="tombol-menu" @click="tampil_menu = true">
+      <section class="menu app" v-cloak="true">
+        <nav class="tombol-menu" v-on:click="tampil_menu = true">
           {% include './icon/menu.html' %}
         </nav>
         <section v-if="tampil_menu == true">
-          <section @click="tampil_menu = false" class="latar-hitam"></section>
+          <section v-on:click="tampil_menu = false" class="latar-hitam"></section>
           <nav class="menunya">
             <ol>
-              <li><a href="/" @vue:mounted="olah_menu($el)">Satu</a></li>
-              <li><a href="/" @vue:mounted="olah_menu($el)">_Dua</a></li>
-              <li><a href="/" @vue:mounted="olah_menu($el)">_Tiga</a></li>
-              <li><a href="/" @vue:mounted="olah_menu($el)">Empat</a></li>
-              <li><a href="/" @vue:mounted="olah_menu($el)">Lima</a></li>
+              <li><a href="/" v-on:vue:mounted="olah_menu($el)">Satu</a></li>
+              <li><a href="/" v-on:vue:mounted="olah_menu($el)">_Dua</a></li>
+              <li><a href="/" v-on:vue:mounted="olah_menu($el)">_Tiga</a></li>
+              <li><a href="/" v-on:vue:mounted="olah_menu($el)">Empat</a></li>
+              <li><a href="/" v-on:vue:mounted="olah_menu($el)">Lima</a></li>
             </ol>
           </nav>
         </section>
@@ -63,21 +63,21 @@
           <a href="/">Cuap Cuap</a>
         </h1>
       </section>
-      <section class="cari app" v-cloak>
-        <nav class="tombol-cari" @click="tampil_cari = true">
+      <section class="cari app" v-cloak="true">
+        <nav class="tombol-cari" v-on:click="tampil_cari = true">
           {% include './icon/cari.html' %}
         </nav>
         <section v-if="tampil_cari == true">
-          <section @click="tampil_cari = false" class="latar-putih"></section>
+          <section v-on:click="tampil_cari = false" class="latar-putih"></section>
           <section class="mau-cari">
             <center>
               <form action="/search">
                 <h2>Cari Apa?</h2>
                 <input
-                  @vue:mounted="$el.focus()"
+                  v-on:vue:mounted="$el.focus()"
                   type="search"
                   name="q"
-                  required
+                  required="true"
                 />
               </form>
             </center>
@@ -102,12 +102,51 @@
         tampil_cari: false,
       }).mount(".cari.app")
     </script>
+
+    <h2></h2>
+    <h3></h3>
+    <h4></h4>
+    <h5></h5>
+    <h6></h6>
+    <p></p>
+    <ol>
+      <li></li>
+    </ol>
+    <ul>
+      <li></li>
+    </ul>
+    <hr />
+    <br />
+
   </body>
 </html>
 
 <style lang="windi">
+
+  .konten h2 {
+    @apply text-2xl
+  }
+  .konten h3 {
+    @apply text-xl
+  }
+  .konten h4 {
+    @apply text-lg
+  }
+  .konten :where(h2, h3, h4, h5, h6, p, ol, ul, hr, br) {
+    @apply mb-3
+  }
+  .konten ul li {
+    @apply ml-5 list-disc
+  }
+  .konten code {
+    @apply text-red-500
+  }
+
   * {
     @apply focus:!outline-none;
+  }
+  img {
+    @apply max-w-full h-auto;
   }
   .credit {
     @apply p-3 bg-black text-white w-full text-sm text-center
@@ -115,13 +154,13 @@
   .credit a {
     @apply underline
   }
-  [v-cloak]{
+  [v-cloak="true"]{
     @apply hidden
   }
   .header {
     @apply bg-green-300 flex justify-between sticky top-0 left-0 border-b-green-500 border-b-3
   }
-  .menu, .cari {
+  .tombol-menu, .cari {
     @apply p-2 text-lg
   }
   .tombol-menu, .cari, .latar-hitam {
@@ -134,7 +173,8 @@
     @apply w-full
   }
   .judul a {
-    @apply p-2 block text-sm text-center
+    @apply p-2 block text-sm text-center w-min mx-auto;
+    white-space: nowrap;
   }
   .latar-hitam {
     @apply bg-black/50

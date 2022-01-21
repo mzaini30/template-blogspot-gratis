@@ -1,7 +1,3 @@
 icon: https://icones.netlify.app/collection/vaadin?s=
 
-Ubah @ menjadi v-on:
-Ubah var(--tw-empty) menjadi var(--tw-empty,/*!*/ /*!*/)
-attribute nggak boleh kosong
-
 <html b:css='false' lang="id">
