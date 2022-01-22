@@ -636,7 +636,12 @@
             <nav class="postingan">
               <b:loop values='data:posts' var='post'>
                 <a expr:href="data:post.url"
-                  ><img expr:src="data:post.firstImageUrl" class="thumbnail-postingan" expr:alt="data:post.title" />
+                  >
+                  <b:if cond="data:post.firstImageUrl">
+                    <img expr:src="data:post.firstImageUrl" class="thumbnail-postingan" expr:alt="data:post.title" />
+                  <b:else />
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhWZZFHGaaMxJRuW7wIMcHxI-gyhq3j9ABJxnSOr4cCfqFlcyCzpsCkIOqhirja9K_XNAfAOZ_lWen7F1hfTq8Y83q_7_W-D7V-0ChXrztzuMaCTe1aztwmNk59bl0qEQuXrVcuqf1te7OrLy6Z5D9_kMsNtsamKeyfdA9zavs5BKrc9LHDZFGWV2h-=w400-h225" class="thumbnail-postingan" expr:alt="data:post.title" />
+                  </b:if>
                   <section class="ringkasan-konten">
                     <h2><data:post.title/></h2>
                     <p><data:post.snippet/></p>
@@ -652,7 +657,11 @@
           <b:else/>
             <!-- blog konten -->
             <b:loop values='data:posts' var='post'>
-              <img expr:src="data:post.firstImageUrl" expr:alt="data:post.title" class="cover-postingan" />
+              <b:if cond="data:post.firstImageUrl">
+                <img expr:src="data:post.firstImageUrl" class="cover-postingan" expr:alt="data:post.title" />
+              <b:else />
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhWZZFHGaaMxJRuW7wIMcHxI-gyhq3j9ABJxnSOr4cCfqFlcyCzpsCkIOqhirja9K_XNAfAOZ_lWen7F1hfTq8Y83q_7_W-D7V-0ChXrztzuMaCTe1aztwmNk59bl0qEQuXrVcuqf1te7OrLy6Z5D9_kMsNtsamKeyfdA9zavs5BKrc9LHDZFGWV2h-=w400-h225" class="cover-postingan" expr:alt="data:post.title" />
+              </b:if>
               <h1 class="judul-artikel"><data:post.title /></h1>
               <article class="konten">
                 <data:post.body />
