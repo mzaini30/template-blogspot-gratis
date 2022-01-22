@@ -3,7 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title><data:blog.pageTitle/></title>
+
+    <b:if cond='data:blog.pageName'>
+      <title><data:blog.pageName/></title>
+      <meta property="og:title" expr:content="data:blog.pageName" />
+      <meta property="twitter:title" expr:content="data:blog.pageName" />
+    <b:else />      
+      <title><data:blog.pageTitle/></title>
+      <meta property="og:title" expr:content="data:blog.pageTitle" />
+      <meta property="twitter:title" expr:content="data:blog.pageTitle" />
+    </b:if>
 
     <b:if cond="data:blog.metaDescription">
       <meta
@@ -54,11 +63,9 @@
     </b:if>
     
     <link rel="canonical" expr:href="data:blog.canonicalUrl" />
-    <meta property="og:title" expr:content="data:blog.pageTitle" />
     <meta property="og:url" expr:content="data:blog.canonicalUrl" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="article" />
-    <meta property="twitter:title" expr:content="data:blog.pageTitle" />
     <meta property="twitter:card" content="summary_large_image" />
     <b:skin>
       <![CDATA[
