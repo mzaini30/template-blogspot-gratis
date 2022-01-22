@@ -62,6 +62,26 @@
     <meta property="twitter:card" content="summary_large_image" />
     <b:skin>
       <![CDATA[
+
+      /*
+      <Group description='Size Konten'>
+        <Variable name="konten.judul" description="Ukuran Judul" type="length" min="1px" max="100px" default="24px" value="24px"/>
+        <Variable name="konten.h2" description="Ukuran h2" type="length" min="1px" max="100px" default="24px" value="24px"/>
+        <Variable name="konten.h3" description="Ukuran h3" type="length" min="1px" max="100px" default="20px" value="20px"/>
+        <Variable name="konten.h4" description="Ukuran h4" type="length" min="1px" max="100px" default="18px" value="18px"/>
+        <Variable name="konten.p" description="Ukuran p" type="length" min="1px" max="100px" default="16px" value="16px"/>
+      </Group>
+      <Group description='Header'>
+        <Variable name="header.warna" description="Warna" type="color" default="rgb(110, 231, 183)" value="rgb(110, 231, 183)"/>
+        <Variable name="header.warna.border.bawah" description="Warna Border Bawah" type="color" default="rgb(16, 185, 129)" value="rgb(16, 185, 129)"/>
+        <Variable name="header.warna.teks" description="Warna Teks" type="color" default="rgb(75, 85, 99)" value="rgb(75, 85, 99)"/>
+      </Group>
+      <Group description='Credit'>
+        <Variable name="credit.warna" description="Warna" type="color" default="rgb(0, 0, 0)" value="rgb(0, 0, 0)"/>
+        <Variable name="credit.warna.teks" description="Warna Teks" type="color" default="rgb(255, 255, 255)" value="rgb(255, 255, 255)"/>
+      </Group>
+      */
+
       *,
       ::after,
       ::before {
@@ -81,9 +101,9 @@
         --tw-shadow: 0 0 #0000;
       }
       :root {
-        -moz-tab-size: 4;
-        -o-tab-size: 4;
-        tab-size: 4;
+        -moz-tab-size: 2;
+        -o-tab-size: 2;
+        tab-size: 2;
       }
       :-moz-focusring {
         outline: 1px dotted ButtonText;
@@ -195,15 +215,15 @@
         vertical-align: middle;
       }
       .konten h2 {
-        font-size: 1.5rem;
+        font-size: $(konten.h2);
         line-height: 2rem;
       }
       .konten h3 {
-        font-size: 1.25rem;
+        font-size: $(konten.h3);
         line-height: 1.75rem;
       }
       .konten h4 {
-        font-size: 1.125rem;
+        font-size: $(konten.h4);
         line-height: 1.75rem;
       }
       .konten :where(h2, h3, h4, h5, h6, p, ol, ul, hr, br) {
@@ -227,13 +247,13 @@
       }
       .credit {
         --tw-bg-opacity: 1;
-        background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+        background-color: $(credit.warna);
         font-size: 0.875rem;
         line-height: 1.25rem;
         padding: 0.75rem;
         text-align: center;
         --tw-text-opacity: 1;
-        color: rgba(255, 255, 255, var(--tw-text-opacity));
+        color: $(credit.warna.teks);
         width: 100%;
       }
       .credit a {
@@ -245,9 +265,9 @@
       }
       .header {
         --tw-bg-opacity: 1;
-        background-color: rgba(110, 231, 183, var(--tw-bg-opacity));
+        background-color: $(header.warna);
         --tw-border-opacity: 1;
-        border-bottom-color: rgba(16, 185, 129, var(--tw-border-opacity));
+        border-bottom-color: $(header.warna.border.bawah);
         border-bottom-width: 3px;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -281,7 +301,7 @@
       .judul,
       .tombol-menu {
         --tw-text-opacity: 1;
-        color: rgba(75, 85, 99, var(--tw-text-opacity));
+        color: $(header.warna.teks);
       }
       .judul {
         width: 100%;
@@ -435,7 +455,7 @@
         aspect-ratio: 10/4;
       }
       .judul-artikel {
-        font-size: 1.5rem;
+        font-size: $(konten.judul);
         line-height: 2rem;
         padding: 1.25rem;
         text-align: center;
@@ -480,6 +500,7 @@
         width: 3.75rem;
       }
       
+      /*tambahan*/
       #layout .latar-putih {
         display: none;
       }
@@ -505,6 +526,13 @@
       }
       .konten a {
         text-decoration: underline;
+      }
+      .isi-komentar .vcard {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+      .konten p {
+        font-size: $(konten.p);
       }
       ]]>
     </b:skin>
