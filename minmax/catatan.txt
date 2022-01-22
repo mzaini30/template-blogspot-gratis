@@ -1,3 +1,4 @@
-icon: https://icones.netlify.app/collection/vaadin?s=
+icon: 
+https://icones.netlify.app/collection/vaadin?s=
 
 <html b:css='false' lang="id">

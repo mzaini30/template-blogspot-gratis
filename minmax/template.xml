@@ -541,12 +541,28 @@
       .konten p {
         font-size: $(konten.p);
       }
+      .menunya a {
+        display: block;
+      }
+      .kontrol-bookmark {
+        cursor: pointer;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding: 0.5rem;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
       ]]>
     </b:skin>
   </head>
   <body>
     <header class="header">
-      <section class="menu app" v-cloak="true">
+      <section class="menu app" v-cloak="true" v-on:vue:mounted='store_bookmark.cek'>
         <nav class="tombol-menu" v-on:click="tampil_menu=!0">
           <svg width="1em" height="1em" viewBox="0 0 16 16">
             <path fill="currentColor" d="M0 1h16v3H0V1z"></path>
@@ -564,6 +580,14 @@
                     <b:loop values='data:links' var='link'>
                       <li><a expr:href='data:link.target' v-on:vue:mounted="olah_menu($el)"><data:link.name/></a></li>
                     </b:loop>
+                    <span v-if="store_bookmark.list_bookmark.length > 0"
+                      ><li>
+                        <a href="javascript:void" rel="nofollow">Bookmarked</a>
+                      </li>
+                      <li v-for="x in store_bookmark.list_bookmark">
+                        <a v-bind:href="x.link" class="anak">{{ x.judul }}</a>
+                      </li></span
+                    >
                   </ol>
                 </b:includable>
               </b:widget>
@@ -697,6 +721,25 @@
                 </section>
               </section>
 
+              <section
+                class="kontrol-bookmark app"
+                v-on:vue:mounted="store_bookmark.cek"
+                v-cloak="true"
+              >
+                <span v-if="store_bookmark.bookmarked" v-on:click="store_bookmark.hapus"
+                  ><svg width="1em" height="1em" viewBox="0 0 16 16">
+                    <path fill="currentColor" d="M3 0v1h10l.1-1z"></path>
+                    <path fill="currentColor" d="M3 2h10v14l-5-5l-5 5z"></path>
+                  </svg> </span
+                ><span v-if="!store_bookmark.bookmarked" v-on:click="store_bookmark.tambah"
+                  ><svg width="1em" height="1em" viewBox="0 0 16 16">
+                    <path
+                      fill="currentColor"
+                      d="M3 0v16l5-5l5 5V0H3zm9 13.7L8 9.8l-4 3.9V3h8v10.7zM12 2H4V1h8v1z"
+                    ></path></svg
+                ></span>
+              </section>
+
             </b:loop>
             <!-- /blog konten -->
           </b:if>
@@ -709,27 +752,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
     <script>
       // <![CDATA[
-      PetiteVue.createApp({}).mount(".postingan.app");
+      const store_bookmark = PetiteVue.reactive({
+        bookmarked: !1,
+        list_bookmark: [],
+        cek() {
+          if (localStorage.bookmark) {
+            this.list_bookmark = JSON.parse(localStorage.bookmark)
+            let o = !1
+            for (var t of this.list_bookmark)
+              t.link == location.href && (o = !0)
+            this.bookmarked = o
+          }
+        },
+        tambah() {
+          ;(this.list_bookmark = [
+            ...this.list_bookmark,
+            { judul: document.title, link: location.href },
+          ]),
+            (this.list_bookmark = this.list_bookmark.sort((o, t) =>
+              o.judul > t.judul ? 1 : -1
+            )),
+            (this.bookmarked = !0),
+            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+        },
+        hapus() {
+          ;(this.list_bookmark = this.list_bookmark.filter(
+            (o) => o.link != location.href
+          )),
+            (this.bookmarked = !1),
+            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+        },
+      })
+      PetiteVue.createApp({ store_bookmark: store_bookmark }).mount(
+        ".kontrol-bookmark.app"
+      )
       PetiteVue.createApp({
         tampil_menu: !1,
+        store_bookmark: store_bookmark,
         olah_menu(e) {
           e.innerText.match(/_.*/) &&
             (e.classList.add("anak"),
-            (e.innerText = e.innerText.replace(/^_(.*)/, "$1")));
+            (e.innerText = e.innerText.replace(/^_(.*)/, "$1")))
         },
       }).mount(".menu.app"),
-        PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app");
-      (function () {
-        window.addEventListener("load", () => {
-          quicklink.listen();
-        });
+        PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
+        
+      window.addEventListener("load", () => quicklink.listen());
 
-        const uri = window.location.toString();
-        if (uri.indexOf("?m=1", "?m=1") > 0) {
-          const clean_uri = uri.substring(0, uri.indexOf("?m=1"));
-          window.history.replaceState({}, document.title, clean_uri);
-        }
-      })();
+      const linknya = location.href;
+      if (linknya.includes("?m=")) {
+        const link_baru = linknya.replace(/\?m=./, "");
+        history.replaceState({}, document.title, link_baru);
+      }
       // ]]>
     </script>
   </body>

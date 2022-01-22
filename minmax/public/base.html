@@ -355,11 +355,14 @@
       .menunya li {
         padding-bottom: 0.75rem;
       }
+      .menunya a {
+        display: block;
+      }
       .menunya a:not(.anak) {
         font-weight: 700;
       }
       .menunya a.anak {
-        padding-left: 0.75rem;
+        margin-left: 0.75rem;
       }
     </style>
   </head>
@@ -382,6 +385,14 @@
               <li><a href="/" v-on:vue:mounted="olah_menu($el)">_Tiga</a></li>
               <li><a href="/" v-on:vue:mounted="olah_menu($el)">Empat</a></li>
               <li><a href="/" v-on:vue:mounted="olah_menu($el)">Lima</a></li>
+              <span v-if="store_bookmark.list_bookmark.length > 0"
+                ><li>
+                  <a href="javascript:void" rel="nofollow">Bookmarked</a>
+                </li>
+                <li v-for="x in store_bookmark.list_bookmark">
+                  <a v-bind:href="x.link" class="anak">{{ x.judul }}</a>
+                </li></span
+              >
             </ol>
           </nav>
         </section>
@@ -420,6 +431,7 @@
     <script>
       PetiteVue.createApp({
         tampil_menu: !1,
+        store_bookmark: store_bookmark,
         olah_menu(e) {
           e.innerText.match(/_.*/) &&
             (e.classList.add("anak"),

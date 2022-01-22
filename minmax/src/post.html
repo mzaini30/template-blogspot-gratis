@@ -55,13 +55,61 @@ tiga</code></pre>
   	</section>
   </section>
 
+  <section class="kontrol-bookmark app" v-on:vue:mounted='store_bookmark.cek' v-cloak='true'>
+  	<span v-if='store_bookmark.bookmarked' v-on:click='store_bookmark.hapus'>
+  		{% include './icon/bookmark-hitam.html' %}
+  	</span>
+  	<span v-if="!store_bookmark.bookmarked" v-on:click='store_bookmark.tambah'>
+  		{% include './icon/bookmark-putih.html' %}
+  	</span>
+  </section>
+
   <script>
-  	PetiteVue.createApp({
-  		
-  	}).mount('.list-komentar.app')
+  	const store_bookmark = PetiteVue.reactive({
+      bookmarked: false,
+      list_bookmark: [],
+      cek(){
+      	if (localStorage.bookmark) {
+      		this.list_bookmark = JSON.parse(localStorage.bookmark)
+      		
+      		let cek_bookmarked = false
+      		for (let x of this.list_bookmark){
+      			if (x.link == location.href) {
+      				cek_bookmarked = true
+      			}
+      		}
+      		this.bookmarked = cek_bookmarked
+      	}
+      },
+      tambah(){
+      	this.list_bookmark = [...this.list_bookmark, {
+      		judul: document.title, 
+      		link: location.href
+      	}]
+      	this.list_bookmark = this.list_bookmark.sort((a, b) => a.judul > b.judul ? 1 : -1)
+      	this.bookmarked = true
+      	localStorage.bookmark = JSON.stringify(this.list_bookmark)
+      },
+      hapus(){
+      	this.list_bookmark = this.list_bookmark.filter(x => x.link != location.href)
+      	this.bookmarked = false
+      	localStorage.bookmark = JSON.stringify(this.list_bookmark)
+      }
+    })
+
+    PetiteVue.createApp({
+      store_bookmark
+    }).mount('.kontrol-bookmark.app')
+
+  	PetiteVue.createApp({}).mount('.list-komentar.app')
   </script>
 
   <style lang="windi">
+
+  	.kontrol-bookmark {
+  		@apply fixed bottom-0 right-0 text-2xl cursor-pointer select-none p-2
+  	}
+
   	.list-komentar {
   		@apply p-3
   	}

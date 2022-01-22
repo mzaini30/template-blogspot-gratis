@@ -41,7 +41,7 @@
   </head>
   <body>
     <header class="header">
-      <section class="menu app" v-cloak="true">
+      <section class="menu app" v-cloak="true" v-on:vue:mounted='store_bookmark.cek'>
         <nav class="tombol-menu" v-on:click="tampil_menu = true">
           {% include './icon/menu.html' %}
         </nav>
@@ -54,6 +54,12 @@
               <li><a href="/" v-on:vue:mounted="olah_menu($el)">_Tiga</a></li>
               <li><a href="/" v-on:vue:mounted="olah_menu($el)">Empat</a></li>
               <li><a href="/" v-on:vue:mounted="olah_menu($el)">Lima</a></li>
+              <span v-if='store_bookmark.list_bookmark.length > 0'>
+                <li><a href="javascript:void" rel="nofollow">Bookmarked</a></li>
+                <li v-for='x in store_bookmark.list_bookmark'>
+                  <a v-bind:href="x.link" class="anak">{{ x.judul }}</a>
+                </li>
+              </span>
             </ol>
           </nav>
         </section>
@@ -90,6 +96,7 @@
     <script>
       PetiteVue.createApp({
         tampil_menu: false,
+        store_bookmark,
         olah_menu(x) {
           if (x.innerText.match(/_.*/)) {
             x.classList.add("anak")
@@ -202,6 +209,9 @@
   }
   .menunya li {
     @apply pb-3
+  }
+  .menunya a {
+    @apply block
   }
   .menunya a:not(.anak) {
     @apply font-bold
