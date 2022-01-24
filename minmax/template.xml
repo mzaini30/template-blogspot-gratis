@@ -747,11 +747,21 @@
       </b:widget>
     </b:section>
 
-    <footer class="credit">Download <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html">Template MinMax</a></footer>
+    <footer class="credit">
+      Blog ini menggunakan
+      <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html"
+        >template MinMax</a
+      >
+    </footer>
     <script src="https://unpkg.com/petite-vue@0.4.0/dist/petite-vue.iife.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
     <script>
       // <![CDATA[
+      const linknya = location.href
+      if (linknya.includes("?m=")) {
+        const a = linknya.replace(/\?m=./, "")
+        history.replaceState({}, document.title, a)
+      }
       const store_bookmark = PetiteVue.reactive({
         bookmarked: !1,
         list_bookmark: [],
@@ -798,12 +808,6 @@
         PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
         
       window.addEventListener("load", () => quicklink.listen());
-
-      const linknya = location.href;
-      if (linknya.includes("?m=")) {
-        const link_baru = linknya.replace(/\?m=./, "");
-        history.replaceState({}, document.title, link_baru);
-      }
       // ]]>
     </script>
   </body>

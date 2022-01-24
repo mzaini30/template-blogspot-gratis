@@ -92,8 +92,14 @@
       </section>
     </header>
     {% block isi %}{% endblock %}
-    <footer class="credit">Download <a href="/">Template MinMax</a></footer>
+    <footer class="credit">Blog ini menggunakan <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html">template MinMax</a></footer>
     <script>
+      const linknya = location.href;
+      if (linknya.includes("?m=")) {
+        const link_baru = linknya.replace(/\?m=./, "");
+        history.replaceState({}, document.title, link_baru);
+      }
+
       PetiteVue.createApp({
         tampil_menu: false,
         store_bookmark,

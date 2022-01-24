@@ -443,7 +443,11 @@
   </head>
   <body>
     <header class="header">
-      <section class="menu app" v-cloak="true">
+      <section
+        class="menu app"
+        v-cloak="true"
+        v-on:vue:mounted="store_bookmark.cek"
+      >
         <nav class="tombol-menu" v-on:click="tampil_menu=!0">
           <svg width="1em" height="1em" viewBox="0 0 16 16">
             <path fill="currentColor" d="M0 1h16v3H0V1z"></path>
@@ -551,7 +555,9 @@ tiga</code></pre>
           <path fill="currentColor" d="M3 0v1h10l.1-1z"></path>
           <path fill="currentColor" d="M3 2h10v14l-5-5l-5 5z"></path>
         </svg> </span
-      ><span v-else v-on:click="store_bookmark.tambah"
+      ><span
+        v-if="!store_bookmark.bookmarked"
+        v-on:click="store_bookmark.tambah"
         ><svg width="1em" height="1em" viewBox="0 0 16 16">
           <path
             fill="currentColor"
@@ -596,8 +602,18 @@ tiga</code></pre>
       ),
         PetiteVue.createApp({}).mount(".list-komentar.app")
     </script>
-    <footer class="credit">Download <a href="/">Template MinMax</a></footer>
+    <footer class="credit">
+      Blog ini menggunakan
+      <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html"
+        >template MinMax</a
+      >
+    </footer>
     <script>
+      const linknya = location.href
+      if (linknya.includes("?m=")) {
+        const a = linknya.replace(/\?m=./, "")
+        history.replaceState({}, document.title, a)
+      }
       PetiteVue.createApp({
         tampil_menu: !1,
         store_bookmark: store_bookmark,

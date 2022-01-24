@@ -409,7 +409,11 @@
   </head>
   <body>
     <header class="header">
-      <section class="menu app" v-cloak="true">
+      <section
+        class="menu app"
+        v-cloak="true"
+        v-on:vue:mounted="store_bookmark.cek"
+      >
         <nav class="tombol-menu" v-on:click="tampil_menu=!0">
           <svg width="1em" height="1em" viewBox="0 0 16 16">
             <path fill="currentColor" d="M0 1h16v3H0V1z"></path>
@@ -481,8 +485,18 @@
     <script>
       PetiteVue.createApp({}).mount(".postingan.app")
     </script>
-    <footer class="credit">Download <a href="/">Template MinMax</a></footer>
+    <footer class="credit">
+      Blog ini menggunakan
+      <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html"
+        >template MinMax</a
+      >
+    </footer>
     <script>
+      const linknya = location.href
+      if (linknya.includes("?m=")) {
+        const a = linknya.replace(/\?m=./, "")
+        history.replaceState({}, document.title, a)
+      }
       PetiteVue.createApp({
         tampil_menu: !1,
         store_bookmark: store_bookmark,
