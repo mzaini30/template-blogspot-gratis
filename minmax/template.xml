@@ -557,6 +557,9 @@
         -ms-user-select: none;
         user-select: none;
       }
+      .mau-cari {
+        color: black;
+      }
       ]]>
     </b:skin>
   </head>
