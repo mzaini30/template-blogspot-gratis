@@ -442,7 +442,7 @@
       .thumbnail-postingan {
         width: 100%;
         object-fit: cover;
-        aspect-ratio: 1/1;
+        aspect-ratio: 10/4;
       }
       .postingan {
         font-size: 0.875rem;
@@ -522,11 +522,6 @@
       .konten p a {
         margin-left: 0px !important;
         margin-right: 0px !important;
-      }
-      @media (min-width: 575px) {
-        .thumbnail-postingan {
-          aspect-ratio: 16 / 9;
-        }
       }
       * {
         word-wrap: break-word;
