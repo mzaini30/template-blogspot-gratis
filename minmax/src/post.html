@@ -1,7 +1,13 @@
 {% extends './base.html' %}
 
 {% block isi %}
-  <img src="gambar.jpg" alt="judul" width="640" height="360" class="cover-postingan" />
+  <img
+    src="gambar.jpg"
+    alt="judul"
+    width="640"
+    height="360"
+    class="cover-postingan"
+  />
 
   <h1 class="judul-artikel">judul</h1>
 
@@ -45,9 +51,14 @@ tiga</code></pre>
 		@endmarkdown
   </article>
 
-  <section class="random-posts app" v-cloak="true" v-on:vue:mounted='dapatkan'>
+  <section class="random-posts app" v-cloak="true" v-on:vue:mounted="dapatkan">
     <a v-bind:href="x.link" class="list-acak" v-for="x in random_posts">
-      <img v-bind:src="x.gambar" width="640" height="360" v-bind:alt="x.judul" />
+      <img
+        v-bind:src="x.gambar"
+        width="640"
+        height="360"
+        v-bind:alt="x.judul"
+      />
       <p>{{ x.judul }}</p>
     </a>
   </section>
@@ -76,45 +87,6 @@ tiga</code></pre>
   </section>
 
   <script>
-    const store_bookmark = PetiteVue.reactive({
-      bookmarked: false,
-      list_bookmark: [],
-      cek() {
-        if (localStorage.bookmark) {
-          this.list_bookmark = JSON.parse(localStorage.bookmark)
-
-          let cek_bookmarked = false
-          for (let x of this.list_bookmark) {
-            if (x.link == location.href) {
-              cek_bookmarked = true
-            }
-          }
-          this.bookmarked = cek_bookmarked
-        }
-      },
-      tambah() {
-        this.list_bookmark = [
-          ...this.list_bookmark,
-          {
-            judul: document.title,
-            link: location.href,
-          },
-        ]
-        this.list_bookmark = this.list_bookmark.sort((a, b) =>
-          a.judul > b.judul ? 1 : -1
-        )
-        this.bookmarked = true
-        localStorage.bookmark = JSON.stringify(this.list_bookmark)
-      },
-      hapus() {
-        this.list_bookmark = this.list_bookmark.filter(
-          (x) => x.link != location.href
-        )
-        this.bookmarked = false
-        localStorage.bookmark = JSON.stringify(this.list_bookmark)
-      },
-    })
-
     PetiteVue.createApp({
       store_bookmark,
     }).mount(".kontrol-bookmark.app")
@@ -145,34 +117,41 @@ tiga</code></pre>
     // https://www.cuapcuap.my.id/feeds/posts/default?alt=json&max-results=1&start-index=1
     PetiteVue.createApp({
       random_posts: [],
-      async dapatkan(){
-        let banyak_postingan = await fetch('/feeds/posts/default?alt=json&max-results=0')
+      async dapatkan() {
+        let banyak_postingan = await fetch(
+          "/feeds/posts/default?alt=json&max-results=0"
+        )
         // let banyak_postingan = await fetch('https://scrappy-php.herokuapp.com/?url=https://www.cuapcuap.my.id/feeds/posts/default?alt=json&max-results=0')
         banyak_postingan = await banyak_postingan.json()
         banyak_postingan = banyak_postingan.feed.openSearch$totalResults.$t
 
         let array_index = []
-        for (let x = 1; x <= banyak_postingan; x++){
+        for (let x = 1; x <= banyak_postingan; x++) {
           array_index = [...array_index, x]
         }
         array_index = acak(array_index).splice(0, 6)
 
         let terkumpul = []
-        for (let x of array_index){
-          let ambil = await fetch(`/feeds/posts/default?alt=json&max-results=1&start-index=${x}`)
+        for (let x of array_index) {
+          let ambil = await fetch(
+            `/feeds/posts/default?alt=json&max-results=1&start-index=${x}`
+          )
           // let ambil = await fetch(`https://scrappy-php.herokuapp.com/?url=${encodeURIComponent(`https://www.cuapcuap.my.id/feeds/posts/default?alt=json&max-results=1&start-index=${x}`)}`)
           ambil = await ambil.json()
           terkumpul = [
             ...terkumpul,
             {
               judul: ambil.feed.entry[0].title.$t,
-              gambar: ambil.feed.entry[0].media$thumbnail.url.replace('=s72-', '='),
-              link: ambil.feed.entry[0].link[4].href
-            }
+              gambar: ambil.feed.entry[0].media$thumbnail.url.replace(
+                "=s72-",
+                "="
+              ),
+              link: ambil.feed.entry[0].link[4].href,
+            },
           ]
         }
         this.random_posts = terkumpul
-      }
+      },
     }).mount(".random-posts.app")
   </script>
 

@@ -38,13 +38,74 @@
     <meta property="twitter:card" content="summary_large_image" />
 
     <script src="vue.js"></script>
+    <script>
+      const store_bookmark = PetiteVue.reactive({
+        bookmarked: false,
+        list_bookmark: [],
+        cek() {
+          if (localStorage.bookmark) {
+            this.list_bookmark = JSON.parse(localStorage.bookmark)
+
+            let cek_bookmarked = false
+            for (let x of this.list_bookmark) {
+              if (x.link == location.href) {
+                cek_bookmarked = true
+              }
+            }
+            this.bookmarked = cek_bookmarked
+          }
+        },
+        tambah() {
+          this.list_bookmark = [
+            ...this.list_bookmark,
+            {
+              judul: document.title,
+              link: location.href,
+            },
+          ]
+          this.list_bookmark = this.list_bookmark.sort((a, b) =>
+            a.judul > b.judul ? 1 : -1
+          )
+          this.bookmarked = true
+          localStorage.bookmark = JSON.stringify(this.list_bookmark)
+        },
+        hapus() {
+          this.list_bookmark = this.list_bookmark.filter(
+            (x) => x.link != location.href
+          )
+          this.bookmarked = false
+          localStorage.bookmark = JSON.stringify(this.list_bookmark)
+        },
+      })
+    </script>
   </head>
   <body>
+    
+    <aside class="melayang">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Shortcut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="key">c</td>
+            <td class="command">cari</td>
+          </tr>
+          <tr>
+            <td class="key">m</td>
+            <td class="command">menu</td>
+          </tr>
+        </tbody>
+      </table>
+    </aside>
+
     <header class="header">
       <section
         class="menu app"
         v-cloak="true"
-        v-on:vue:mounted="store_bookmark.cek"
+        v-on:vue:mounted="store_bookmark.cek(); shortcut()"
       >
         <nav class="tombol-menu" v-on:click="tampil_menu = true">
           {% include './icon/menu.html' %}
@@ -76,7 +137,7 @@
           <a href="/">Cuap Cuap</a>
         </h1>
       </section>
-      <section class="cari app" v-cloak="true">
+      <section class="cari app" v-cloak="true" v-on:vue:mounted='shortcut'>
         <nav class="tombol-cari" v-on:click="tampil_cari = true">
           {% include './icon/cari.html' %}
         </nav>
@@ -110,6 +171,7 @@
         >template MinMax</a
       >
     </footer>
+
     <script>
       const linknya = location.href
       if (linknya.includes("?m=")) {
@@ -126,10 +188,30 @@
             x.innerText = x.innerText.replace(/^_(.*)/, "$1")
           }
         },
+        shortcut(){
+          window.addEventListener('keyup', x => {
+            if (x.key == 'm') {
+              this.tampil_menu = true
+            }
+            if (x.key == 'Escape'){
+              this.tampil_menu = false
+            }
+          })
+        }
       }).mount(".menu.app")
 
       PetiteVue.createApp({
         tampil_cari: false,
+        shortcut(){
+          window.addEventListener('keyup', x => {
+            if (x.key == 'c') {
+              this.tampil_cari = true
+            }
+            if (x.key == 'Escape'){
+              this.tampil_cari = false
+            }
+          })
+        }
       }).mount(".cari.app")
     </script>
 
@@ -153,6 +235,19 @@
 </html>
 
 <style lang="windi">
+  .melayang {
+    @apply <sm:hidden fixed top-12 right-3 text-sm
+  }
+  .melayang :where(td, th) {
+    @apply border px-2
+  }
+  .melayang .key {
+    @apply text-right
+  }
+  .melayang th {
+    font-weight: normal;
+    @apply uppercase;
+  }
 
   .konten h2 {
     @apply text-2xl

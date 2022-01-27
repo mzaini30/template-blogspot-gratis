@@ -32,6 +32,39 @@
     />
     <meta property="twitter:card" content="summary_large_image" />
     <script src="vue.js"></script>
+    <script>
+      const store_bookmark = PetiteVue.reactive({
+        bookmarked: !1,
+        list_bookmark: [],
+        cek() {
+          if (localStorage.bookmark) {
+            this.list_bookmark = JSON.parse(localStorage.bookmark)
+            let o = !1
+            for (var t of this.list_bookmark)
+              t.link == location.href && (o = !0)
+            this.bookmarked = o
+          }
+        },
+        tambah() {
+          ;(this.list_bookmark = [
+            ...this.list_bookmark,
+            { judul: document.title, link: location.href },
+          ]),
+            (this.list_bookmark = this.list_bookmark.sort((o, t) =>
+              o.judul > t.judul ? 1 : -1
+            )),
+            (this.bookmarked = !0),
+            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+        },
+        hapus() {
+          ;(this.list_bookmark = this.list_bookmark.filter(
+            (o) => o.link != location.href
+          )),
+            (this.bookmarked = !1),
+            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+        },
+      })
+    </script>
     <style>
       *,
       ::after,
@@ -178,6 +211,11 @@
         display: block;
         vertical-align: middle;
       }
+      table {
+        text-indent: 0;
+        border-color: inherit;
+        border-collapse: collapse;
+      }
       .hidden {
         display: none;
       }
@@ -197,7 +235,6 @@
       .random-posts p {
         font-size: 0.875rem;
         line-height: 1.25rem;
-        padding-top: 0.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -264,6 +301,30 @@
       .konten ol li {
         list-style-type: decimal;
         margin-left: 1.25rem;
+      }
+      .melayang {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        position: fixed;
+        top: 3rem;
+        right: 0.75rem;
+      }
+      @media (max-width: 639.9px) {
+        .melayang {
+          display: none;
+        }
+      }
+      .melayang :where(td, th) {
+        border-width: 1px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .melayang .key {
+        text-align: right;
+      }
+      .melayang th {
+        font-weight: 400;
+        text-transform: uppercase;
       }
       .konten h2 {
         font-size: 1.5rem;
@@ -509,11 +570,30 @@
     </style>
   </head>
   <body>
+    <aside class="melayang">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Shortcut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="key">c</td>
+            <td class="command">cari</td>
+          </tr>
+          <tr>
+            <td class="key">m</td>
+            <td class="command">menu</td>
+          </tr>
+        </tbody>
+      </table>
+    </aside>
     <header class="header">
       <section
         class="menu app"
         v-cloak="true"
-        v-on:vue:mounted="store_bookmark.cek"
+        v-on:vue:mounted="store_bookmark.cek(); shortcut()"
       >
         <nav class="tombol-menu" v-on:click="tampil_menu=!0">
           <svg width="1em" height="1em" viewBox="0 0 16 16">
@@ -546,7 +626,7 @@
       <section class="judul">
         <h1><a href="/">Cuap Cuap</a></h1>
       </section>
-      <section class="cari app" v-cloak="true">
+      <section class="cari app" v-cloak="true" v-on:vue:mounted="shortcut">
         <nav class="tombol-cari" v-on:click="tampil_cari=!0">
           <svg width="1em" height="1em" viewBox="0 0 16 16">
             <path
@@ -574,7 +654,13 @@
       </section>
     </header>
     <main class="Blog">
-      <img src="gambar.jpg" alt="" class="cover-postingan" />
+      <img
+        src="gambar.jpg"
+        alt="judul"
+        width="640"
+        height="360"
+        class="cover-postingan"
+      />
       <h1 class="judul-artikel">judul</h1>
       <article class="konten">
         <h2>h2</h2>
@@ -649,43 +735,12 @@ tiga</code></pre>
         ></span>
       </section>
       <script>
-        const store_bookmark = PetiteVue.reactive({
-          bookmarked: !1,
-          list_bookmark: [],
-          cek() {
-            if (localStorage.bookmark) {
-              this.list_bookmark = JSON.parse(localStorage.bookmark)
-              let t = !1
-              for (var o of this.list_bookmark)
-                o.link == location.href && (t = !0)
-              this.bookmarked = t
-            }
-          },
-          tambah() {
-            ;(this.list_bookmark = [
-              ...this.list_bookmark,
-              { judul: document.title, link: location.href },
-            ]),
-              (this.list_bookmark = this.list_bookmark.sort((t, o) =>
-                t.judul > o.judul ? 1 : -1
-              )),
-              (this.bookmarked = !0),
-              (localStorage.bookmark = JSON.stringify(this.list_bookmark))
-          },
-          hapus() {
-            ;(this.list_bookmark = this.list_bookmark.filter(
-              (t) => t.link != location.href
-            )),
-              (this.bookmarked = !1),
-              (localStorage.bookmark = JSON.stringify(this.list_bookmark))
-          },
-        })
         function acak(t) {
-          for (var o, a, e = t.length; 0 !== e; )
-            (a = Math.floor(Math.random() * e)),
-              (o = t[--e]),
-              (t[e] = t[a]),
-              (t[a] = o)
+          for (var e, a, o = t.length; 0 !== o; )
+            (a = Math.floor(Math.random() * o)),
+              (e = t[--o]),
+              (t[o] = t[a]),
+              (t[a] = e)
           return t
         }
         PetiteVue.createApp({ store_bookmark: store_bookmark }).mount(
@@ -695,19 +750,19 @@ tiga</code></pre>
           PetiteVue.createApp({
             random_posts: [],
             async dapatkan() {
-              let o = await fetch("/feeds/posts/default?alt=json&max-results=0")
-              ;(o = await o.json()), (o = o.feed.openSearch$totalResults.$t)
+              let e = await fetch("/feeds/posts/default?alt=json&max-results=0")
+              ;(e = await e.json()), (e = e.feed.openSearch$totalResults.$t)
               let a = []
-              for (let t = 1; t <= o; t++) a = [...a, t]
+              for (let t = 1; t <= e; t++) a = [...a, t]
               a = acak(a).splice(0, 6)
-              let e = []
+              let o = []
               for (var r of a) {
                 let t = await fetch(
                   "/feeds/posts/default?alt=json&max-results=1&start-index=" + r
                 )
                 ;(t = await t.json()),
-                  (e = [
-                    ...e,
+                  (o = [
+                    ...o,
                     {
                       judul: t.feed.entry[0].title.$t,
                       gambar: t.feed.entry[0].media$thumbnail.url.replace(
@@ -718,7 +773,7 @@ tiga</code></pre>
                     },
                   ])
               }
-              this.random_posts = e
+              this.random_posts = o
             },
           }).mount(".random-posts.app")
       </script>
@@ -743,8 +798,22 @@ tiga</code></pre>
             (e.classList.add("anak"),
             (e.innerText = e.innerText.replace(/^_(.*)/, "$1")))
         },
+        shortcut() {
+          window.addEventListener("keyup", (e) => {
+            "m" == e.key && (this.tampil_menu = !0),
+              "Escape" == e.key && (this.tampil_menu = !1)
+          })
+        },
       }).mount(".menu.app"),
-        PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
+        PetiteVue.createApp({
+          tampil_cari: !1,
+          shortcut() {
+            window.addEventListener("keyup", (e) => {
+              "c" == e.key && (this.tampil_cari = !0),
+                "Escape" == e.key && (this.tampil_cari = !1)
+            })
+          },
+        }).mount(".cari.app")
     </script>
     <div class="hidden">
       <h2></h2>

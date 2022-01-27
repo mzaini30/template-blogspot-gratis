@@ -32,6 +32,39 @@
     />
     <meta property="twitter:card" content="summary_large_image" />
     <script src="vue.js"></script>
+    <script>
+      const store_bookmark = PetiteVue.reactive({
+        bookmarked: !1,
+        list_bookmark: [],
+        cek() {
+          if (localStorage.bookmark) {
+            this.list_bookmark = JSON.parse(localStorage.bookmark)
+            let o = !1
+            for (var t of this.list_bookmark)
+              t.link == location.href && (o = !0)
+            this.bookmarked = o
+          }
+        },
+        tambah() {
+          ;(this.list_bookmark = [
+            ...this.list_bookmark,
+            { judul: document.title, link: location.href },
+          ]),
+            (this.list_bookmark = this.list_bookmark.sort((o, t) =>
+              o.judul > t.judul ? 1 : -1
+            )),
+            (this.bookmarked = !0),
+            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+        },
+        hapus() {
+          ;(this.list_bookmark = this.list_bookmark.filter(
+            (o) => o.link != location.href
+          )),
+            (this.bookmarked = !1),
+            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+        },
+      })
+    </script>
     <style>
       *,
       ::after,
@@ -171,6 +204,11 @@
         display: block;
         vertical-align: middle;
       }
+      table {
+        text-indent: 0;
+        border-color: inherit;
+        border-collapse: collapse;
+      }
       .hidden {
         display: none;
       }
@@ -208,6 +246,30 @@
       }
       .postingan h2 {
         font-weight: 700;
+      }
+      .melayang {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        position: fixed;
+        top: 3rem;
+        right: 0.75rem;
+      }
+      @media (max-width: 639.9px) {
+        .melayang {
+          display: none;
+        }
+      }
+      .melayang :where(td, th) {
+        border-width: 1px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .melayang .key {
+        text-align: right;
+      }
+      .melayang th {
+        font-weight: 400;
+        text-transform: uppercase;
       }
       .konten h2 {
         font-size: 1.5rem;
@@ -453,11 +515,30 @@
     </style>
   </head>
   <body>
+    <aside class="melayang">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Shortcut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="key">c</td>
+            <td class="command">cari</td>
+          </tr>
+          <tr>
+            <td class="key">m</td>
+            <td class="command">menu</td>
+          </tr>
+        </tbody>
+      </table>
+    </aside>
     <header class="header">
       <section
         class="menu app"
         v-cloak="true"
-        v-on:vue:mounted="store_bookmark.cek"
+        v-on:vue:mounted="store_bookmark.cek(); shortcut()"
       >
         <nav class="tombol-menu" v-on:click="tampil_menu=!0">
           <svg width="1em" height="1em" viewBox="0 0 16 16">
@@ -490,7 +571,7 @@
       <section class="judul">
         <h1><a href="/">Cuap Cuap</a></h1>
       </section>
-      <section class="cari app" v-cloak="true">
+      <section class="cari app" v-cloak="true" v-on:vue:mounted="shortcut">
         <nav class="tombol-cari" v-on:click="tampil_cari=!0">
           <svg width="1em" height="1em" viewBox="0 0 16 16">
             <path
@@ -520,7 +601,13 @@
     <main class="Blog">
       <nav v-for="x in Array(10)" class="postingan app">
         <a href="post.html"
-          ><img src="gambar.jpg" class="thumbnail-postingan" alt="" />
+          ><img
+            src="gambar.jpg"
+            class="thumbnail-postingan"
+            alt="judul"
+            width="640"
+            height="360"
+          />
           <section class="ringkasan-konten">
             <h2>Ini adalah Judulnya...</h2>
             <p>Ini adalah deskripsinya...</p>
@@ -552,8 +639,22 @@
             (e.classList.add("anak"),
             (e.innerText = e.innerText.replace(/^_(.*)/, "$1")))
         },
+        shortcut() {
+          window.addEventListener("keyup", (e) => {
+            "m" == e.key && (this.tampil_menu = !0),
+              "Escape" == e.key && (this.tampil_menu = !1)
+          })
+        },
       }).mount(".menu.app"),
-        PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
+        PetiteVue.createApp({
+          tampil_cari: !1,
+          shortcut() {
+            window.addEventListener("keyup", (e) => {
+              "c" == e.key && (this.tampil_cari = !0),
+                "Escape" == e.key && (this.tampil_cari = !1)
+            })
+          },
+        }).mount(".cari.app")
     </script>
     <div class="hidden">
       <h2></h2>
