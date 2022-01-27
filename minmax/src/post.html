@@ -1,7 +1,7 @@
 {% extends './base.html' %}
 
 {% block isi %}
-  <img src="gambar.jpg" alt="" class="cover-postingan" />
+  <img src="gambar.jpg" alt="judul" width="640" height="360" class="cover-postingan" />
 
   <h1 class="judul-artikel">judul</h1>
 
@@ -45,105 +45,187 @@ tiga</code></pre>
 		@endmarkdown
   </article>
 
-  <section class="list-komentar app">
-  	<section class="isi-komentar" v-for='x in Array(3)'>
-  		<img src="gambar.jpg" alt="" />
-  		<section class="konten-komentar">
-	  		<h2>Orang</h2>
-	  		<p>Isi komentar</p>
-  		</section>
-  	</section>
+  <section class="random-posts app" v-cloak="true" v-on:vue:mounted='dapatkan'>
+    <a v-bind:href="x.link" class="list-acak" v-for="x in random_posts">
+      <img v-bind:src="x.gambar" width="640" height="360" v-bind:alt="x.judul" />
+      <p>{{ x.judul }}</p>
+    </a>
   </section>
 
-  <section class="kontrol-bookmark app" v-on:vue:mounted='store_bookmark.cek' v-cloak='true'>
-  	<span v-if='store_bookmark.bookmarked' v-on:click='store_bookmark.hapus'>
-  		{% include './icon/bookmark-hitam.html' %}
-  	</span>
-  	<span v-if="!store_bookmark.bookmarked" v-on:click='store_bookmark.tambah'>
-  		{% include './icon/bookmark-putih.html' %}
-  	</span>
+  <section class="list-komentar app">
+    <section class="isi-komentar" v-for="x in Array(3)">
+      <img src="gambar.jpg" alt="" />
+      <section class="konten-komentar">
+        <h2>Orang</h2>
+        <p>Isi komentar</p>
+      </section>
+    </section>
+  </section>
+
+  <section
+    class="kontrol-bookmark app"
+    v-on:vue:mounted="store_bookmark.cek"
+    v-cloak="true"
+  >
+    <span v-if="store_bookmark.bookmarked" v-on:click="store_bookmark.hapus">
+      {% include './icon/bookmark-hitam.html' %}
+    </span>
+    <span v-if="!store_bookmark.bookmarked" v-on:click="store_bookmark.tambah">
+      {% include './icon/bookmark-putih.html' %}
+    </span>
   </section>
 
   <script>
-  	const store_bookmark = PetiteVue.reactive({
+    const store_bookmark = PetiteVue.reactive({
       bookmarked: false,
       list_bookmark: [],
-      cek(){
-      	if (localStorage.bookmark) {
-      		this.list_bookmark = JSON.parse(localStorage.bookmark)
-      		
-      		let cek_bookmarked = false
-      		for (let x of this.list_bookmark){
-      			if (x.link == location.href) {
-      				cek_bookmarked = true
-      			}
-      		}
-      		this.bookmarked = cek_bookmarked
-      	}
+      cek() {
+        if (localStorage.bookmark) {
+          this.list_bookmark = JSON.parse(localStorage.bookmark)
+
+          let cek_bookmarked = false
+          for (let x of this.list_bookmark) {
+            if (x.link == location.href) {
+              cek_bookmarked = true
+            }
+          }
+          this.bookmarked = cek_bookmarked
+        }
       },
-      tambah(){
-      	this.list_bookmark = [...this.list_bookmark, {
-      		judul: document.title, 
-      		link: location.href
-      	}]
-      	this.list_bookmark = this.list_bookmark.sort((a, b) => a.judul > b.judul ? 1 : -1)
-      	this.bookmarked = true
-      	localStorage.bookmark = JSON.stringify(this.list_bookmark)
+      tambah() {
+        this.list_bookmark = [
+          ...this.list_bookmark,
+          {
+            judul: document.title,
+            link: location.href,
+          },
+        ]
+        this.list_bookmark = this.list_bookmark.sort((a, b) =>
+          a.judul > b.judul ? 1 : -1
+        )
+        this.bookmarked = true
+        localStorage.bookmark = JSON.stringify(this.list_bookmark)
       },
-      hapus(){
-      	this.list_bookmark = this.list_bookmark.filter(x => x.link != location.href)
-      	this.bookmarked = false
-      	localStorage.bookmark = JSON.stringify(this.list_bookmark)
-      }
+      hapus() {
+        this.list_bookmark = this.list_bookmark.filter(
+          (x) => x.link != location.href
+        )
+        this.bookmarked = false
+        localStorage.bookmark = JSON.stringify(this.list_bookmark)
+      },
     })
 
     PetiteVue.createApp({
-      store_bookmark
-    }).mount('.kontrol-bookmark.app')
+      store_bookmark,
+    }).mount(".kontrol-bookmark.app")
 
-  	PetiteVue.createApp({}).mount('.list-komentar.app')
+    PetiteVue.createApp({}).mount(".list-komentar.app")
+
+    function acak(array) {
+      var currentIndex = array.length,
+        temporaryValue,
+        randomIndex
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex]
+        array[currentIndex] = array[randomIndex]
+        array[randomIndex] = temporaryValue
+      }
+
+      return array
+    }
+
+    // https://www.cuapcuap.my.id/feeds/posts/default?alt=json&max-results=0
+    // https://www.cuapcuap.my.id/feeds/posts/default?alt=json&max-results=1&start-index=1
+    PetiteVue.createApp({
+      random_posts: [],
+      async dapatkan(){
+        let banyak_postingan = await fetch('/feeds/posts/default?alt=json&max-results=0')
+        // let banyak_postingan = await fetch('https://scrappy-php.herokuapp.com/?url=https://www.cuapcuap.my.id/feeds/posts/default?alt=json&max-results=0')
+        banyak_postingan = await banyak_postingan.json()
+        banyak_postingan = banyak_postingan.feed.openSearch$totalResults.$t
+
+        let array_index = []
+        for (let x = 1; x <= banyak_postingan; x++){
+          array_index = [...array_index, x]
+        }
+        array_index = acak(array_index).splice(0, 6)
+
+        let terkumpul = []
+        for (let x of array_index){
+          let ambil = await fetch(`/feeds/posts/default?alt=json&max-results=1&start-index=${x}`)
+          // let ambil = await fetch(`https://scrappy-php.herokuapp.com/?url=${encodeURIComponent(`https://www.cuapcuap.my.id/feeds/posts/default?alt=json&max-results=1&start-index=${x}`)}`)
+          ambil = await ambil.json()
+          terkumpul = [
+            ...terkumpul,
+            {
+              judul: ambil.feed.entry[0].title.$t,
+              gambar: ambil.feed.entry[0].media$thumbnail.url.replace('=s72-', '='),
+              link: ambil.feed.entry[0].link[4].href
+            }
+          ]
+        }
+        this.random_posts = terkumpul
+      }
+    }).mount(".random-posts.app")
   </script>
 
   <style lang="windi">
+    .random-posts {
+      @apply grid grid-cols-2 gap-3 sm:grid-cols-3 p-2;
+    }
+    .random-posts p {
+      @apply text-sm;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
-  	.kontrol-bookmark {
-  		@apply fixed bottom-0 right-0 text-2xl cursor-pointer select-none p-2
-  	}
+    .kontrol-bookmark {
+    	@apply fixed bottom-0 right-0 text-2xl cursor-pointer select-none p-2
+    }
 
-  	.list-komentar {
-  		@apply p-3
-  	}
-  	.isi-komentar {
-  		@apply flex pb-3 text-sm gap-2
-  	}
-  	.isi-komentar h2 {
-  		@apply font-bold
-  	}
-  	.isi-komentar img {
-  		@apply w-15 h-15;
-  	}
-
-    .cover-postingan {
-    	@apply w-full;
-    	object-fit: cover;
-    	aspect-ratio: 10 / 4;
+    .list-komentar {
+    	@apply p-3
     }
-    .judul-artikel {
-    	@apply text-center p-5 text-2xl;
-    	font-family: cursive;
+    .isi-komentar {
+    	@apply flex pb-3 text-sm gap-2
     }
-    .konten {
-    	@apply p-5 py-0
-    }
-    [imageanchor] {
-      margin-left: 0px !important;
-      margin-right: 0px !important;
-    }
-    .konten :where(h2, h3, h4, h5, h6) {
+    .isi-komentar h2 {
     	@apply font-bold
     }
-    .konten ol li {
-    	@apply list-decimal ml-5
+    .isi-komentar img {
+    	@apply w-15 h-15;
     }
+
+     .cover-postingan {
+     	@apply w-full;
+     	object-fit: cover;
+     	aspect-ratio: 10 / 4;
+     }
+     .judul-artikel {
+     	@apply text-center p-5 text-2xl;
+     	font-family: cursive;
+     }
+     .konten {
+     	@apply p-5 py-0
+     }
+     [imageanchor] {
+       margin-left: 0px !important;
+       margin-right: 0px !important;
+     }
+     .konten :where(h2, h3, h4, h5, h6) {
+     	@apply font-bold
+     }
+     .konten ol li {
+     	@apply list-decimal ml-5
+     }
   </style>
 {% endblock %}

@@ -178,6 +178,31 @@
         display: block;
         vertical-align: middle;
       }
+      .hidden {
+        display: none;
+      }
+      .random-posts {
+        display: -ms-grid;
+        display: grid;
+        padding: 0.5rem;
+        grid-gap: 0.75rem;
+        gap: 0.75rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (min-width: 640px) {
+        .random-posts {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .random-posts p {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        padding-top: 0.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
       .kontrol-bookmark {
         cursor: pointer;
         font-size: 1.5rem;
@@ -388,6 +413,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        color: #000;
       }
       .mau-cari form {
         display: block;
@@ -438,6 +464,47 @@
       }
       .menunya a.anak {
         margin-left: 0.75rem;
+      }
+      #layout .latar-putih {
+        display: none;
+      }
+      #layout .header,
+      #layout .menunya {
+        position: relative;
+      }
+      .Blog {
+        max-width: 600px;
+        margin: auto;
+      }
+      .konten p a {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      * {
+        word-wrap: break-word;
+      }
+      .konten a {
+        text-decoration: underline;
+      }
+      .isi-komentar .vcard {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+      .konten p {
+        font-size: $(konten.p);
+      }
+      .kontrol-bookmark {
+        cursor: pointer;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding: 0.5rem;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
     </style>
   </head>
@@ -506,102 +573,156 @@
         </section>
       </section>
     </header>
-    <img src="gambar.jpg" alt="" class="cover-postingan" />
-    <h1 class="judul-artikel">judul</h1>
-    <article class="konten">
-      <h2>h2</h2>
-      <h3>h3</h3>
-      <h4>h4</h4>
-      <h5>h5</h5>
-      <h6>h6</h6>
-      <blockquote><p>blockquote lorem</p></blockquote>
-      <ul>
-        <li>satu</li>
-        <li>dua</li>
-        <li>tiga</li>
-      </ul>
-      <p>paragraf</p>
-      <p>paragraf</p>
-      <ol>
-        <li>satu</li>
-        <li>dua</li>
-        <li>tiga</li>
-      </ol>
-      <p><img src="gambar.jpg" alt="gambar" /></p>
-      <hr />
-      <p>paragraf</p>
-      <p>paragraf <code>satu</code> dua</p>
-      <pre><code>satu
+    <main class="Blog">
+      <img src="gambar.jpg" alt="" class="cover-postingan" />
+      <h1 class="judul-artikel">judul</h1>
+      <article class="konten">
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <h4>h4</h4>
+        <h5>h5</h5>
+        <h6>h6</h6>
+        <blockquote><p>blockquote lorem</p></blockquote>
+        <ul>
+          <li>satu</li>
+          <li>dua</li>
+          <li>tiga</li>
+        </ul>
+        <p>paragraf</p>
+        <p>paragraf</p>
+        <ol>
+          <li>satu</li>
+          <li>dua</li>
+          <li>tiga</li>
+        </ol>
+        <p><img src="gambar.jpg" alt="gambar" /></p>
+        <hr />
+        <p>paragraf</p>
+        <p>paragraf <code>satu</code> dua</p>
+        <pre><code>satu
 dua
 tiga</code></pre>
-      <p>paragraf</p>
-    </article>
-    <section class="list-komentar app">
-      <section class="isi-komentar" v-for="x in Array(3)">
-        <img src="gambar.jpg" alt="" />
-        <section class="konten-komentar">
-          <h2>Orang</h2>
-          <p>Isi komentar</p>
+        <p>paragraf</p>
+      </article>
+      <section
+        class="random-posts app"
+        v-cloak="true"
+        v-on:vue:mounted="dapatkan"
+      >
+        <a v-bind:href="x.link" class="list-acak" v-for="x in random_posts"
+          ><img
+            v-bind:src="x.gambar"
+            width="640"
+            height="360"
+            v-bind:alt="x.judul"
+          />
+          <p>{{ x.judul }}</p></a
+        >
+      </section>
+      <section class="list-komentar app">
+        <section class="isi-komentar" v-for="x in Array(3)">
+          <img src="gambar.jpg" alt="" />
+          <section class="konten-komentar">
+            <h2>Orang</h2>
+            <p>Isi komentar</p>
+          </section>
         </section>
       </section>
-    </section>
-    <section
-      class="kontrol-bookmark app"
-      v-on:vue:mounted="store_bookmark.cek"
-      v-cloak="true"
-    >
-      <span v-if="store_bookmark.bookmarked" v-on:click="store_bookmark.hapus"
-        ><svg width="1em" height="1em" viewBox="0 0 16 16">
-          <path fill="currentColor" d="M3 0v1h10l.1-1z"></path>
-          <path fill="currentColor" d="M3 2h10v14l-5-5l-5 5z"></path>
-        </svg> </span
-      ><span
-        v-if="!store_bookmark.bookmarked"
-        v-on:click="store_bookmark.tambah"
-        ><svg width="1em" height="1em" viewBox="0 0 16 16">
-          <path
-            fill="currentColor"
-            d="M3 0v16l5-5l5 5V0H3zm9 13.7L8 9.8l-4 3.9V3h8v10.7zM12 2H4V1h8v1z"
-          ></path></svg
-      ></span>
-    </section>
-    <script>
-      const store_bookmark = PetiteVue.reactive({
-        bookmarked: !1,
-        list_bookmark: [],
-        cek() {
-          if (localStorage.bookmark) {
-            this.list_bookmark = JSON.parse(localStorage.bookmark)
-            let o = !1
-            for (var t of this.list_bookmark)
-              t.link == location.href && (o = !0)
-            this.bookmarked = o
-          }
-        },
-        tambah() {
-          ;(this.list_bookmark = [
-            ...this.list_bookmark,
-            { judul: document.title, link: location.href },
-          ]),
-            (this.list_bookmark = this.list_bookmark.sort((o, t) =>
-              o.judul > t.judul ? 1 : -1
+      <section
+        class="kontrol-bookmark app"
+        v-on:vue:mounted="store_bookmark.cek"
+        v-cloak="true"
+      >
+        <span v-if="store_bookmark.bookmarked" v-on:click="store_bookmark.hapus"
+          ><svg width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M3 0v1h10l.1-1z"></path>
+            <path fill="currentColor" d="M3 2h10v14l-5-5l-5 5z"></path>
+          </svg> </span
+        ><span
+          v-if="!store_bookmark.bookmarked"
+          v-on:click="store_bookmark.tambah"
+          ><svg width="1em" height="1em" viewBox="0 0 16 16">
+            <path
+              fill="currentColor"
+              d="M3 0v16l5-5l5 5V0H3zm9 13.7L8 9.8l-4 3.9V3h8v10.7zM12 2H4V1h8v1z"
+            ></path></svg
+        ></span>
+      </section>
+      <script>
+        const store_bookmark = PetiteVue.reactive({
+          bookmarked: !1,
+          list_bookmark: [],
+          cek() {
+            if (localStorage.bookmark) {
+              this.list_bookmark = JSON.parse(localStorage.bookmark)
+              let t = !1
+              for (var o of this.list_bookmark)
+                o.link == location.href && (t = !0)
+              this.bookmarked = t
+            }
+          },
+          tambah() {
+            ;(this.list_bookmark = [
+              ...this.list_bookmark,
+              { judul: document.title, link: location.href },
+            ]),
+              (this.list_bookmark = this.list_bookmark.sort((t, o) =>
+                t.judul > o.judul ? 1 : -1
+              )),
+              (this.bookmarked = !0),
+              (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+          },
+          hapus() {
+            ;(this.list_bookmark = this.list_bookmark.filter(
+              (t) => t.link != location.href
             )),
-            (this.bookmarked = !0),
-            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
-        },
-        hapus() {
-          ;(this.list_bookmark = this.list_bookmark.filter(
-            (o) => o.link != location.href
-          )),
-            (this.bookmarked = !1),
-            (localStorage.bookmark = JSON.stringify(this.list_bookmark))
-        },
-      })
-      PetiteVue.createApp({ store_bookmark: store_bookmark }).mount(
-        ".kontrol-bookmark.app"
-      ),
-        PetiteVue.createApp({}).mount(".list-komentar.app")
-    </script>
+              (this.bookmarked = !1),
+              (localStorage.bookmark = JSON.stringify(this.list_bookmark))
+          },
+        })
+        function acak(t) {
+          for (var o, a, e = t.length; 0 !== e; )
+            (a = Math.floor(Math.random() * e)),
+              (o = t[--e]),
+              (t[e] = t[a]),
+              (t[a] = o)
+          return t
+        }
+        PetiteVue.createApp({ store_bookmark: store_bookmark }).mount(
+          ".kontrol-bookmark.app"
+        ),
+          PetiteVue.createApp({}).mount(".list-komentar.app"),
+          PetiteVue.createApp({
+            random_posts: [],
+            async dapatkan() {
+              let o = await fetch("/feeds/posts/default?alt=json&max-results=0")
+              ;(o = await o.json()), (o = o.feed.openSearch$totalResults.$t)
+              let a = []
+              for (let t = 1; t <= o; t++) a = [...a, t]
+              a = acak(a).splice(0, 6)
+              let e = []
+              for (var r of a) {
+                let t = await fetch(
+                  "/feeds/posts/default?alt=json&max-results=1&start-index=" + r
+                )
+                ;(t = await t.json()),
+                  (e = [
+                    ...e,
+                    {
+                      judul: t.feed.entry[0].title.$t,
+                      gambar: t.feed.entry[0].media$thumbnail.url.replace(
+                        "=s72-",
+                        "="
+                      ),
+                      link: t.feed.entry[0].link[4].href,
+                    },
+                  ])
+              }
+              this.random_posts = e
+            },
+          }).mount(".random-posts.app")
+      </script>
+    </main>
     <footer class="credit">
       Blog ini menggunakan
       <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html"
@@ -625,19 +746,21 @@ tiga</code></pre>
       }).mount(".menu.app"),
         PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
     </script>
-    <h2></h2>
-    <h3></h3>
-    <h4></h4>
-    <h5></h5>
-    <h6></h6>
-    <p></p>
-    <ol>
-      <li></li>
-    </ol>
-    <ul>
-      <li></li>
-    </ul>
-    <hr />
-    <br />
+    <div class="hidden">
+      <h2></h2>
+      <h3></h3>
+      <h4></h4>
+      <h5></h5>
+      <h6></h6>
+      <p></p>
+      <ol>
+        <li></li>
+      </ol>
+      <ul>
+        <li></li>
+      </ul>
+      <hr />
+      <br />
+    </div>
   </body>
 </html>

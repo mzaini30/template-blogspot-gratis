@@ -165,6 +165,9 @@
         display: block;
         vertical-align: middle;
       }
+      .hidden {
+        display: none;
+      }
       .konten h2 {
         font-size: 1.5rem;
         line-height: 2rem;
@@ -313,6 +316,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        color: #000;
       }
       .mau-cari form {
         display: block;
@@ -363,6 +367,47 @@
       }
       .menunya a.anak {
         margin-left: 0.75rem;
+      }
+      #layout .latar-putih {
+        display: none;
+      }
+      #layout .header,
+      #layout .menunya {
+        position: relative;
+      }
+      .Blog {
+        max-width: 600px;
+        margin: auto;
+      }
+      .konten p a {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      * {
+        word-wrap: break-word;
+      }
+      .konten a {
+        text-decoration: underline;
+      }
+      .isi-komentar .vcard {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+      .konten p {
+        font-size: $(konten.p);
+      }
+      .kontrol-bookmark {
+        cursor: pointer;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding: 0.5rem;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
     </style>
   </head>
@@ -431,6 +476,7 @@
         </section>
       </section>
     </header>
+    <main class="Blog"></main>
     <footer class="credit">
       Blog ini menggunakan
       <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html"
@@ -454,19 +500,21 @@
       }).mount(".menu.app"),
         PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
     </script>
-    <h2></h2>
-    <h3></h3>
-    <h4></h4>
-    <h5></h5>
-    <h6></h6>
-    <p></p>
-    <ol>
-      <li></li>
-    </ol>
-    <ul>
-      <li></li>
-    </ul>
-    <hr />
-    <br />
+    <div class="hidden">
+      <h2></h2>
+      <h3></h3>
+      <h4></h4>
+      <h5></h5>
+      <h6></h6>
+      <p></p>
+      <ol>
+        <li></li>
+      </ol>
+      <ul>
+        <li></li>
+      </ul>
+      <hr />
+      <br />
+    </div>
   </body>
 </html>

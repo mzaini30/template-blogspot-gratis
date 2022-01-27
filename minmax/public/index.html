@@ -171,6 +171,9 @@
         display: block;
         vertical-align: middle;
       }
+      .hidden {
+        display: none;
+      }
       .next {
         --tw-border-opacity: 1;
         border-color: rgba(249, 115, 22, var(--tw-border-opacity));
@@ -194,7 +197,7 @@
       .thumbnail-postingan {
         width: 100%;
         object-fit: cover;
-        aspect-ratio: 1/1;
+        aspect-ratio: 10/4;
       }
       .postingan {
         font-size: 0.875rem;
@@ -354,6 +357,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        color: #000;
       }
       .mau-cari form {
         display: block;
@@ -404,6 +408,47 @@
       }
       .menunya a.anak {
         margin-left: 0.75rem;
+      }
+      #layout .latar-putih {
+        display: none;
+      }
+      #layout .header,
+      #layout .menunya {
+        position: relative;
+      }
+      .Blog {
+        max-width: 600px;
+        margin: auto;
+      }
+      .konten p a {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      * {
+        word-wrap: break-word;
+      }
+      .konten a {
+        text-decoration: underline;
+      }
+      .isi-komentar .vcard {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+      .konten p {
+        font-size: $(konten.p);
+      }
+      .kontrol-bookmark {
+        cursor: pointer;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding: 0.5rem;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
     </style>
   </head>
@@ -472,19 +517,21 @@
         </section>
       </section>
     </header>
-    <nav v-for="x in Array(10)" class="postingan app">
-      <a href="post.html"
-        ><img src="gambar.jpg" class="thumbnail-postingan" alt="" />
-        <section class="ringkasan-konten">
-          <h2>Ini adalah Judulnya...</h2>
-          <p>Ini adalah deskripsinya...</p>
-        </section></a
-      >
-    </nav>
-    <a class="next" href="/">Berikutnya</a>
-    <script>
-      PetiteVue.createApp({}).mount(".postingan.app")
-    </script>
+    <main class="Blog">
+      <nav v-for="x in Array(10)" class="postingan app">
+        <a href="post.html"
+          ><img src="gambar.jpg" class="thumbnail-postingan" alt="" />
+          <section class="ringkasan-konten">
+            <h2>Ini adalah Judulnya...</h2>
+            <p>Ini adalah deskripsinya...</p>
+          </section></a
+        >
+      </nav>
+      <a class="next" href="/">Berikutnya</a>
+      <script>
+        PetiteVue.createApp({}).mount(".postingan.app")
+      </script>
+    </main>
     <footer class="credit">
       Blog ini menggunakan
       <a href="https://www.cuapcuap.my.id/2022/01/template-minmax.html"
@@ -508,19 +555,21 @@
       }).mount(".menu.app"),
         PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
     </script>
-    <h2></h2>
-    <h3></h3>
-    <h4></h4>
-    <h5></h5>
-    <h6></h6>
-    <p></p>
-    <ol>
-      <li></li>
-    </ol>
-    <ul>
-      <li></li>
-    </ul>
-    <hr />
-    <br />
+    <div class="hidden">
+      <h2></h2>
+      <h3></h3>
+      <h4></h4>
+      <h5></h5>
+      <h6></h6>
+      <p></p>
+      <ol>
+        <li></li>
+      </ol>
+      <ul>
+        <li></li>
+      </ul>
+      <hr />
+      <br />
+    </div>
   </body>
 </html>

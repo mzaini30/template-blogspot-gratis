@@ -555,6 +555,29 @@
       .mau-cari {
         color: black;
       }
+
+      /*random posts*/
+      .random-posts {
+        display: -ms-grid;
+        display: grid;
+        padding: 0.5rem;
+        grid-gap: 0.75rem;
+        gap: 0.75rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (min-width: 640px) {
+        .random-posts {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .random-posts p {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
       ]]>
     </b:skin>
   </head>
@@ -667,9 +690,9 @@
                 <a expr:href="data:post.url"
                   >
                   <b:if cond="data:post.firstImageUrl">
-                    <img expr:src="data:post.firstImageUrl" class="thumbnail-postingan" expr:alt="data:post.title" />
+                    <img expr:src="data:post.firstImageUrl" class="thumbnail-postingan" expr:alt="data:post.title" width="640" height="360" />
                   <b:else />
-                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhWZZFHGaaMxJRuW7wIMcHxI-gyhq3j9ABJxnSOr4cCfqFlcyCzpsCkIOqhirja9K_XNAfAOZ_lWen7F1hfTq8Y83q_7_W-D7V-0ChXrztzuMaCTe1aztwmNk59bl0qEQuXrVcuqf1te7OrLy6Z5D9_kMsNtsamKeyfdA9zavs5BKrc9LHDZFGWV2h-=w400-h225" class="thumbnail-postingan" expr:alt="data:post.title" />
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhWZZFHGaaMxJRuW7wIMcHxI-gyhq3j9ABJxnSOr4cCfqFlcyCzpsCkIOqhirja9K_XNAfAOZ_lWen7F1hfTq8Y83q_7_W-D7V-0ChXrztzuMaCTe1aztwmNk59bl0qEQuXrVcuqf1te7OrLy6Z5D9_kMsNtsamKeyfdA9zavs5BKrc9LHDZFGWV2h-=w400-h225" class="thumbnail-postingan" expr:alt="data:post.title" width="640" height="360" />
                   </b:if>
                   <section class="ringkasan-konten">
                     <h2><data:post.title/></h2>
@@ -687,14 +710,30 @@
             <!-- blog konten -->
             <b:loop values='data:posts' var='post'>
               <b:if cond="data:post.firstImageUrl">
-                <img expr:src="data:post.firstImageUrl" class="cover-postingan" expr:alt="data:post.title" />
+                <img expr:src="data:post.firstImageUrl" class="cover-postingan" expr:alt="data:post.title" width="640" height="360" />
               <b:else />
-                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhWZZFHGaaMxJRuW7wIMcHxI-gyhq3j9ABJxnSOr4cCfqFlcyCzpsCkIOqhirja9K_XNAfAOZ_lWen7F1hfTq8Y83q_7_W-D7V-0ChXrztzuMaCTe1aztwmNk59bl0qEQuXrVcuqf1te7OrLy6Z5D9_kMsNtsamKeyfdA9zavs5BKrc9LHDZFGWV2h-=w400-h225" class="cover-postingan" expr:alt="data:post.title" />
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhWZZFHGaaMxJRuW7wIMcHxI-gyhq3j9ABJxnSOr4cCfqFlcyCzpsCkIOqhirja9K_XNAfAOZ_lWen7F1hfTq8Y83q_7_W-D7V-0ChXrztzuMaCTe1aztwmNk59bl0qEQuXrVcuqf1te7OrLy6Z5D9_kMsNtsamKeyfdA9zavs5BKrc9LHDZFGWV2h-=w400-h225" class="cover-postingan" expr:alt="data:post.title" width="640" height="360" />
               </b:if>
               <h1 class="judul-artikel"><data:post.title /></h1>
               <article class="konten">
                 <data:post.body />
               </article>
+
+              <section
+                class="random-posts app"
+                v-cloak="true"
+                v-on:vue:mounted="dapatkan"
+              >
+                <a v-bind:href="x.link" class="list-acak" v-for="x in random_posts"
+                  ><img
+                    v-bind:src="x.gambar"
+                    width="640"
+                    height="360"
+                    v-bind:alt="x.judul"
+                  />
+                  <p>{{ x.judul }}</p></a
+                >
+              </section>
 
               <section class="komentar">
 
@@ -806,6 +845,45 @@
         PetiteVue.createApp({ tampil_cari: !1 }).mount(".cari.app")
         
       window.addEventListener("load", () => quicklink.listen());
+
+      function acak(t) {
+        for (var o, a, e = t.length; 0 !== e; )
+          (a = Math.floor(Math.random() * e)),
+            (o = t[--e]),
+            (t[e] = t[a]),
+            (t[a] = o)
+        return t
+      }
+
+      PetiteVue.createApp({
+        random_posts: [],
+        async dapatkan() {
+          let o = await fetch("/feeds/posts/default?alt=json&max-results=0")
+          ;(o = await o.json()), (o = o.feed.openSearch$totalResults.$t)
+          let a = []
+          for (let t = 1; t <= o; t++) a = [...a, t]
+          a = acak(a).splice(0, 6)
+          let e = []
+          for (var r of a) {
+            let t = await fetch(
+              "/feeds/posts/default?alt=json&max-results=1&start-index=" + r
+            )
+            ;(t = await t.json()),
+              (e = [
+                ...e,
+                {
+                  judul: t.feed.entry[0].title.$t,
+                  gambar: t.feed.entry[0].media$thumbnail.url.replace(
+                    "=s72-",
+                    "="
+                  ),
+                  link: t.feed.entry[0].link[4].href,
+                },
+              ])
+          }
+          this.random_posts = e
+        },
+      }).mount(".random-posts.app")      
       // ]]>
     </script>
   </body>
