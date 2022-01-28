@@ -234,7 +234,7 @@
         line-height: 1.75rem;
       }
       .konten :where(h2, h3, h4, h5, h6, p, ol, ul, hr, br, pre) {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.75rem !important;
       }
       .konten ul li {
         list-style-type: disc;
