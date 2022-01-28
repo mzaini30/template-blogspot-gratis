@@ -627,11 +627,11 @@
         </thead>
         <tbody>
           <tr>
-            <td class="key">c</td>
+            <td class="key">Alt c</td>
             <td class="command">cari</td>
           </tr>
           <tr>
-            <td class="key">m</td>
+            <td class="key">Alt m</td>
             <td class="command">menu</td>
           </tr>
         </tbody>
@@ -898,7 +898,7 @@
         },
         shortcut() {
           window.addEventListener("keyup", (e) => {
-            "m" == e.key && (this.tampil_menu = !0),
+            "m" == e.key && 1 == e.altKey && (this.tampil_menu = !0),
               "Escape" == e.key && (this.tampil_menu = !1)
           })
         },
@@ -907,7 +907,7 @@
           tampil_cari: !1,
           shortcut() {
             window.addEventListener("keyup", (e) => {
-              "c" == e.key && (this.tampil_cari = !0),
+              "c" == e.key && 1 == e.altKey && (this.tampil_cari = !0),
                 "Escape" == e.key && (this.tampil_cari = !1)
             })
           },

@@ -90,11 +90,11 @@
         </thead>
         <tbody>
           <tr>
-            <td class="key">c</td>
+            <td class="key">Alt c</td>
             <td class="command">cari</td>
           </tr>
           <tr>
-            <td class="key">m</td>
+            <td class="key">Alt m</td>
             <td class="command">menu</td>
           </tr>
         </tbody>
@@ -190,7 +190,7 @@
         },
         shortcut(){
           window.addEventListener('keyup', x => {
-            if (x.key == 'm') {
+            if (x.key == 'm' && x.altKey == true) {
               this.tampil_menu = true
             }
             if (x.key == 'Escape'){
@@ -204,7 +204,7 @@
         tampil_cari: false,
         shortcut(){
           window.addEventListener('keyup', x => {
-            if (x.key == 'c') {
+            if (x.key == 'c' && x.altKey == true) {
               this.tampil_cari = true
             }
             if (x.key == 'Escape'){

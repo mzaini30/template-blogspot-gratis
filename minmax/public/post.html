@@ -338,8 +338,8 @@
         font-size: 1.125rem;
         line-height: 1.75rem;
       }
-      .konten :where(h2, h3, h4, h5, h6, p, ol, ul, hr, br) {
-        margin-bottom: 0.75rem;
+      .konten :where(h2, h3, h4, h5, h6, p, ol, ul, hr, br, pre) {
+        margin-bottom: 0.75rem !important;
       }
       .konten ul li {
         list-style-type: disc;
@@ -567,6 +567,9 @@
         -ms-user-select: none;
         user-select: none;
       }
+      pre {
+        white-space: pre-wrap;
+      }
     </style>
   </head>
   <body>
@@ -579,11 +582,11 @@
         </thead>
         <tbody>
           <tr>
-            <td class="key">c</td>
+            <td class="key">Alt c</td>
             <td class="command">cari</td>
           </tr>
           <tr>
-            <td class="key">m</td>
+            <td class="key">Alt m</td>
             <td class="command">menu</td>
           </tr>
         </tbody>
@@ -800,7 +803,7 @@ tiga</code></pre>
         },
         shortcut() {
           window.addEventListener("keyup", (e) => {
-            "m" == e.key && (this.tampil_menu = !0),
+            "m" == e.key && 1 == e.altKey && (this.tampil_menu = !0),
               "Escape" == e.key && (this.tampil_menu = !1)
           })
         },
@@ -809,7 +812,7 @@ tiga</code></pre>
           tampil_cari: !1,
           shortcut() {
             window.addEventListener("keyup", (e) => {
-              "c" == e.key && (this.tampil_cari = !0),
+              "c" == e.key && 1 == e.altKey && (this.tampil_cari = !0),
                 "Escape" == e.key && (this.tampil_cari = !1)
             })
           },
