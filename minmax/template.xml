@@ -233,7 +233,7 @@
         font-size: $(konten.h4);
         line-height: 1.75rem;
       }
-      .konten :where(h2, h3, h4, h5, h6, p, ol, ul, hr, br) {
+      .konten :where(h2, h3, h4, h5, h6, p, ol, ul, hr, br, pre) {
         margin-bottom: 0.75rem;
       }
       .konten ul li {
@@ -608,6 +608,11 @@
         text-indent: 0;
         border-color: inherit;
         border-collapse: collapse;
+      }
+
+      /*tambahan*/
+      pre {
+        white-space: pre-wrap;
       }
       ]]>
     </b:skin>
