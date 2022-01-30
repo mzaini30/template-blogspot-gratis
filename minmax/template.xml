@@ -653,6 +653,11 @@
         display: flex;
         gap: 10px;
       }
+
+      .konten pre {
+        background-color: #c1c1c147 !important;
+        padding: 10px !important;
+      }
       ]]>
     </b:skin>
   </head>
