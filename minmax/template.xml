@@ -622,7 +622,7 @@
         display: none;
       }
       .comment-replies .comment {
-        margin-left: 30px;
+        margin-left: 60px;
       }
       .avatar-image-container {
         flex-grow: 0;
