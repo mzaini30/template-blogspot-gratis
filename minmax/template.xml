@@ -994,6 +994,9 @@
                   gambar: t.feed.entry[0].media$thumbnail.url.replace(
                     "=s72-",
                     "="
+                  ).replace(
+                    "/s72-",
+                    "/"
                   ),
                   link: t.feed.entry[0].link[4].href,
                 },
