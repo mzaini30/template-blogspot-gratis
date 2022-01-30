@@ -499,10 +499,10 @@
         grid-gap: 0.5rem;
         gap: 0.5rem;
       }
-      .isi-komentar h2 {
+      .isi-komentar h2  {
         font-weight: 700;
       }
-      .isi-komentar img {
+      :where(.isi-komentar) img {
         height: 3.75rem;
         width: 3.75rem;
       }
@@ -613,6 +613,45 @@
       /*tambahan*/
       pre {
         white-space: pre-wrap;
+      }
+
+      /*komentar*/
+      .datetime,
+      .loadmore,
+      .thread-toggle {
+        display: none;
+      }
+      .comment-replies .comment {
+        margin-left: 30px;
+      }
+      .avatar-image-container {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+      .avatar-image-container img {
+        height: 3.75rem;
+        width: 3.75rem;
+      }
+      .continue {
+        display: none;
+      }
+      cite.user {
+        font-weight: 700;
+        font-style: normal;
+      }
+      span.comment-actions.secondary-text {
+        font-size: 15px;
+        padding-bottom: 10px;
+        display: flex;
+        gap: 10px;
+        color: red;
+      }
+      .comment-replybox-single iframe {
+        margin-bottom: 20px
+      }
+      .konten-komentar {
+        display: flex;
+        gap: 10px;
       }
       ]]>
     </b:skin>
@@ -801,7 +840,8 @@
                 </script>
 
                 <section class="list-komentar">
-                  <b:loop values='data:post.comments' var='comment'>
+                  <data:post.commentHtml/>
+                  <!-- <b:loop values='data:post.comments' var='comment'>
                     <section class="isi-komentar">
                       <data:comment.authorAvatarImage/>
                       <section class="konten-komentar">
@@ -809,7 +849,7 @@
                         <p><data:comment.body/></p>
                       </section>
                     </section>
-                  </b:loop>
+                  </b:loop> -->
                 </section>
               </section>
 
@@ -849,6 +889,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js"></script>
     <script>
       // <![CDATA[
+      let semua_html = document.body.innerHTML
+      semua_html = semua_html
+        .replace(/(<div class="avatar-image-container")/g, "<section class='konten-komentar'>$1")
+        .replace(/(<div class="comment-replies")/g, "</section>$1")
+      document.body.innerHTML = semua_html
+
+      const gambar_komentar = document.querySelectorAll('.avatar-image-container img')
+      gambar_komentar.forEach(x => x.src = x.src.replace('/s35/', '/s60/'))
+
       const linknya = location.href
       if (linknya.includes("?m=")) {
         const a = linknya.replace(/\?m=./, "")

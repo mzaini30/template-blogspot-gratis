@@ -1,0 +1,20 @@
+v3 (1 September 2020)
+-------------------
+- Menghapus jQuery.
+- Membuat banyak fitur bawaan bisa dimodifikasi melalui widget di Layout (Tata Letak) seperti menu navigasi, link media sosial, dan lainnya sehingga tidak perlu diedit melalui kode HTML lagi.
+- Mengubah tampilan menjadi lebih minimalis.
+- Menambah lazy load gambar.
+- Menambah sidebar sticky.
+- Pergantian font dari Poppins ke Roboto.
+- Perbaikan menu yang kadang tidak bisa di-klik.
+- Perubahan rasio gambar thumbnail di homepage dari 16:9 menjadi 5:4 di versi desktop dan 4:2 di versi mobile.
+- Perubahan desain kolom komentar.
+- Perubahan desain Artikel Terkait (Related Post) di bawah artikel utama.
+- Perbaikan agar bisa langsung memasang kode Google Analytics melalui pengaturan Blogger
+- Penambahan jenis navigasi bernomor.
+- Mendukung format RTL (Right To Left) seperti tulisan Arab atau lainnya.
+- Perubahan desain widget Populer, Entri Yang Diunggulkan (Featured), Profil, Label, Arsip, dll.
+- Perbaikan agar fitur Reaksi (Reaction) bisa dipakai.
+- Penambahan menu bagikan (share) ke Telegram.
+- Perbaikan penulisan HTML dan CSS yang lebih efektif.
+- Perbaikan minor struktur HTML.
