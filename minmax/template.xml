@@ -658,6 +658,11 @@
         background-color: #c1c1c147 !important;
         padding: 10px !important;
       }
+      .list-acak img {
+        width: 100%;
+        aspect-ratio: 64 / 36;
+        object-fit: cover;
+      }
       ]]>
     </b:skin>
   </head>
