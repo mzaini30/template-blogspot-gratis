@@ -1,0 +1,23 @@
+.judul {
+  display: block;
+  color: initial !important;
+  text-align: center;
+}
+.judul:hover {
+  text-decoration: none;
+}
+.judul p {
+  max-width: 100%;
+}
+
+.isi {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+.isi .tengah {
+  grid-column: span 3 / span 3;
+}
